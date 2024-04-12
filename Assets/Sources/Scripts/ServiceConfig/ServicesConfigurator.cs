@@ -7,42 +7,33 @@ namespace Sources.Scripts.ServiceConfig
 {
     public class ServicesConfigurator : IServiceConfigurator
     {
-        private readonly Dictionary<Type, object> _impl = new();
+        private readonly Dictionary<Type, object> _implCache;
+
+        public ServicesConfigurator(IDictionary<Type, object> implFromConfig)
+        {
+            _implCache = new Dictionary<Type, object>(implFromConfig);
+        }
 
         public T GetImpl<T>() where T : class
         {
-            T typeInstance = null;
+            if (_implCache.ContainsKey(typeof(T)))
+            {
+                Debug.LogWarning("--- impl in dict");
+                return (T)_implCache[typeof(T)];
+            }
 
+            Debug.LogWarning("--- NO impl in dict");
 
             var subTypes = GetSubTypesOf(typeof(T)).ToList();
 
-            if (_impl.ContainsKey(typeof(T)))
-            {
-                Debug.LogWarning("--- impl in dict");
-                var a = _impl[typeof(T)];
-                // return (T)Activator.CreateInstance(a);
+            var typeInstance = (T)Activator.CreateInstance(subTypes.First());
 
-                return (T)a;
-            }
-            else
-            {
-                Debug.LogWarning("--- NO impl in dict");
-                Debug.Log("type start");
-                foreach (var variablType in subTypes)
-                {
-                    Debug.Log(variablType.FullName);
-                }
+            _implCache.Add(typeof(T), typeInstance);
 
-                Debug.Log("type end");
-                typeInstance = (T)Activator.CreateInstance(subTypes.First());
-
-                _impl.Add(typeof(T), typeInstance);
-
-                return typeInstance;
-            }
+            return typeInstance;
         }
 
-        private IEnumerable<Type> GetSubTypesOf(Type type)
+        private static IEnumerable<Type> GetSubTypesOf(Type type)
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 

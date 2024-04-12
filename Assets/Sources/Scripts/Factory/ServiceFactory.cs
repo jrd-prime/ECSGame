@@ -18,7 +18,7 @@ namespace Sources.Scripts.Factory
         private ServiceFactory()
         {
             _configuration = new GameConfig();
-            _serviceConfigurator = new ServicesConfigurator();
+            _serviceConfigurator = new ServicesConfigurator(_configuration.GetImpl());
         }
 
         public static ServiceFactory Instance { get; } = new();
