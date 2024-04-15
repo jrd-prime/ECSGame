@@ -43,8 +43,7 @@ namespace Sources.Scripts.ServiceConfig
             {
                 foreach (var subtype in assembly.GetTypes())
                 {
-                    if (!subtype.GetInterfaces().Contains(type))
-                        continue;
+                    if (!subtype.GetInterfaces().Contains(type)) continue;
 
                     types.Add(subtype);
                 }
