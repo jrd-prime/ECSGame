@@ -1,33 +1,41 @@
-using System.Reflection;
 using Sources.Scripts.Factory;
 using Sources.Scripts.TestConfig;
-using Sources.Scripts.TestDB;
+using Sources.Scripts.Utils;
 using UnityEngine;
 
 namespace Sources.Scripts.Core.Loading
 {
     public sealed class AppStart : MonoBehaviour
     {
+        [SerializeField] private GameObject _contextHolder;
+
         private void Start()
         {
-            Debug.LogWarning("App Start");
-            AppContext context = AppContext.Instance;
+            JLogger.Msg("App Start");
 
-            ServiceFactory serviceFactory = new(context);
-            Container container = new(serviceFactory);
+            // Services config
+            IServiceConfig serviceConfig = new NetServiceConfig();
 
-            context.SetServiceFactory(serviceFactory);
-            context.SetContainer(container);
+            // Init
+            AppContext context = _contextHolder.GetComponent<AppContext>();
+            ServiceFactory serviceFactory = new();
+            Container container = new();
 
-            // GAME CONFIG
-            var gameConfig = new NetGameConfig();
+            // Mini app start hand inject
+            ReflectionUtils.HandInject(context, serviceConfig);
+            ReflectionUtils.HandInject(context, container);
+            ReflectionUtils.HandInject(container, serviceFactory);
 
 
-            context.BindServicesFromConfig(gameConfig);
+            // context.SetServiceFactory(serviceFactory);
+            // context.SetContainer(container);
 
-            container.AddToCache(typeof(DBController), gameObject.AddComponent<DBController>());
 
-            context.Inject(Assembly.GetExecutingAssembly());
+            // context.BindServicesFromConfig(serviceConfig);
+
+            // container.AddToCache(typeof(DBController), gameObject.AddComponent<DBController>());
+
+            // context.Inject(Assembly.GetExecutingAssembly());
         }
     }
 }

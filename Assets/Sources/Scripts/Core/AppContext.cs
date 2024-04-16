@@ -1,39 +1,49 @@
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using Codice.CM.Common.Serialization;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Factory;
 using Sources.Scripts.TestConfig;
+using Sources.Scripts.Utils;
 using UnityEngine;
 
 namespace Sources.Scripts.Core
 {
+    /// <summary>
+    /// Init services and inject dependencies
+    /// </summary>
     public sealed class AppContext : MonoBehaviour
     {
+        [JHandInject] private Container _container;
+        [JHandInject] private IServiceConfig _serviceConfig;
+
         private ServiceFactory _serviceFactory;
-        
+        private AppContext _context;
+
         public Container Container { get; private set; }
-        public static AppContext Instance { get; private set; }
 
         private void Awake()
         {
-            Instance = this;
             DontDestroyOnLoad(this);
         }
 
-
-        public void BindServicesFromConfig(IGameConfig gameConfig)
+        private void Start()
         {
-            var services = gameConfig.Init();
+            JLogger.Msg("Simple one line msg");
+            _container.Description();
+        }
 
-            Debug.LogWarning(services.Count);
+
+        public void BindServicesFromConfig(IServiceConfig serviceConfig)
+        {
+            var services = serviceConfig.Init();
+
+            JLogger.Msg(services.Count);
 
             foreach (var service in services)
             {
-                Debug.LogWarning(service.Key + " + " + service.Value);
-                var a = _serviceFactory.GetService(service.Value);
-                Container.AddToCache(service.Key, a);
+                JLogger.Msg(service.Key + " + " + service.Value);
+                // var a = _serviceFactory.GetService(service.Value);
+                // Container.AddToCache(service.Key, a);
             }
         }
 
@@ -69,15 +79,14 @@ namespace Sources.Scripts.Core
                 {
                     if (!Attribute.IsDefined(fieldInfo, typeof(JInject))) continue;
 
-                    Debug.LogError("INJECT HERE = " + type);
+                    JLogger.Msg("INJECT HERE = " + type);
 
                     target = Container.GetCache()[type];
 
                     var injectType = fieldInfo.FieldType;
                     Container.GetCache().TryGetValue(injectType, out var injectValue);
 
-                    Debug.LogWarning(injectType);
-                    Debug.LogWarning(injectValue);
+                    JLogger.Builder().AddLine(injectType).AddLine(injectValue).Build();
 
 
                     if (Container.GetCache().TryGetValue(injectType, out var value))

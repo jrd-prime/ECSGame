@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Reflection;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Factory;
+using Sources.Scripts.Utils;
 using UnityEngine;
 
 namespace Sources.Scripts.Core
 {
     public sealed class Container
     {
-        private readonly ServiceFactory _serviceFactory;
+        [JHandInject] private ServiceFactory _serviceFactory;
         private readonly Dictionary<Type, object> _servicesCache;
 
         public Dictionary<Type, object> GetCache() => _servicesCache;
 
-        public Container(ServiceFactory serviceFactory)
+        public Container()
         {
             _servicesCache = new Dictionary<Type, object>();
-            _serviceFactory = serviceFactory;
         }
 
         private void Bind(Type type, object imp)
@@ -43,28 +43,28 @@ namespace Sources.Scripts.Core
                     if (!Attribute.IsDefined(fieldInfo, typeof(JInject))) continue;
 
                     var injectType = fieldInfo.FieldType;
-                    var injectValue = _serviceFactory.GetService(injectType);
+                    // var injectValue = _serviceFactory.GetService(injectType);
 
                     Debug.LogWarning(injectType);
-                    Debug.LogWarning(injectValue);
+                    // Debug.LogWarning(injectValue);
 
 
                     if (_servicesCache.TryGetValue(injectType, out var value))
                     {
                         Debug.Log("Return from cache");
-                        injectValue = value;
+                        // injectValue = value;
                     }
 
                     Debug.Log("Not in cache");
 
-                    Bind(injectType, injectValue);
+                    // Bind(injectType, injectValue);
                     Debug.LogWarning("======");
                     Debug.Log(fieldInfo);
                     Debug.Log(target);
                     Debug.LogWarning(injectType);
-                    Debug.LogWarning(injectValue);
+                    // Debug.LogWarning(injectValue);
                     Debug.LogWarning("======");
-                    fieldInfo.SetValue(target, injectValue);
+                    // fieldInfo.SetValue(target, injectValue);
 
                     Debug.LogWarning($"(!) Injected: {fieldInfo.FieldType} to {type.Name}");
                 }
@@ -79,6 +79,11 @@ namespace Sources.Scripts.Core
             {
                 Debug.Log($"Container. Service added to cache {serviceKey} / {o}");
             }
+        }
+
+        public void Description()
+        {
+            JLogger.Msg("Container description");
         }
     }
 }

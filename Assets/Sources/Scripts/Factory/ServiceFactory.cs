@@ -14,14 +14,14 @@ namespace Sources.Scripts.Factory
     public class ServiceFactory
     {
         private readonly AppContext _context;
-        private readonly IConfiguration _configuration;
+        // private readonly IConfiguration _configuration;
         private readonly IServiceConfigurator _serviceConfigurator;
 
-        public ServiceFactory(AppContext context)
-        {
-            _context = context;
-            _serviceConfigurator = new ServicesConfigurator(_configuration.GetImpl());
-        }
+        // public ServiceFactory(AppContext context)
+        // {
+        //     _context = context;
+        //     // _serviceConfigurator = new ServicesConfigurator(_configuration.GetImpl());
+        // }
 
         public T GetService<T>() where T : class
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sources.Scripts.TestConfig
 {
-    public interface IGameConfig
+    public interface IServiceConfig
     {
         public Dictionary<Type, Type> Init();
     }

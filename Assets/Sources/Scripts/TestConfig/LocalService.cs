@@ -5,7 +5,7 @@ using Sources.Scripts.TestViews;
 
 namespace Sources.Scripts.TestConfig
 {
-    public class LocalGame : IGameConfig
+    public class LocalService : IServiceConfig
     {
         public Dictionary<Type, Type> Init()
         {
