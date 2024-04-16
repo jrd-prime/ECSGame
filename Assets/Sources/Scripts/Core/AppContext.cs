@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Factory;
 using Sources.Scripts.TestConfig;
@@ -15,8 +16,7 @@ namespace Sources.Scripts.Core
     {
         [JHandInject] private Container _container;
         [JHandInject] private IServiceConfig _serviceConfig;
-
-        private ServiceFactory _serviceFactory;
+        
         private AppContext _context;
 
         public Container Container { get; private set; }
@@ -28,23 +28,13 @@ namespace Sources.Scripts.Core
 
         private void Start()
         {
-            JLogger.Msg("Simple one line msg");
+            JLog.Msg("Simple one line msg");
             _container.Description();
         }
 
 
         public void BindServicesFromConfig(IServiceConfig serviceConfig)
         {
-            var services = serviceConfig.Init();
-
-            JLogger.Msg(services.Count);
-
-            foreach (var service in services)
-            {
-                JLogger.Msg(service.Key + " + " + service.Value);
-                // var a = _serviceFactory.GetService(service.Value);
-                // Container.AddToCache(service.Key, a);
-            }
         }
 
         public T GetService<T>() where T : class
@@ -54,13 +44,11 @@ namespace Sources.Scripts.Core
             if (cache.ContainsKey(typeof(T)))
                 return (T)cache[typeof(T)];
 
-            T service = _serviceFactory.GetService<T>();
+            T service = Container.getSer().GetService<T>();
             Container.AddToCache(typeof(T), service);
 
             return service;
         }
-
-        public void SetServiceFactory(ServiceFactory factory) => _serviceFactory = factory;
         public void SetContainer(Container container) => Container = container;
 
         public void Inject(Assembly getExecutingAssembly)
@@ -79,14 +67,14 @@ namespace Sources.Scripts.Core
                 {
                     if (!Attribute.IsDefined(fieldInfo, typeof(JInject))) continue;
 
-                    JLogger.Msg("INJECT HERE = " + type);
+                    JLog.Msg("INJECT HERE = " + type);
 
                     target = Container.GetCache()[type];
 
                     var injectType = fieldInfo.FieldType;
                     Container.GetCache().TryGetValue(injectType, out var injectValue);
 
-                    JLogger.Builder().AddLine(injectType).AddLine(injectValue).Build();
+                    JLog.Builder().AddLine(injectType).AddLine(injectValue).Build();
 
 
                     if (Container.GetCache().TryGetValue(injectType, out var value))
@@ -110,6 +98,34 @@ namespace Sources.Scripts.Core
             }
 
             // return target;
+        }
+
+        public async void Initialize()
+        {
+            JLog.Msg("Start init services");
+            await InitializeServices();
+            JLog.Msg("services loaded");
+
+            JLog.Msg("start inject");
+            Inject(Assembly.GetExecutingAssembly());
+        }
+
+        private async Task InitializeServices()
+        {
+            var services = _serviceConfig.Init();
+
+            JLog.Msg(services.Count);
+
+            foreach (var service in services)
+            {
+                JLog.Msg(service.Key + " + " + service.Value);
+                var a = Container.getSer().GetService(service.Value);
+                Container.AddToCache(service.Key, a);
+                await Task.Delay(1000);
+                JLog.Msg($"{service} Loaded");
+            }
+
+            await Task.CompletedTask;
         }
     }
 }

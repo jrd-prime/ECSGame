@@ -1,3 +1,5 @@
+
+
 using Sources.Scripts.Factory;
 using Sources.Scripts.TestConfig;
 using Sources.Scripts.Utils;
@@ -11,21 +13,26 @@ namespace Sources.Scripts.Core.Loading
 
         private void Start()
         {
-            JLogger.Msg("App Start");
+            JLog.Msg("App Start");
+
 
             // Services config
             IServiceConfig serviceConfig = new NetServiceConfig();
 
-            // Init
+            #region PreInit
+
             AppContext context = _contextHolder.GetComponent<AppContext>();
-            ServiceFactory serviceFactory = new();
             Container container = new();
+            ServiceFactory serviceFactory = new();
 
             // Mini app start hand inject
             ReflectionUtils.HandInject(context, serviceConfig);
             ReflectionUtils.HandInject(context, container);
             ReflectionUtils.HandInject(container, serviceFactory);
 
+            #endregion
+
+             context.Initialize();
 
             // context.SetServiceFactory(serviceFactory);
             // context.SetContainer(container);

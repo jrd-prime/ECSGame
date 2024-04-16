@@ -1,3 +1,5 @@
+
+
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -11,6 +13,9 @@ namespace Sources.Scripts.Core
     public sealed class Container
     {
         [JHandInject] private ServiceFactory _serviceFactory;
+
+        public ServiceFactory getSer() => _serviceFactory;
+        
         private readonly Dictionary<Type, object> _servicesCache;
 
         public Dictionary<Type, object> GetCache() => _servicesCache;
@@ -83,7 +88,7 @@ namespace Sources.Scripts.Core
 
         public void Description()
         {
-            JLogger.Msg("Container description");
+            JLog.Msg("Container description");
         }
     }
 }

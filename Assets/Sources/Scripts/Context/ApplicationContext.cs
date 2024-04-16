@@ -9,16 +9,16 @@ namespace Sources.Scripts.Context
         public ServiceFactory _serviceFactory { get; private set; }
         private readonly Dictionary<Type, object> _servicesCache;
 
-        public T GetService<T>() where T : class
-        {
-            if (_servicesCache.ContainsKey(typeof(T)))
-                return (T)_servicesCache[typeof(T)];
-
-            T service = _serviceFactory.GetService<T>();
-            _servicesCache.Add(typeof(T), service);
-
-            return service;
-        }
+        // public T GetService<T>() where T : class
+        // {
+        //     if (_servicesCache.ContainsKey(typeof(T)))
+        //         return (T)_servicesCache[typeof(T)];
+        //
+        //     T service = _serviceFactory.GetService<T>();
+        //     _servicesCache.Add(typeof(T), service);
+        //
+        //     return service;
+        // }
 
         public void SetServiceFactory(ServiceFactory serviceFactory)
         {
