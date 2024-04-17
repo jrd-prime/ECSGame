@@ -7,13 +7,11 @@ namespace Sources.Scripts.TestConfig
 {
     public class NetServiceConfig : IServiceConfig
     {
-        public Dictionary<Type, Type> Init()
-        {
-            return new Dictionary<Type, Type>()
+        public Dictionary<Type, Type> GetServicesList()
+            => new()
             {
                 { typeof(IDataBase), typeof(CloudDB) },
                 { typeof(IViews), typeof(OldStyleView) }
             };
-        }
     }
 }

@@ -5,6 +5,6 @@ namespace Sources.Scripts.TestConfig
 {
     public interface IServiceConfig
     {
-        public Dictionary<Type, Type> Init();
+        public Dictionary<Type, Type> GetServicesList();
     }
 }

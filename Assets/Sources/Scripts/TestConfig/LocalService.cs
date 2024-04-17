@@ -7,7 +7,7 @@ namespace Sources.Scripts.TestConfig
 {
     public class LocalService : IServiceConfig
     {
-        public Dictionary<Type, Type> Init()
+        public Dictionary<Type, Type> GetServicesList()
         {
             return new Dictionary<Type, Type>()
             {

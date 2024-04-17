@@ -4,13 +4,18 @@ using UnityEngine;
 
 namespace Sources.Scripts.TestDB
 {
-    public class DBController : MonoBehaviour
+    public class DBController 
     {
-        [JInject] private IDataBase _dataBase;
+         private IDataBase _dataBase;
 
         private void Start()
         {
             _dataBase.ShowInfo();
+        }
+
+        public void show()
+        {
+            Debug.Log("SHOW SHOW");
         }
     }
 }

@@ -11,6 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30adf90198bc4c4b83910c6fb1877998174000/f2/be499d8c/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/45/a02f833f/Assembly.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/63/83bb3b1e/FieldInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -35,7 +36,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.24f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath E:\_UnityProjects\ECSGame\ECSGame -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\_UnityProjects\ECSGame\ECSGame" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -43,7 +44,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.24f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath E:\_UnityProjects\ECSGame\ECSGame -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\_UnityProjects\ECSGame\ECSGame" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -87,6 +88,9 @@
       <workItem from="1713008763731" duration="4472000" />
       <workItem from="1713076530071" duration="11683000" />
       <workItem from="1713156596086" duration="26853000" />
+      <workItem from="1713236733670" duration="21118000" />
+      <workItem from="1713331563624" duration="5931000" />
+      <workItem from="1713341766102" duration="19812000" />
     </task>
     <servers />
   </component>

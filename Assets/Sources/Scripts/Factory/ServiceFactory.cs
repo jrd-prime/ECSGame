@@ -1,7 +1,6 @@
 ﻿using System;
 using Sources.Scripts.Annotation;
 using UnityEngine;
-using AppContext = Sources.Scripts.Core.AppContext;
 
 namespace Sources.Scripts.Factory
 {
@@ -48,7 +47,9 @@ namespace Sources.Scripts.Factory
 
         public object GetService(Type serviceValue)
         {
+            Debug.LogWarning("in get service");
             return Activator.CreateInstance(serviceValue);
         }
+
     }
 }

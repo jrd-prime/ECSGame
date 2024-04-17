@@ -12,6 +12,7 @@ namespace Sources.Scripts.Utils
     {
         private static List<string> _msgList = new();
         private static readonly bool Show = DebugConfig.ShowDebug;
+        private static readonly bool ShowLineNumber = DebugConfig.ShowLineNum;
         private static int _msgNum = 1;
 
         public static void Msg(object o, [CallerMemberName] string cName = "", [CallerFilePath] string cPath = "")
@@ -20,7 +21,7 @@ namespace Sources.Scripts.Utils
         private static void ShowMsg(object o, string callerName, string callerPath)
         {
             if (!Show) return;
-            
+
             ShowMsgNumLine(callerName, callerPath);
             Debug.Log(o);
         }
@@ -34,7 +35,7 @@ namespace Sources.Scripts.Utils
         {
             private readonly List<string> _list;
 
-            public JLoggerBuilder(ref List<string> msgList)=> _list = msgList;
+            public JLoggerBuilder(ref List<string> msgList) => _list = msgList;
 
             /// <summary>
             /// Add line to builder
@@ -65,6 +66,8 @@ namespace Sources.Scripts.Utils
 
         private static void ShowMsgNumLine(string callerName, string callerPath)
         {
+            if (!ShowLineNumber) return;
+
             Debug.Log($"\t{_msgNum}. \t{callerPath.Split('\\').Last().Split('.').First()} -> {callerName}()");
             _msgNum++;
         }

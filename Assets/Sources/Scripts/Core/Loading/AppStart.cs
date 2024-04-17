@@ -1,48 +1,68 @@
-
-
+using System;
+using Sources.Scripts.DI;
 using Sources.Scripts.Factory;
 using Sources.Scripts.TestConfig;
 using Sources.Scripts.Utils;
 using UnityEngine;
+using AppContext = Sources.Scripts.DI.AppContext;
 
 namespace Sources.Scripts.Core.Loading
 {
     public sealed class AppStart : MonoBehaviour
     {
-        [SerializeField] private GameObject _contextHolder;
+        [SerializeField] private GameObject _appContextHolderGo;
 
-        private void Start()
+        private void Awake()
         {
-            JLog.Msg("App Start");
+            DontDestroyOnLoad(_appContextHolderGo);
+        }
 
-
-            // Services config
-            IServiceConfig serviceConfig = new NetServiceConfig();
-
+        private async void Start()
+        {
             #region PreInit
 
-            AppContext context = _contextHolder.GetComponent<AppContext>();
             Container container = new();
-            ServiceFactory serviceFactory = new();
-
-            // Mini app start hand inject
-            ReflectionUtils.HandInject(context, serviceConfig);
-            ReflectionUtils.HandInject(context, container);
-            ReflectionUtils.HandInject(container, serviceFactory);
+            IBindsConfig bindsConfig = new TestBinds();
 
             #endregion
 
-             context.Initialize();
+            #region ImportantBindings
 
-            // context.SetServiceFactory(serviceFactory);
-            // context.SetContainer(container);
+            await container.BindSelfAsync<Container>();
 
+            AppContext context = await container.BindSelfAsync<AppContext>(_appContextHolderGo);
+            ServiceFactory serviceFactory = await container.BindSelfAsync<ServiceFactory>();
 
-            // context.BindServicesFromConfig(serviceConfig);
+            #endregion
 
-            // container.AddToCache(typeof(DBController), gameObject.AddComponent<DBController>());
+            #region Bindings
 
-            // context.Inject(Assembly.GetExecutingAssembly());
+            await bindsConfig.InitBindings(container);
+
+            #endregion
+
+            #region Injection
+
+            // Mini app start hand inject
+            var reflectionUtils = new ReflectionUtils(container);
+            
+            reflectionUtils.HandInject(context, bindsConfig);
+            reflectionUtils.HandInject(context, container);
+            reflectionUtils.HandInject(container, serviceFactory);
+
+            await context.InitializeAsync();
+
+            #endregion
+
+// TODO on app start and fake loading services - create loading screen
+
+// TODO add asset loadin async init binds
+
+            Debug.LogWarning($"in cache binds: {container.getBinds().Count}".ToUpper());
+            Debug.LogWarning($"in cache instances: {container.GetCache().Count}".ToUpper());
+            
+            Debug.LogWarning("INITIALISATION FINISHEEEDDDD!!!!");
+            Debug.LogWarning("STAAAART THHHE GAMEE");
         }
     }
 }
