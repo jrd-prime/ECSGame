@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sources.Scripts.Core;
 using Sources.Scripts.Utils;
+using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
@@ -54,6 +55,15 @@ namespace Sources.Scripts.DI
 
         public async Task<T> Bind<T>(object instance) where T : class
         {
+            Debug.LogWarning(instance == null);
+
+            instance = null;
+
+            throw new ArgumentNullException();
+
+
+            if (instance == null) throw new ArgumentNullException($"{typeof(T)} instance is null");
+
             Binder.Bind<T>();
             Cache.Add<T>(instance);
             return await GetService<T>();

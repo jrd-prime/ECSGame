@@ -1,32 +1,47 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
+using Sources.Scripts.DI;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class ContainerTests
+namespace Tests.DITests
 {
-    public void Testtest()
+    [TestFixture] // Test suit
+    public class ContainerTests
     {
-        // Arrange
-        // Act
-        // Assert
-    }
+        private Container _container = new();
+        private TestObject _testObject = new();
 
-    // A Test behaves as an ordinary method
-    [Test]
-    public void ContainerTestsSimplePasses()
-    {
-        // Use the Assert class to test conditions
-    }
+        private class TestObject
+        {
+        }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator ContainerTestsWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        [SetUp] // Before tests
+        public void SetUp()
+        {
+        }
+
+        [TearDown] // After tests
+        public void TearDown()
+        {
+        }
+
+        [Test]
+        public void Container_Bind_OverloadWithInstance_Null_Argument()
+        {
+            Assert.ThrowsAsync<ArgumentNullException>(() => _container.Bind<TestObject>(null));
+        }
+
+
+        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
+        // `yield return null;` to skip a frame.
+        [UnityTest]
+        public IEnumerator ContainerTestsWithEnumeratorPasses()
+        {
+            // Use the Assert class to test conditions.
+            // Use yield to skip a frame.
+            yield return null;
+        }
     }
 }
