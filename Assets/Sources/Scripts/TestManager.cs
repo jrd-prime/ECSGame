@@ -9,17 +9,5 @@ namespace Sources.Scripts
         [JInject] private AppContext context;
 
         [JInject] private IServiceConfig _serviceConfig;
-
-        private void Start()
-        {
-            // context.Desc();
-
-            // a.show();
-        }
-
-        private void FixedUpdate()
-        {
-            context.Desc();
-        }
     }
 }

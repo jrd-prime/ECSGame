@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using Sources.Scripts.Annotation;
-using Sources.Scripts.Core;
 using Sources.Scripts.DI;
+using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Sources.Scripts.Utils
 {
@@ -16,10 +17,6 @@ namespace Sources.Scripts.Utils
             _container = container;
         }
 
-        public void AsSingle()
-        {
-        }
-
         /// <summary>
         /// Inject by attr <see cref="JHandInject"/>
         /// </summary>
@@ -29,9 +26,13 @@ namespace Sources.Scripts.Utils
             // TODO now object find field for inject
             // TODO redundant iterations??
 
-            FieldInfo[] fields = typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+            Assert.IsNotNull(target, "target != null");
 
-            foreach (var field in fields)
+
+            FieldInfo[] fields =
+                typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+
+            foreach (FieldInfo field in fields)
             {
                 if (!Attribute.IsDefined(field, typeof(JHandInject))) continue;
 
@@ -40,13 +41,15 @@ namespace Sources.Scripts.Utils
 
                 if (!isTypeEqual && !isImplementInterface) continue;
 
-                field.SetValue(target, instance);
-                _container.AddToCache(typeof(T), instance);
+                Debug.LogWarning(target);
 
                 // for logging
                 var val = Helper.TypeNameCutter(instance.GetType());
-                var tar = Helper.TypeNameCutter(target.GetType());
-                JLog.Msg($"Injected. {val} to {tar}");
+
+                field.SetValue(target, instance);
+                _container.Cache.Add(typeof(T), instance);
+
+                JLog.Msg($"Injected. {val} to {target}");
             }
 
             return this;

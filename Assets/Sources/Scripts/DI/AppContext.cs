@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Threading.Tasks;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.TestConfig;
@@ -23,14 +22,13 @@ namespace Sources.Scripts.DI
         
         public async Task InitializeAsync()
         {
-            await _container.InitBinds(_bindsConfig);
-            await _container.InitServicesAsync(_serviceConfig.GetServicesList());
-            await _container.InjectDependenciesAsync(Assembly.GetExecutingAssembly());
-        }
+            _container.Bind(_bindsConfig);
 
-        public void Desc()
-        {
-            Debug.Log("Context desc");
+            await Task.CompletedTask;
+
+            // await _container.InitBinds(_bindsConfig);
+            // await _container.InitServicesAsync(_serviceConfig.GetServicesList());
+            // await _container.InjectDependenciesAsync(Assembly.GetExecutingAssembly());
         }
     }
 }

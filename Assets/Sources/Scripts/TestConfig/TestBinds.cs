@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Sources.Scripts.Core;
 using Sources.Scripts.DI;
 
@@ -8,8 +11,15 @@ namespace Sources.Scripts.TestConfig
     {
         public async Task InitBindings(Container container)
         {
-            await container.BindInterface<IServiceConfig, NetServiceConfig>();
-            await container.BindSelfAsync<TestManager>();
+            await Task.CompletedTask;
+        }
+
+        public Dictionary<Type, Type> GetBindingsList()
+        {
+            return new Dictionary<Type, Type>()
+            {
+                { typeof(IServiceConfig), typeof(NetServiceConfig) }
+            };
         }
     }
 }

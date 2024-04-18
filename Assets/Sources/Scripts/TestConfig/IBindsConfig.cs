@@ -9,7 +9,7 @@ namespace Sources.Scripts.TestConfig
     /// <summary>
     /// Bind services 
     /// </summary>
-    public interface IBindsConfig
+    public interface IBindsConfig: IBindableConfig
     {
         public async Task InitBindings(Container container)
         {
