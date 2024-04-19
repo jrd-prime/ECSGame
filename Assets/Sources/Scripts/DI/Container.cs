@@ -53,27 +53,25 @@ namespace Sources.Scripts.DI
             return await GetService<TBase>();
         }
 
-        public async Task<T> Bind<T>(object instance) where T : class
+        public async Task<T> Bind<T>(T instance) where T : class
         {
-            Debug.LogWarning(instance == null);
-
-            instance = null;
-
-            throw new ArgumentNullException();
-
-
-            if (instance == null) throw new ArgumentNullException($"{typeof(T)} instance is null");
+            if (instance == null) throw new ArgumentNullException();
 
             Binder.Bind<T>();
             Cache.Add<T>(instance);
             return await GetService<T>();
         }
 
-        public void Bind(IBindableConfig config)
+        public async Task Bind(IBindableConfig config)
         {
-            var dictionary = config.GetBindingsList();
-            Binder.Bind(dictionary);
-            Cache.Add(dictionary);
+            if (config == null) throw new ArgumentNullException();
+
+            Dictionary<Type, Type> bindingsList = config.GetBindingsList();
+
+            if (bindingsList.Count == 0) return;
+
+            Binder.Bind(bindingsList);
+            await Cache.Add(bindingsList);
         }
 
         #endregion

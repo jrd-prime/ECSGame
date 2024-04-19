@@ -1,17 +1,18 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
+using Sources.Scripts.Core;
 using Sources.Scripts.DI;
-using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Tests.DITests
 {
     [TestFixture] // Test suit
     public class ContainerTests
     {
-        private Container _container = new();
-        private TestObject _testObject = new();
+        private static readonly Container Container = new();
+        private readonly TestObject _testObject = new();
+        private readonly Mock<IBindableConfig> _bindableConfig = new();
 
         private class TestObject
         {
@@ -20,28 +21,33 @@ namespace Tests.DITests
         [SetUp] // Before tests
         public void SetUp()
         {
-        }
-
-        [TearDown] // After tests
-        public void TearDown()
-        {
+            _bindableConfig
+                .Setup(x => x.GetBindingsList())
+                .Returns(new Dictionary<Type, Type>());
         }
 
         [Test]
-        public void Container_Bind_OverloadWithInstance_Null_Argument()
+        public void Negative_BindOverloads_NullArgument_ThrowException()
         {
-            Assert.ThrowsAsync<ArgumentNullException>(() => _container.Bind<TestObject>(null));
+            Assert.ThrowsAsync<ArgumentNullException>(
+                () => Container.Bind<TestObject>(null),
+                message: "Bind with instance");
+
+            Assert.ThrowsAsync<ArgumentNullException>(
+                () => Container.Bind(null),
+                message: "Bind config");
         }
 
-
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
-        [UnityTest]
-        public IEnumerator ContainerTestsWithEnumeratorPasses()
+        [Test]
+        public void Positive_BindOverloads_NotNullArgument_DoesNotThrowException()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-            yield return null;
+            Assert.DoesNotThrowAsync(
+                () => Container.Bind<TestObject>(_testObject),
+                message: "Bind with instance");
+
+            Assert.DoesNotThrowAsync(
+                () => Container.Bind(_bindableConfig.Object),
+                message: "Bind config");
         }
     }
 }

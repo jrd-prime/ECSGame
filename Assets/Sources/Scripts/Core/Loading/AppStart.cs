@@ -27,7 +27,7 @@ namespace Sources.Scripts.Core.Loading
         {
             // ImportantBindings
             await _container.Bind<Container>();
-            await _container.Bind<AppContext>(_context);
+            await _container.Bind(_context);
             _serviceFactory = await _container.Bind<ServiceFactory>();
             
             // Bindings

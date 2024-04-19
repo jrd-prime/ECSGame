@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>19.04.2024 - 16:42:01</Generatedon>
+    <Parser>MultiReportParser (4x OpenCoverParser)</Parser>
+    <Assemblies>2</Assemblies>
+    <Classes>24</Classes>
+    <Files>24</Files>
+    <Coveredlines>133</Coveredlines>
+    <Uncoveredlines>126</Uncoveredlines>
+    <Coverablelines>259</Coverablelines>
+    <Totallines>942</Totallines>
+    <Linecoverage>51.3</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>40</Coveredmethods>
+    <Totalmethods>73</Totalmethods>
+    <Methodcoverage>54.7</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="ECSGame" classes="22" coverage="44.2" coveredlines="100" coverablelines="226" totallines="841" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="29" totalmethods="62" methodcoverage="46.7">
+      <Class name="Sources.Scripts.Context.ApplicationContext" coverage="0" coveredlines="0" coverablelines="9" totallines="35" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
+      <Class name="Sources.Scripts.Core.Loading.AppStart" coverage="100" coveredlines="21" coverablelines="21" totallines="57" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
+      <Class name="Sources.Scripts.DI.AppContext" coverage="83.3" coveredlines="5" coverablelines="6" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="3" methodcoverage="66.6" />
+      <Class name="Sources.Scripts.DI.Container" coverage="52" coveredlines="13" coverablelines="25" totallines="79" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="6" methodcoverage="66.6" />
+      <Class name="Sources.Scripts.DI.ContainerBinder" coverage="55.5" coveredlines="10" coverablelines="18" totallines="44" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="8" methodcoverage="75" />
+      <Class name="Sources.Scripts.DI.ContainerCache" coverage="53.5" coveredlines="15" coverablelines="28" totallines="76" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="8" totalmethods="12" methodcoverage="66.6" />
+      <Class name="Sources.Scripts.DI.ContainerInjector" coverage="0" coveredlines="0" coverablelines="15" totallines="146" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.Factory.ServiceFactory" coverage="0" coveredlines="0" coverablelines="15" totallines="55" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="Sources.Scripts.Systems.MoveSystem" coverage="0" coveredlines="0" coverablelines="4" totallines="12" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestConfig.IBindsConfig" coverage="0" coveredlines="0" coverablelines="3" totallines="19" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestConfig.LocalService" coverage="0" coveredlines="0" coverablelines="3" totallines="19" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestConfig.NetServiceConfig" coverage="0" coveredlines="0" coverablelines="1" totallines="17" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestConfig.TestBinds" coverage="50" coveredlines="3" coverablelines="6" totallines="25" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="2" methodcoverage="50" />
+      <Class name="Sources.Scripts.TestDB.CloudDB" coverage="0" coveredlines="0" coverablelines="3" totallines="12" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestDB.DBController" coverage="0" coveredlines="0" coverablelines="6" totallines="21" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestDB.LocalDB" coverage="0" coveredlines="0" coverablelines="3" totallines="12" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestViews.ModernView" coverage="0" coveredlines="0" coverablelines="3" totallines="12" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.TestViews.OldStyleView" coverage="0" coveredlines="0" coverablelines="3" totallines="12" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.Utils.DebugConfig" coverage="0" coveredlines="0" coverablelines="2" totallines="8" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="1" methodcoverage="0" />
+      <Class name="Sources.Scripts.Utils.Helper" coverage="100" coveredlines="3" coverablelines="3" totallines="13" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+      <Class name="Sources.Scripts.Utils.JLog" coverage="32.1" coveredlines="9" coverablelines="28" totallines="75" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="9" methodcoverage="33.3" />
+      <Class name="Sources.Scripts.Utils.ReflectionUtils" coverage="100" coveredlines="21" coverablelines="21" totallines="58" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
+    </Assembly>
+    <Assembly name="Tests" classes="2" coverage="100" coveredlines="33" coverablelines="33" totallines="101" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="11" totalmethods="11" methodcoverage="100">
+      <Class name="Tests.DITests.ContainerBinderTests" coverage="100" coveredlines="15" coverablelines="15" totallines="48" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="6" methodcoverage="100" />
+      <Class name="Tests.DITests.ContainerTests" coverage="100" coveredlines="18" coverablelines="18" totallines="53" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="5" methodcoverage="100" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

@@ -54,12 +54,14 @@ namespace Sources.Scripts.DI
 
         public void Add(Type type, object instance) => AddToCache(type, instance);
 
-        public void Add(Dictionary<Type, Type> dictionary)
+        public async Task Add(Dictionary<Type, Type> dictionary)
         {
             foreach (var bind in dictionary)
             {
-                AddToCache(bind.Key, bind.Value);
+               AddToCache(bind.Key, bind.Value);
             }
+
+            await Task.CompletedTask;
         }
 
         #endregion
