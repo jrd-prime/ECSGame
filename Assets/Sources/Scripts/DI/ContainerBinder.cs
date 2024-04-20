@@ -16,10 +16,10 @@ namespace Sources.Scripts.DI
         {
             if (baseType == null || implType == null) throw new ArgumentNullException();
 
-            Binds.TryAdd(baseType, implType);
+            if (Binds.ContainsKey(baseType)) return;
+            if (!Binds.TryAdd(baseType, implType))
+                throw new Exception($"{baseType} not in Binds and failed to add");
         }
-
-        #region Overloads
 
         public void Bind(Type type) => BindMain(type, type);
         public void Bind(Type baseType, Type implType) => BindMain(baseType, implType);
@@ -38,7 +38,5 @@ namespace Sources.Scripts.DI
                 BindMain(bind.Key, bind.Value);
             }
         }
-
-        #endregion
     }
 }

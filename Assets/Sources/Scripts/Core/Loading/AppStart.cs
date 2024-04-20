@@ -14,6 +14,7 @@ namespace Sources.Scripts.Core.Loading
         private Container _container;
         private ServiceFactory _serviceFactory;
         private IBindsConfig _bindsConfig;
+        private ReflectionUtils _reflectionUtils;
 
         private void Awake()
         {
@@ -25,33 +26,46 @@ namespace Sources.Scripts.Core.Loading
 
         private async void Start()
         {
+            JLog.Msg($"Services initialization STARTED...");
+            _reflectionUtils = new ReflectionUtils(_container);
+            _serviceFactory = await _container.BindAsync<ServiceFactory>() as ServiceFactory;
+
             // ImportantBindings
-            await _container.Bind<Container>();
-            await _container.Bind(_context);
-            _serviceFactory = await _container.Bind<ServiceFactory>();
-            
+            await _container.BindAsync<Container>();
+            await _container.BindAsync(_context);
+
             // Bindings
             await _bindsConfig.InitBindings(_container);
 
             // HandInjection by attr: [JHandInject]
-            var reflectionUtils = new ReflectionUtils(_container);
-            reflectionUtils.HandInject(_context, _bindsConfig);
-            reflectionUtils.HandInject(_context, _container);
-            reflectionUtils.HandInject(_container.Cache, _serviceFactory);
+            _reflectionUtils.HandInject(_context, _bindsConfig);
+            _reflectionUtils.HandInject(_context, _container);
+            _reflectionUtils.HandInject(_container.Cache, _serviceFactory);
 
             // AutoInjection by attr: [JInject]
             await _context.InitializeAsync();
 
 
-// TODO on app start and fake loading services - create loading screen
+            JLog.Msg($"(Services initialization FINISHED...");
 
-// TODO add asset loadin async init binds
-
-            Debug.LogWarning($"in cache binds: {_container.Binder.GetBinds().Count}".ToUpper());
-            Debug.LogWarning($"in cache instances: {_container.Cache.GetCache().Count}".ToUpper());
-
-            Debug.LogWarning("INITIALISATION FINISHEEEDDDD!!!!");
             Debug.LogWarning("STAAAART THHHE GAMEE");
+
+
+            // TODO on app start and fake loading services - create loading screen
+            // TODO add asset loadin async init binds
+
+            // foreach (var q in _container.Binder.GetBinds())
+            // {
+            //     Debug.LogWarning($"{q} binded");
+            // }
+            //
+            // foreach (var q in _container.Cache.GetCache())
+            // {
+            //     Debug.LogWarning($"{q} cached");
+            // }
+            //
+            // Debug.LogWarning($"in cache binds: {_container.Binder.GetBinds().Count}".ToUpper());
+            // Debug.LogWarning($"in cache instances: {_container.Cache.GetCache().Count}".ToUpper());
         }
     }
 }

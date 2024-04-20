@@ -1,48 +1,52 @@
 {
   "summary": {
-    "generatedon": "2024-04-19T10:42:01Z",
+    "generatedon": "2024-04-20T16:53:11Z",
     "parser": "MultiReportParser (4x OpenCoverParser)",
     "assemblies": 2,
-    "classes": 24,
-    "files": 24,
-    "coveredlines": 133,
-    "uncoveredlines": 126,
-    "coverablelines": 259,
-    "totallines": 942,
-    "linecoverage": 51.3,
+    "classes": 28,
+    "files": 28,
+    "coveredlines": 216,
+    "uncoveredlines": 120,
+    "coverablelines": 336,
+    "totallines": 983,
+    "linecoverage": 64.2,
     "coveredbranches": 0,
     "totalbranches": 0,
-    "coveredmethods": 40,
-    "totalmethods": 73,
-    "methodcoverage": 54.7
+    "coveredmethods": 69,
+    "totalmethods": 101,
+    "methodcoverage": 68.3
  },
   "coverage": {
     "assemblies": [
-      { "name": "ECSGame", "classes": 22, "coverage": 44.2, "coveredlines": 100, "coverablelines": 226, "totallines": 841, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 46.7, "coveredmethods": 29, "totalmethods": 62, "classesinassembly": [
+      { "name": "ECSGame", "classes": 22, "coverage": 59.5, "coveredlines": 153, "coverablelines": 257, "totallines": 789, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 62.3, "coveredmethods": 48, "totalmethods": 77, "classesinassembly": [
         { "name": "Sources.Scripts.Context.ApplicationContext", "coverage": 0, "coveredlines": 0, "coverablelines": 9, "totallines": 35, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 3 },
-        { "name": "Sources.Scripts.Core.Loading.AppStart", "coverage": 100, "coveredlines": 21, "coverablelines": 21, "totallines": 57, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 },
-        { "name": "Sources.Scripts.DI.AppContext", "coverage": 83.3, "coveredlines": 5, "coverablelines": 6, "totallines": 34, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 2, "totalmethods": 3 },
-        { "name": "Sources.Scripts.DI.Container", "coverage": 52, "coveredlines": 13, "coverablelines": 25, "totallines": 79, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 4, "totalmethods": 6 },
-        { "name": "Sources.Scripts.DI.ContainerBinder", "coverage": 55.5, "coveredlines": 10, "coverablelines": 18, "totallines": 44, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 75, "coveredmethods": 6, "totalmethods": 8 },
-        { "name": "Sources.Scripts.DI.ContainerCache", "coverage": 53.5, "coveredlines": 15, "coverablelines": 28, "totallines": 76, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 8, "totalmethods": 12 },
+        { "name": "Sources.Scripts.Core.Loading.AppStart", "coverage": 73, "coveredlines": 19, "coverablelines": 26, "totallines": 71, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 },
+        { "name": "Sources.Scripts.DI.AppContext", "coverage": 83.3, "coveredlines": 5, "coverablelines": 6, "totallines": 35, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 2, "totalmethods": 3 },
+        { "name": "Sources.Scripts.DI.Container", "coverage": 68.7, "coveredlines": 22, "coverablelines": 32, "totallines": 58, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 81.8, "coveredmethods": 9, "totalmethods": 11 },
+        { "name": "Sources.Scripts.DI.ContainerBinder", "coverage": 84.6, "coveredlines": 22, "coverablelines": 26, "totallines": 42, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 76.9, "coveredmethods": 10, "totalmethods": 13 },
+        { "name": "Sources.Scripts.DI.ContainerCache", "coverage": 91.4, "coveredlines": 32, "coverablelines": 35, "totallines": 69, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 81.2, "coveredmethods": 13, "totalmethods": 16 },
         { "name": "Sources.Scripts.DI.ContainerInjector", "coverage": 0, "coveredlines": 0, "coverablelines": 15, "totallines": 146, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
-        { "name": "Sources.Scripts.Factory.ServiceFactory", "coverage": 0, "coveredlines": 0, "coverablelines": 15, "totallines": 55, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 2 },
+        { "name": "Sources.Scripts.Factory.ServiceFactory", "coverage": 42.1, "coveredlines": 8, "coverablelines": 19, "totallines": 20, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 2, "totalmethods": 3 },
         { "name": "Sources.Scripts.Systems.MoveSystem", "coverage": 0, "coveredlines": 0, "coverablelines": 4, "totallines": 12, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "Sources.Scripts.TestConfig.IBindsConfig", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 19, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "Sources.Scripts.TestConfig.LocalService", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 19, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "Sources.Scripts.TestConfig.NetServiceConfig", "coverage": 0, "coveredlines": 0, "coverablelines": 1, "totallines": 17, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
-        { "name": "Sources.Scripts.TestConfig.TestBinds", "coverage": 50, "coveredlines": 3, "coverablelines": 6, "totallines": 25, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 50, "coveredmethods": 1, "totalmethods": 2 },
+        { "name": "Sources.Scripts.TestConfig.TestBinds", "coverage": 100, "coveredlines": 6, "coverablelines": 6, "totallines": 23, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 },
         { "name": "Sources.Scripts.TestDB.CloudDB", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 12, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "Sources.Scripts.TestDB.DBController", "coverage": 0, "coveredlines": 0, "coverablelines": 6, "totallines": 21, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 2 },
         { "name": "Sources.Scripts.TestDB.LocalDB", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 12, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "Sources.Scripts.TestViews.ModernView", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 12, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
         { "name": "Sources.Scripts.TestViews.OldStyleView", "coverage": 0, "coveredlines": 0, "coverablelines": 3, "totallines": 12, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
-        { "name": "Sources.Scripts.Utils.DebugConfig", "coverage": 0, "coveredlines": 0, "coverablelines": 2, "totallines": 8, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
+        { "name": "Sources.Scripts.Utils.DebugConfig", "coverage": 100, "coveredlines": 2, "coverablelines": 2, "totallines": 8, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
         { "name": "Sources.Scripts.Utils.Helper", "coverage": 100, "coveredlines": 3, "coverablelines": 3, "totallines": 13, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
-        { "name": "Sources.Scripts.Utils.JLog", "coverage": 32.1, "coveredlines": 9, "coverablelines": 28, "totallines": 75, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 33.3, "coveredmethods": 3, "totalmethods": 9 },
+        { "name": "Sources.Scripts.Utils.JLog", "coverage": 46.4, "coveredlines": 13, "coverablelines": 28, "totallines": 75, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 44.4, "coveredmethods": 4, "totalmethods": 9 },
         { "name": "Sources.Scripts.Utils.ReflectionUtils", "coverage": 100, "coveredlines": 21, "coverablelines": 21, "totallines": 58, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 2, "totalmethods": 2 } ] },
-      { "name": "Tests", "classes": 2, "coverage": 100, "coveredlines": 33, "coverablelines": 33, "totallines": 101, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 11, "totalmethods": 11, "classesinassembly": [
-        { "name": "Tests.DITests.ContainerBinderTests", "coverage": 100, "coveredlines": 15, "coverablelines": 15, "totallines": 48, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 },
-        { "name": "Tests.DITests.ContainerTests", "coverage": 100, "coveredlines": 18, "coverablelines": 18, "totallines": 53, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 5, "totalmethods": 5 } ] } ]
+      { "name": "Tests", "classes": 6, "coverage": 79.7, "coveredlines": 63, "coverablelines": 79, "totallines": 194, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 87.5, "coveredmethods": 21, "totalmethods": 24, "classesinassembly": [
+        { "name": "Tests.DITests.ContainerBinderTests", "coverage": 57.1, "coveredlines": 12, "coverablelines": 21, "totallines": 42, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 77.7, "coveredmethods": 7, "totalmethods": 9 },
+        { "name": "Tests.DITests.ContainerFuncTests", "coverage": 78.2, "coveredlines": 18, "coverablelines": 23, "totallines": 42, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 6, "totalmethods": 6 },
+        { "name": "Tests.DITests.ContainerIntegrTests", "coverage": 0, "coveredlines": 0, "coverablelines": 2, "totallines": 10, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 1 },
+        { "name": "Tests.DITests.ContainerTests", "coverage": 100, "coveredlines": 4, "coverablelines": 4, "totallines": 14, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
+        { "name": "Tests.DITests.ContainerUnitTests", "coverage": 100, "coveredlines": 20, "coverablelines": 20, "totallines": 56, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 4, "totalmethods": 4 },
+        { "name": "Tests.ServiceFactoryTests", "coverage": 100, "coveredlines": 9, "coverablelines": 9, "totallines": 30, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 3, "totalmethods": 3 } ] } ]
   }
 }

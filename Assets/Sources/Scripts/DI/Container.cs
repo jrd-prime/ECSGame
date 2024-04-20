@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sources.Scripts.Core;
-using Sources.Scripts.Utils;
 using UnityEngine;
 
 namespace Sources.Scripts.DI
@@ -20,60 +19,40 @@ namespace Sources.Scripts.DI
             Injector = new ContainerInjector();
         }
 
-        public async Task InitServicesAsync(Dictionary<Type, Type> services)
-        {
-            JLog.Msg($"({services.Count}) Services initialization STARTED...");
+        public async Task<T> GetServiceAsync<T>() where T : class => await Cache.Get<T>();
 
-            foreach (var service in services)
-            {
-                Binder.Bind(service.Key, service.Value);
 
-                // fake delay //TODO remove
-                await Task.Delay(2000);
-            }
-
-            JLog.Msg($"({services.Count}) Services initialization FINISHED...");
-        }
-
-        public async Task<T> GetService<T>() where T : class => await Cache.Get<T>();
-
-        #region Binds
-
-        public async Task<T> Bind<T>() where T : class
+        public async Task<object> BindAsync<T>() where T : class
         {
             Binder.Bind<T>();
             Cache.Add<T>();
-            return await GetService<T>();
+            return await GetServiceAsync<T>();
         }
 
-        public async Task<object> Bind<TBase, TImpl>() where TBase : class where TImpl : class
+        public async Task<object> BindAsync<TBase, TImpl>() where TBase : class where TImpl : class
         {
             Binder.Bind<TBase, TImpl>();
             Cache.Add<TBase, TImpl>();
-            return await GetService<TBase>();
+            return await GetServiceAsync<TBase>();
         }
 
-        public async Task<T> Bind<T>(T instance) where T : class
+        public async Task<object> BindAsync<T>(T instance) where T : class
         {
             if (instance == null) throw new ArgumentNullException();
 
             Binder.Bind<T>();
             Cache.Add<T>(instance);
-            return await GetService<T>();
+            return await GetServiceAsync<T>();
         }
 
-        public async Task Bind(IBindableConfig config)
+        public async Task BindAsync(IBindableConfig config)
         {
             if (config == null) throw new ArgumentNullException();
 
             Dictionary<Type, Type> bindingsList = config.GetBindingsList();
 
-            if (bindingsList.Count == 0) return;
-
             Binder.Bind(bindingsList);
             await Cache.Add(bindingsList);
         }
-
-        #endregion
     }
 }

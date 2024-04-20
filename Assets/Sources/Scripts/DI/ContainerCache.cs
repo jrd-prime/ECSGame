@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sources.Scripts.Factory;
 using Sources.Scripts.Utils;
+using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
@@ -17,31 +18,28 @@ namespace Sources.Scripts.DI
         {
             _serviceFactory = new ServiceFactory();
         }
-        
-        #region Main
+
 
         private void AddMain(Type baseType, Type implType)
         {
             if (Cache.ContainsKey(baseType)) return;
 
-            AddToCache(baseType, _serviceFactory.GetService(implType));
+            var instance = _serviceFactory.CreateServiceAsync(implType).Result;
+
+            AddToCache(baseType, instance);
 
             JLog.Msg(
                 $"Not in cache. Create and add: {Helper.TypeNameCutter(baseType)} > {Helper.TypeNameCutter(implType)}");
         }
 
-        private static async Task<object> GetFromCache(Type type)
+        private async Task<T> GetFromCache<T>() where T : class
         {
-            if (Cache.TryGetValue(type, out var value)) return await Task.FromResult(value);
+            if (Cache.ContainsKey(typeof(T))) return await Task.FromResult(Cache[typeof(T)] as T);
 
-            throw new KeyNotFoundException($"(!) {type} does not exists in cache! Check bindings");
+            throw new KeyNotFoundException($"(!) {typeof(T)} does not exists in cache! Check bindings");
         }
 
         private static void AddToCache(Type type, object instance) => Cache.TryAdd(type, instance);
-
-        #endregion
-        
-        #region Add
 
         // Without instance
         public void Add<T>() where T : class => AddMain(typeof(T), typeof(T));
@@ -58,19 +56,14 @@ namespace Sources.Scripts.DI
         {
             foreach (var bind in dictionary)
             {
-               AddToCache(bind.Key, bind.Value);
+                AddToCache(bind.Key, bind.Value);
             }
 
             await Task.CompletedTask;
         }
 
-        #endregion
 
-        #region Get
-
-        public async Task<object> Get(Type type) => await GetFromCache(type);
-        public async Task<T> Get<T>() where T : class => (T)await GetFromCache(typeof(T));
-
-        #endregion
+        // public async Task<object> Get(Type type) => await GetFromCache(type);
+        public async Task<T> Get<T>() where T : class => await GetFromCache<T>();
     }
 }

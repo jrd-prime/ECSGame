@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Sources.Scripts.Annotation;
+using Sources.Scripts.Core;
 using Sources.Scripts.TestConfig;
 using UnityEngine;
 
@@ -22,11 +23,11 @@ namespace Sources.Scripts.DI
         
         public async Task InitializeAsync()
         {
-            _container.Bind(_bindsConfig);
+            await _container.BindAsync(_bindsConfig as IBindableConfig);
 
             await Task.CompletedTask;
 
-            // await _container.InitBinds(_bindsConfig);
+             // await _container.InitBinds(_bindsConfig);
             // await _container.InitServicesAsync(_serviceConfig.GetServicesList());
             // await _container.InjectDependenciesAsync(Assembly.GetExecutingAssembly());
         }
