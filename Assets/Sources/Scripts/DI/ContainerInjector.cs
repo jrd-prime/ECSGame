@@ -9,6 +9,13 @@ namespace Sources.Scripts.DI
 {
     public class ContainerInjector
     {
+        public async Task ManualInject<T>(T target, object instance) where T : class
+        {
+            JLog.Msg($"Manual inject : {target.GetType()} <- {instance.GetType()}");
+            await Task.CompletedTask;
+        }
+
+
         public async Task InjectDependenciesAsync(Assembly assembly)
         {
             JLog.Msg($"( InjectDependenciesAsync STARTED...");

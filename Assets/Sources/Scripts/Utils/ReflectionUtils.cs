@@ -28,7 +28,6 @@ namespace Sources.Scripts.Utils
 
             Assert.IsNotNull(target, "target != null");
 
-
             FieldInfo[] fields =
                 typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -40,8 +39,6 @@ namespace Sources.Scripts.Utils
                 bool isImplementInterface = instance.GetType().GetInterfaces().Contains(field.FieldType);
 
                 if (!isTypeEqual && !isImplementInterface) continue;
-
-                Debug.LogWarning(target);
 
                 // for logging
                 var val = Helper.TypeNameCutter(instance.GetType());

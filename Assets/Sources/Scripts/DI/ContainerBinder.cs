@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sources.Scripts.Utils;
 
 namespace Sources.Scripts.DI
 {
@@ -12,9 +13,18 @@ namespace Sources.Scripts.DI
 
         private static readonly Dictionary<Type, Type> Binds = new();
 
+        private static ContainerBinder _binder;
+        public static ContainerBinder I => _binder ??= new ContainerBinder();
+
+        private ContainerBinder()
+        {
+        }
+
         private static void BindMain(Type baseType, Type implType)
         {
             if (baseType == null || implType == null) throw new ArgumentNullException();
+
+            JLog.Msg($"Bind: {Helper.TypeNameCutter(baseType)} <- {Helper.TypeNameCutter(implType)}");
 
             if (Binds.ContainsKey(baseType)) return;
             if (!Binds.TryAdd(baseType, implType))

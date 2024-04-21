@@ -18,6 +18,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f577cd9686154d6ab10efd7e65e6436647400/13/add24590/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f577cd9686154d6ab10efd7e65e6436647400/75/df7856b6/AsyncTestDelegate.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f577cd9686154d6ab10efd7e65e6436647400/cc/e7d7da96/TestCaseAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/ContainerTests/CacheTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2eul5KJQR3M7DNErcEqtUOJOszo" />
   <component name="ProjectViewState">
@@ -114,6 +115,8 @@
       <workItem from="1713445316528" duration="1651000" />
       <workItem from="1713447108069" duration="7504000" />
       <workItem from="1713495810139" duration="10745000" />
+      <workItem from="1713595707167" duration="23650000" />
+      <workItem from="1713680018866" duration="17544000" />
     </task>
     <servers />
   </component>

@@ -12,9 +12,8 @@ namespace Sources.Scripts.DI
     public sealed class AppContext : MonoBehaviour
     {
         [JHandInject] private Container _container;
-        [JHandInject] private IServiceConfig _serviceConfig;
         [JHandInject] private IBindsConfig _bindsConfig;
-
+        
         private AppContext _context;
 
         public Container Container => _container;

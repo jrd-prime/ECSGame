@@ -2,22 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sources.Scripts.Core;
-using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
-    public class Container
+    public sealed class Container
     {
-        public ContainerBinder Binder { get; }
-        public ContainerCache Cache { get; }
+        public ContainerBinder Binder;
+        public ContainerCache Cache;
         public ContainerInjector Injector { get; }
 
-        public Container()
+        private static Container _instance;
+
+        private Container()
         {
-            Binder = new ContainerBinder();
-            Cache = new ContainerCache();
+            Binder =  ContainerBinder.I;
+            Cache =  ContainerCache.I;
             Injector = new ContainerInjector();
         }
+
+        public static Container I => _instance ??= new Container();
 
         public async Task<T> GetServiceAsync<T>() where T : class => await Cache.Get<T>();
 

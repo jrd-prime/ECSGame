@@ -1,49 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.642857142857143" branch-rate="1" lines-covered="216" lines-valid="336" branches-covered="0" branches-valid="0" complexity="169" version="0" timestamp="1713653591">
+<coverage line-rate="0.572072072072072" branch-rate="1" lines-covered="254" lines-valid="444" branches-covered="0" branches-valid="0" complexity="259" version="0" timestamp="1713733677">
   <sources />
   <packages>
-    <package name="ECSGame" line-rate="0.595330739299611" branch-rate="1" complexity="139">
+    <package name="ECSGame" line-rate="0.480825958702065" branch-rate="1" complexity="217">
       <classes>
-        <class name="Sources.Scripts.Context.ApplicationContext" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Context/ApplicationContext.cs" line-rate="0" branch-rate="1" complexity="NaN">
+        <class name="Sources.Scripts.Context.ApplicationContext" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Context/ApplicationContext.cs" line-rate="1" branch-rate="1" complexity="NaN">
           <methods>
-            <method name="_serviceFactory" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="9" hits="0" branch="false" />
-              </lines>
+            <method name="_serviceFactory" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
             </method>
-            <method name="_serviceFactory" signature="(Sources.Scripts.Factory.ServiceFactory)" line-rate="0" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="9" hits="0" branch="false" />
-              </lines>
+            <method name="_serviceFactory" signature="(Sources.Scripts.Factory.ServiceFactory)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
             </method>
-            <method name="SetServiceFactory" signature="(Sources.Scripts.Factory.ServiceFactory)" line-rate="0" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="24" hits="0" branch="false" />
-                <line number="25" hits="0" branch="false" />
-                <line number="26" hits="0" branch="false" />
-                <line number="27" hits="0" branch="false" />
-                <line number="28" hits="0" branch="false" />
-                <line number="30" hits="0" branch="false" />
-                <line number="31" hits="0" branch="false" />
-                <line number="33" hits="0" branch="false" />
-              </lines>
+            <method name="SetServiceFactory" signature="(Sources.Scripts.Factory.ServiceFactory)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines />
             </method>
           </methods>
-          <lines>
-            <line number="9" hits="0" branch="false" />
-            <line number="24" hits="0" branch="false" />
-            <line number="25" hits="0" branch="false" />
-            <line number="26" hits="0" branch="false" />
-            <line number="27" hits="0" branch="false" />
-            <line number="28" hits="0" branch="false" />
-            <line number="30" hits="0" branch="false" />
-            <line number="31" hits="0" branch="false" />
-            <line number="33" hits="0" branch="false" />
-          </lines>
+          <lines />
         </class>
-        <class name="Sources.Scripts.Core.Loading.AppStart" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Core/Loading/AppStart.cs" line-rate="0.730769230769231" branch-rate="1" complexity="13">
+        <class name="Sources.Scripts.Core.Loading.AppStart" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Core/Loading/AppStart.cs" line-rate="0.425531914893617" branch-rate="1" complexity="37">
           <methods>
+            <method name="Awake" signature="()" line-rate="0.75" branch-rate="1" complexity="1">
+              <lines>
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="1" branch="false" />
+                <line number="34" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
+                <line number="37" hits="0" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="40" hits="0" branch="false" />
+                <line number="41" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="OnValidate" signature="()" line-rate="0" branch-rate="1" complexity="3">
+              <lines>
+                <line number="95" hits="0" branch="false" />
+                <line number="96" hits="0" branch="false" />
+                <line number="97" hits="0" branch="false" />
+                <line number="99" hits="0" branch="false" />
+                <line number="100" hits="0" branch="false" />
+                <line number="101" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Start" signature="()" line-rate="0.173913043478261" branch-rate="1" complexity="20">
+              <lines>
+                <line number="44" hits="0" branch="false" />
+                <line number="45" hits="0" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="49" hits="1" branch="false" />
+                <line number="51" hits="1" branch="false" />
+                <line number="52" hits="0" branch="false" />
+                <line number="53" hits="0" branch="false" />
+                <line number="54" hits="0" branch="false" />
+                <line number="59" hits="0" branch="false" />
+                <line number="60" hits="0" branch="false" />
+                <line number="65" hits="0" branch="false" />
+                <line number="68" hits="0" branch="false" />
+                <line number="69" hits="1" branch="false" />
+                <line number="70" hits="0" branch="false" />
+                <line number="73" hits="0" branch="false" />
+                <line number="76" hits="0" branch="false" />
+                <line number="78" hits="0" branch="false" />
+                <line number="84" hits="0" branch="false" />
+                <line number="87" hits="0" branch="false" />
+                <line number="88" hits="0" branch="false" />
+                <line number="89" hits="0" branch="false" />
+                <line number="91" hits="0" branch="false" />
+                <line number="92" hits="0" branch="false" />
+              </lines>
+            </method>
             <method name="Awake" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="1" branch="false" />
@@ -54,28 +80,33 @@
                 <line number="25" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Start" signature="()" line-rate="0.65" branch-rate="1" complexity="12">
+            <method name="Start" signature="()" line-rate="0.56" branch-rate="1" complexity="12">
               <lines>
                 <line number="28" hits="1" branch="false" />
                 <line number="29" hits="1" branch="false" />
                 <line number="30" hits="1" branch="false" />
-                <line number="31" hits="0" branch="false" />
-                <line number="33" hits="1" branch="false" />
+                <line number="31" hits="1" branch="false" />
                 <line number="34" hits="1" branch="false" />
-                <line number="35" hits="0" branch="false" />
-                <line number="37" hits="1" branch="false" />
-                <line number="38" hits="0" branch="false" />
-                <line number="40" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
+                <line number="37" hits="0" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="40" hits="0" branch="false" />
                 <line number="41" hits="1" branch="false" />
                 <line number="42" hits="1" branch="false" />
-                <line number="43" hits="0" branch="false" />
-                <line number="45" hits="1" branch="false" />
-                <line number="46" hits="0" branch="false" />
-                <line number="48" hits="1" branch="false" />
+                <line number="43" hits="1" branch="false" />
+                <line number="44" hits="0" branch="false" />
+                <line number="45" hits="0" branch="false" />
+                <line number="46" hits="1" branch="false" />
                 <line number="49" hits="1" branch="false" />
-                <line number="51" hits="0" branch="false" />
-                <line number="67" hits="1" branch="false" />
-                <line number="69" hits="0" branch="false" />
+                <line number="51" hits="1" branch="false" />
+                <line number="52" hits="0" branch="false" />
+                <line number="53" hits="0" branch="false" />
+                <line number="54" hits="0" branch="false" />
+                <line number="59" hits="0" branch="false" />
+                <line number="60" hits="0" branch="false" />
+                <line number="65" hits="0" branch="false" />
+                <line number="68" hits="0" branch="false" />
+                <line number="69" hits="1" branch="false" />
               </lines>
             </method>
           </methods>
@@ -89,27 +120,121 @@
             <line number="28" hits="1" branch="false" />
             <line number="29" hits="1" branch="false" />
             <line number="30" hits="1" branch="false" />
-            <line number="31" hits="0" branch="false" />
-            <line number="33" hits="1" branch="false" />
+            <line number="31" hits="1" branch="false" />
             <line number="34" hits="1" branch="false" />
-            <line number="35" hits="0" branch="false" />
-            <line number="37" hits="1" branch="false" />
-            <line number="38" hits="0" branch="false" />
-            <line number="40" hits="1" branch="false" />
+            <line number="35" hits="1" branch="false" />
+            <line number="37" hits="0" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="40" hits="0" branch="false" />
             <line number="41" hits="1" branch="false" />
             <line number="42" hits="1" branch="false" />
-            <line number="43" hits="0" branch="false" />
-            <line number="45" hits="1" branch="false" />
-            <line number="46" hits="0" branch="false" />
-            <line number="48" hits="1" branch="false" />
+            <line number="43" hits="1" branch="false" />
+            <line number="44" hits="0" branch="false" />
+            <line number="45" hits="0" branch="false" />
+            <line number="46" hits="1" branch="false" />
             <line number="49" hits="1" branch="false" />
-            <line number="51" hits="0" branch="false" />
-            <line number="67" hits="1" branch="false" />
-            <line number="69" hits="0" branch="false" />
+            <line number="51" hits="1" branch="false" />
+            <line number="52" hits="0" branch="false" />
+            <line number="53" hits="0" branch="false" />
+            <line number="54" hits="0" branch="false" />
+            <line number="59" hits="0" branch="false" />
+            <line number="60" hits="0" branch="false" />
+            <line number="65" hits="0" branch="false" />
+            <line number="68" hits="0" branch="false" />
+            <line number="69" hits="1" branch="false" />
+            <line number="70" hits="0" branch="false" />
+            <line number="73" hits="0" branch="false" />
+            <line number="76" hits="0" branch="false" />
+            <line number="78" hits="0" branch="false" />
+            <line number="84" hits="0" branch="false" />
+            <line number="87" hits="0" branch="false" />
+            <line number="88" hits="0" branch="false" />
+            <line number="89" hits="0" branch="false" />
+            <line number="91" hits="0" branch="false" />
+            <line number="92" hits="0" branch="false" />
+            <line number="95" hits="0" branch="false" />
+            <line number="96" hits="0" branch="false" />
+            <line number="97" hits="0" branch="false" />
+            <line number="99" hits="0" branch="false" />
+            <line number="100" hits="0" branch="false" />
+            <line number="101" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.DI.AppContext" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/AppContext.cs" line-rate="0.833333333333333" branch-rate="1" complexity="6">
+        <class name="Sources.Scripts.DataBase.DataBaseManager" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DataBase/DataBaseManager.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
+            <method name="CurrentDB" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="10" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="CurrentDB" signature="(Sources.Scripts.Core.Config.Enum.DataBaseEnum)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="10" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="I" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="11" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetDB" signature="(Sources.Scripts.Core.Config.Enum.DataBaseEnum)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="18" hits="0" branch="false" />
+                <line number="19" hits="0" branch="false" />
+                <line number="21" hits="0" branch="false" />
+                <line number="23" hits="0" branch="false" />
+                <line number="24" hits="0" branch="false" />
+                <line number="25" hits="0" branch="false" />
+                <line number="26" hits="0" branch="false" />
+                <line number="28" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="DataBaseManager" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="0" branch="false" />
+                <line number="14" hits="0" branch="false" />
+                <line number="15" hits="0" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="0" branch="false" />
+            <line number="11" hits="0" branch="false" />
+            <line number="13" hits="0" branch="false" />
+            <line number="14" hits="0" branch="false" />
+            <line number="15" hits="0" branch="false" />
+            <line number="18" hits="0" branch="false" />
+            <line number="19" hits="0" branch="false" />
+            <line number="21" hits="0" branch="false" />
+            <line number="23" hits="0" branch="false" />
+            <line number="24" hits="0" branch="false" />
+            <line number="25" hits="0" branch="false" />
+            <line number="26" hits="0" branch="false" />
+            <line number="28" hits="0" branch="false" />
+          </lines>
+        </class>
+        <class name="Sources.Scripts.DI.AppContext" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/AppContext.cs" line-rate="0.454545454545455" branch-rate="1" complexity="12">
+          <methods>
+            <method name="Container" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="19" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Awake" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="21" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="InitializeAsync" signature="()" line-rate="0.5" branch-rate="1" complexity="5">
+              <lines>
+                <line number="24" hits="0" branch="false" />
+                <line number="25" hits="1" branch="false" />
+                <line number="26" hits="1" branch="false" />
+                <line number="27" hits="0" branch="false" />
+                <line number="28" hits="1" branch="false" />
+                <line number="32" hits="0" branch="false" />
+              </lines>
+            </method>
             <method name="Container" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
               <lines>
                 <line number="20" hits="0" branch="false" />
@@ -120,64 +245,67 @@
                 <line number="22" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="InitializeAsync" signature="()" line-rate="1" branch-rate="1" complexity="5">
+            <method name="InitializeAsync" signature="()" line-rate="0.666666666666667" branch-rate="1" complexity="5">
               <lines>
                 <line number="25" hits="1" branch="false" />
                 <line number="26" hits="1" branch="false" />
+                <line number="27" hits="0" branch="false" />
                 <line number="28" hits="1" branch="false" />
+                <line number="32" hits="0" branch="false" />
                 <line number="33" hits="1" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
+            <line number="19" hits="0" branch="false" />
             <line number="20" hits="0" branch="false" />
+            <line number="21" hits="0" branch="false" />
             <line number="22" hits="1" branch="false" />
+            <line number="24" hits="0" branch="false" />
             <line number="25" hits="1" branch="false" />
             <line number="26" hits="1" branch="false" />
+            <line number="27" hits="0" branch="false" />
             <line number="28" hits="1" branch="false" />
+            <line number="32" hits="0" branch="false" />
             <line number="33" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.DI.Container" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/Container.cs" line-rate="0.615384615384615" branch-rate="1" complexity="16">
+        <class name="Sources.Scripts.DI.Container" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/Container.cs" line-rate="0.947368421052632" branch-rate="1" complexity="9">
           <methods>
-            <method name="Binder" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="11" hits="7" branch="false" />
-              </lines>
-            </method>
-            <method name="Cache" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="12" hits="16" branch="false" />
-              </lines>
-            </method>
             <method name="Injector" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="13" hits="10" branch="false" />
+                <line number="12" hits="4" branch="false" />
+              </lines>
+            </method>
+            <method name="I" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="23" hits="1" branch="false" />
               </lines>
             </method>
             <method name="Container" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="15" hits="1" branch="false" />
-                <line number="16" hits="3" branch="false" />
-                <line number="17" hits="3" branch="false" />
-                <line number="18" hits="3" branch="false" />
-                <line number="19" hits="3" branch="false" />
-                <line number="20" hits="3" branch="false" />
+                <line number="16" hits="2" branch="false" />
+                <line number="17" hits="2" branch="false" />
+                <line number="18" hits="2" branch="false" />
+                <line number="19" hits="2" branch="false" />
+                <line number="20" hits="2" branch="false" />
+                <line number="21" hits="2" branch="false" />
               </lines>
             </method>
             <method name="BindAsync" signature="()" line-rate="1" branch-rate="1" complexity="4">
               <lines>
-                <line number="49" hits="3" branch="false" />
-                <line number="50" hits="4" branch="false" />
-                <line number="52" hits="2" branch="false" />
-                <line number="54" hits="2" branch="false" />
-                <line number="55" hits="1" branch="false" />
+                <line number="52" hits="3" branch="false" />
+                <line number="53" hits="5" branch="false" />
+                <line number="55" hits="3" branch="false" />
                 <line number="56" hits="1" branch="false" />
+                <line number="57" hits="3" branch="false" />
+                <line number="58" hits="2" branch="false" />
+                <line number="59" hits="2" branch="false" />
               </lines>
             </method>
             <method name="Binder" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="12" hits="16" branch="false" />
+                <line number="12" hits="4" branch="false" />
               </lines>
             </method>
             <method name="Cache" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
@@ -190,335 +318,429 @@
                 <line number="14" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="Container" signature="()" line-rate="1" branch-rate="1" complexity="1">
+            <method name="BindAsync" signature="()" line-rate="1" branch-rate="1" complexity="4">
               <lines>
-                <line number="16" hits="3" branch="false" />
-                <line number="17" hits="3" branch="false" />
-                <line number="18" hits="3" branch="false" />
-                <line number="19" hits="3" branch="false" />
-                <line number="20" hits="3" branch="false" />
-                <line number="21" hits="2" branch="false" />
-              </lines>
-            </method>
-            <method name="Bind" signature="()" line-rate="1" branch-rate="1" complexity="4">
-              <lines />
-            </method>
-            <method name="InitServicesAsync" signature="()" line-rate="0" branch-rate="1" complexity="6">
-              <lines>
-                <line number="24" hits="0" branch="false" />
-                <line number="25" hits="0" branch="false" />
-                <line number="27" hits="0" branch="false" />
-                <line number="28" hits="0" branch="false" />
-                <line number="29" hits="0" branch="false" />
-                <line number="32" hits="0" branch="false" />
-                <line number="33" hits="0" branch="false" />
-                <line number="35" hits="0" branch="false" />
-                <line number="36" hits="0" branch="false" />
+                <line number="50" hits="1" branch="false" />
+                <line number="51" hits="1" branch="false" />
+                <line number="52" hits="3" branch="false" />
+                <line number="53" hits="5" branch="false" />
+                <line number="55" hits="3" branch="false" />
+                <line number="56" hits="1" branch="false" />
+                <line number="57" hits="3" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="11" hits="7" branch="false" />
-            <line number="12" hits="16" branch="false" />
+            <line number="12" hits="4" branch="false" />
             <line number="13" hits="10" branch="false" />
             <line number="14" hits="0" branch="false" />
-            <line number="15" hits="1" branch="false" />
-            <line number="16" hits="3" branch="false" />
-            <line number="17" hits="3" branch="false" />
-            <line number="18" hits="3" branch="false" />
-            <line number="19" hits="3" branch="false" />
-            <line number="20" hits="3" branch="false" />
+            <line number="16" hits="2" branch="false" />
+            <line number="17" hits="2" branch="false" />
+            <line number="18" hits="2" branch="false" />
+            <line number="19" hits="2" branch="false" />
+            <line number="20" hits="2" branch="false" />
             <line number="21" hits="2" branch="false" />
-            <line number="24" hits="0" branch="false" />
-            <line number="25" hits="0" branch="false" />
-            <line number="27" hits="0" branch="false" />
-            <line number="28" hits="0" branch="false" />
-            <line number="29" hits="0" branch="false" />
-            <line number="32" hits="0" branch="false" />
-            <line number="33" hits="0" branch="false" />
-            <line number="35" hits="0" branch="false" />
-            <line number="36" hits="0" branch="false" />
-            <line number="49" hits="3" branch="false" />
-            <line number="50" hits="4" branch="false" />
-            <line number="52" hits="2" branch="false" />
-            <line number="54" hits="2" branch="false" />
-            <line number="55" hits="1" branch="false" />
+            <line number="23" hits="1" branch="false" />
+            <line number="50" hits="1" branch="false" />
+            <line number="51" hits="1" branch="false" />
+            <line number="52" hits="3" branch="false" />
+            <line number="53" hits="5" branch="false" />
+            <line number="55" hits="3" branch="false" />
             <line number="56" hits="1" branch="false" />
+            <line number="57" hits="3" branch="false" />
+            <line number="58" hits="2" branch="false" />
+            <line number="59" hits="2" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.DI.ContainerBinder" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/ContainerBinder.cs" line-rate="0.846153846153846" branch-rate="1" complexity="6">
+        <class name="Sources.Scripts.DI.ContainerBinder" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/ContainerBinder.cs" line-rate="0.882352941176471" branch-rate="1" complexity="9">
           <methods>
+            <method name="GetBinds" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="I" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="17" hits="6" branch="false" />
+              </lines>
+            </method>
+            <method name="BindMain" signature="(System.Type, System.Type)" line-rate="0.875" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="24" hits="13" branch="false" />
+                <line number="25" hits="17" branch="false" />
+                <line number="26" hits="3" branch="false" />
+                <line number="27" hits="9" branch="false" />
+                <line number="29" hits="17" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="0" branch="false" />
+                <line number="32" hits="10" branch="false" />
+              </lines>
+            </method>
+            <method name="Bind" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="34" hits="3" branch="false" />
+              </lines>
+            </method>
+            <method name="Bind" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="35" hits="4" branch="false" />
+              </lines>
+            </method>
+            <method name="Bind[T]" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="36" hits="9" branch="false" />
+              </lines>
+            </method>
+            <method name="Bind[TBase, TImpl]" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="39" hits="2" branch="false" />
+              </lines>
+            </method>
+            <method name="Bind" signature="(System.Collections.Generic.Dictionary[Type,Type])" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="42" hits="4" branch="false" />
+                <line number="43" hits="5" branch="false" />
+                <line number="44" hits="4" branch="false" />
+                <line number="46" hits="10" branch="false" />
+                <line number="47" hits="2" branch="false" />
+                <line number="48" hits="2" branch="false" />
+                <line number="49" hits="2" branch="false" />
+                <line number="50" hits="3" branch="false" />
+              </lines>
+            </method>
+            <method name="ContainerBinder" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="19" hits="9" branch="false" />
+                <line number="20" hits="1" branch="false" />
+                <line number="21" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="ContainerBinder" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="1" branch="false" />
+              </lines>
+            </method>
             <method name="GetBinds" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
                 <line number="11" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="BindMain" signature="(System.Type, System.Type)" line-rate="0.833333333333333" branch-rate="1" complexity="NaN">
+            <method name="BindMain" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="16" hits="14" branch="false" />
-                <line number="17" hits="18" branch="false" />
-                <line number="19" hits="15" branch="false" />
-                <line number="20" hits="5" branch="false" />
-                <line number="21" hits="0" branch="false" />
-                <line number="22" hits="10" branch="false" />
+                <line number="16" hits="4" branch="false" />
+                <line number="17" hits="6" branch="false" />
+                <line number="19" hits="9" branch="false" />
+                <line number="20" hits="1" branch="false" />
+                <line number="21" hits="1" branch="false" />
+                <line number="22" hits="4" branch="false" />
               </lines>
             </method>
             <method name="Bind" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="24" hits="1" branch="false" />
+                <line number="24" hits="13" branch="false" />
               </lines>
             </method>
             <method name="Bind" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="25" hits="3" branch="false" />
+                <line number="25" hits="17" branch="false" />
               </lines>
             </method>
             <method name="Bind[T]" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="26" hits="4" branch="false" />
+                <line number="26" hits="3" branch="false" />
               </lines>
             </method>
             <method name="Bind[TBase, TImpl]" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="29" hits="1" branch="false" />
+                <line number="29" hits="17" branch="false" />
               </lines>
             </method>
             <method name="Bind" signature="(System.Collections.Generic.Dictionary[Type,Type])" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="32" hits="3" branch="false" />
-                <line number="33" hits="5" branch="false" />
-                <line number="34" hits="2" branch="false" />
-                <line number="35" hits="1" branch="false" />
-                <line number="36" hits="6" branch="false" />
+                <line number="32" hits="10" branch="false" />
+                <line number="33" hits="1" branch="false" />
+                <line number="34" hits="3" branch="false" />
+                <line number="35" hits="4" branch="false" />
+                <line number="36" hits="9" branch="false" />
                 <line number="37" hits="1" branch="false" />
-                <line number="38" hits="6" branch="false" />
+                <line number="38" hits="1" branch="false" />
                 <line number="39" hits="2" branch="false" />
-                <line number="40" hits="2" branch="false" />
+                <line number="40" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="ContainerBinder" signature="()" line-rate="1" branch-rate="1" complexity="1">
+            <method name="ContainerBinder" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="2" branch="false" />
-              </lines>
-            </method>
-            <method name="Bind" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="26" hits="4" branch="false" />
-              </lines>
-            </method>
-            <method name="Bind" signature="(System.Type, System.Type)" line-rate="0" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="27" hits="0" branch="false" />
-              </lines>
-            </method>
-            <method name="Bind[T]" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="28" hits="3" branch="false" />
-              </lines>
-            </method>
-            <method name="Bind[TBase, TImpl]" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="31" hits="0" branch="false" />
-              </lines>
-            </method>
-            <method name="Bind" signature="(System.Collections.Generic.Dictionary[Type,Type])" line-rate="1" branch-rate="1" complexity="NaN">
-              <lines>
-                <line number="34" hits="2" branch="false" />
-                <line number="35" hits="1" branch="false" />
-                <line number="36" hits="6" branch="false" />
-                <line number="37" hits="1" branch="false" />
-                <line number="38" hits="6" branch="false" />
-                <line number="39" hits="2" branch="false" />
-                <line number="40" hits="2" branch="false" />
-                <line number="41" hits="1" branch="false" />
-                <line number="42" hits="1" branch="false" />
+                <line number="13" hits="0" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
             <line number="11" hits="0" branch="false" />
-            <line number="13" hits="2" branch="false" />
-            <line number="16" hits="14" branch="false" />
-            <line number="17" hits="18" branch="false" />
-            <line number="19" hits="15" branch="false" />
-            <line number="20" hits="5" branch="false" />
-            <line number="21" hits="0" branch="false" />
-            <line number="22" hits="10" branch="false" />
-            <line number="24" hits="1" branch="false" />
-            <line number="25" hits="3" branch="false" />
-            <line number="26" hits="4" branch="false" />
-            <line number="27" hits="0" branch="false" />
-            <line number="28" hits="3" branch="false" />
-            <line number="29" hits="1" branch="false" />
+            <line number="12" hits="0" branch="false" />
+            <line number="13" hits="0" branch="false" />
+            <line number="14" hits="1" branch="false" />
+            <line number="16" hits="4" branch="false" />
+            <line number="17" hits="6" branch="false" />
+            <line number="19" hits="9" branch="false" />
+            <line number="20" hits="1" branch="false" />
+            <line number="21" hits="1" branch="false" />
+            <line number="22" hits="4" branch="false" />
+            <line number="24" hits="13" branch="false" />
+            <line number="25" hits="17" branch="false" />
+            <line number="26" hits="3" branch="false" />
+            <line number="27" hits="9" branch="false" />
+            <line number="29" hits="17" branch="false" />
+            <line number="30" hits="1" branch="false" />
             <line number="31" hits="0" branch="false" />
-            <line number="32" hits="3" branch="false" />
-            <line number="33" hits="5" branch="false" />
-            <line number="34" hits="2" branch="false" />
-            <line number="35" hits="1" branch="false" />
-            <line number="36" hits="6" branch="false" />
+            <line number="32" hits="10" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="34" hits="3" branch="false" />
+            <line number="35" hits="4" branch="false" />
+            <line number="36" hits="9" branch="false" />
             <line number="37" hits="1" branch="false" />
-            <line number="38" hits="6" branch="false" />
+            <line number="38" hits="1" branch="false" />
             <line number="39" hits="2" branch="false" />
-            <line number="40" hits="2" branch="false" />
-            <line number="41" hits="1" branch="false" />
-            <line number="42" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="42" hits="4" branch="false" />
+            <line number="43" hits="5" branch="false" />
+            <line number="44" hits="4" branch="false" />
+            <line number="46" hits="10" branch="false" />
+            <line number="47" hits="2" branch="false" />
+            <line number="48" hits="2" branch="false" />
+            <line number="49" hits="2" branch="false" />
+            <line number="50" hits="3" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.DI.ContainerCache" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/ContainerCache.cs" line-rate="0.914285714285714" branch-rate="1" complexity="17">
+        <class name="Sources.Scripts.DI.ContainerCache" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/ContainerCache.cs" line-rate="0.891304347826087" branch-rate="1" complexity="23">
           <methods>
+            <method name="I" signature="()" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="15" hits="2" branch="false" />
+              </lines>
+            </method>
             <method name="GetCache" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
-                <line number="15" hits="0" branch="false" />
+                <line number="22" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="AddMain" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="AddMain" signature="(System.Type, System.Type)" line-rate="0.625" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="24" hits="3" branch="false" />
-                <line number="25" hits="7" branch="false" />
-                <line number="26" hits="2" branch="false" />
-                <line number="27" hits="1" branch="false" />
-                <line number="28" hits="2" branch="false" />
-                <line number="29" hits="1" branch="false" />
-                <line number="30" hits="2" branch="false" />
-                <line number="31" hits="1" branch="false" />
-                <line number="32" hits="2" branch="false" />
-                <line number="33" hits="3" branch="false" />
+                <line number="32" hits="11" branch="false" />
+                <line number="33" hits="5" branch="false" />
+                <line number="34" hits="10" branch="false" />
+                <line number="36" hits="0" branch="false" />
+                <line number="38" hits="0" branch="false" />
+                <line number="39" hits="3" branch="false" />
+                <line number="40" hits="0" branch="false" />
+                <line number="41" hits="5" branch="false" />
               </lines>
             </method>
-            <method name="AddToCache" signature="(System.Type, System.Object)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="AddToCache" signature="(System.Type, System.Object&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="42" hits="10" branch="false" />
+                <line number="44" hits="9" branch="false" />
+                <line number="45" hits="16" branch="false" />
+                <line number="47" hits="5" branch="false" />
+                <line number="48" hits="5" branch="false" />
               </lines>
             </method>
             <method name="Add[T]" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="45" hits="2" branch="false" />
+                <line number="50" hits="5" branch="false" />
               </lines>
             </method>
             <method name="Add[TBase, TImpl]" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="48" hits="1" branch="false" />
+                <line number="53" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Add[T]" signature="(System.Object)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="Add[T]" signature="(System.Object&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="51" hits="2" branch="false" />
+                <line number="55" hits="4" branch="false" />
               </lines>
             </method>
-            <method name="Add" signature="(System.Type, System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
+            <method name="Add" signature="(System.Type, System.Object&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="53" hits="0" branch="false" />
-              </lines>
-            </method>
-            <method name="ContainerCache" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="17" hits="3" branch="false" />
-                <line number="18" hits="3" branch="false" />
-                <line number="19" hits="3" branch="false" />
-                <line number="20" hits="3" branch="false" />
+                <line number="56" hits="5" branch="false" />
               </lines>
             </method>
             <method name="ContainerCache" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="2" branch="false" />
+                <line number="17" hits="2" branch="false" />
+                <line number="18" hits="2" branch="false" />
+                <line number="19" hits="2" branch="false" />
+                <line number="20" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Add" signature="()" line-rate="1" branch-rate="1" complexity="5">
+            <method name="ContainerCache" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="56" hits="1" branch="false" />
-                <line number="57" hits="7" branch="false" />
-                <line number="58" hits="1" branch="false" />
-                <line number="59" hits="1" branch="false" />
-                <line number="60" hits="2" branch="false" />
+                <line number="12" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Add" signature="()" line-rate="1" branch-rate="1" complexity="7">
+              <lines>
+                <line number="59" hits="4" branch="false" />
+                <line number="60" hits="5" branch="false" />
                 <line number="61" hits="5" branch="false" />
-                <line number="62" hits="2" branch="false" />
-                <line number="63" hits="2" branch="false" />
+                <line number="62" hits="1" branch="false" />
+                <line number="63" hits="10" branch="false" />
+                <line number="64" hits="3" branch="false" />
+                <line number="65" hits="2" branch="false" />
+                <line number="66" hits="7" branch="false" />
+                <line number="67" hits="1" branch="false" />
+                <line number="68" hits="3" branch="false" />
+                <line number="69" hits="4" branch="false" />
               </lines>
             </method>
-            <method name="AddMain" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="GetCache" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
-                <line number="25" hits="7" branch="false" />
-                <line number="26" hits="2" branch="false" />
-                <line number="27" hits="1" branch="false" />
-                <line number="28" hits="2" branch="false" />
-                <line number="29" hits="1" branch="false" />
-                <line number="30" hits="2" branch="false" />
-                <line number="31" hits="1" branch="false" />
-                <line number="32" hits="2" branch="false" />
+                <line number="14" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="AddMain" signature="(System.Type, System.Type)" line-rate="0.75" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="29" hits="3" branch="false" />
+                <line number="30" hits="3" branch="false" />
+                <line number="32" hits="11" branch="false" />
+                <line number="33" hits="5" branch="false" />
+                <line number="34" hits="10" branch="false" />
+                <line number="36" hits="0" branch="false" />
+                <line number="38" hits="0" branch="false" />
+                <line number="39" hits="3" branch="false" />
+              </lines>
+            </method>
+            <method name="AddToCache" signature="(System.Type, System.Object&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="42" hits="3" branch="false" />
+                <line number="43" hits="3" branch="false" />
+                <line number="44" hits="9" branch="false" />
+                <line number="45" hits="16" branch="false" />
+                <line number="47" hits="5" branch="false" />
+                <line number="48" hits="5" branch="false" />
+                <line number="49" hits="3" branch="false" />
+                <line number="50" hits="5" branch="false" />
               </lines>
             </method>
             <method name="Add[T]" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="49" hits="2" branch="false" />
+                <line number="52" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="Add[TBase, TImpl]" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="Add[TBase, TImpl]" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="52" hits="0" branch="false" />
+                <line number="55" hits="4" branch="false" />
               </lines>
             </method>
-            <method name="Add[T]" signature="(System.Object)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="Add[T]" signature="(System.Object&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="55" hits="1" branch="false" />
+                <line number="57" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Add" signature="(System.Type, System.Object)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="Add" signature="(System.Type, System.Object&amp;)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="57" hits="7" branch="false" />
+                <line number="58" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="Add" signature="()" line-rate="1" branch-rate="1" complexity="5">
+            <method name="ContainerCache" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="60" hits="2" branch="false" />
+                <line number="16" hits="1" branch="false" />
+                <line number="17" hits="2" branch="false" />
+                <line number="18" hits="2" branch="false" />
+                <line number="19" hits="2" branch="false" />
+              </lines>
+            </method>
+            <method name="Add" signature="()" line-rate="1" branch-rate="1" complexity="7">
+              <lines>
                 <line number="61" hits="5" branch="false" />
-                <line number="62" hits="2" branch="false" />
-                <line number="63" hits="2" branch="false" />
-                <line number="64" hits="1" branch="false" />
-                <line number="66" hits="1" branch="false" />
+                <line number="62" hits="1" branch="false" />
+                <line number="63" hits="10" branch="false" />
+                <line number="64" hits="3" branch="false" />
+                <line number="65" hits="2" branch="false" />
+                <line number="66" hits="7" branch="false" />
                 <line number="67" hits="1" branch="false" />
+                <line number="68" hits="3" branch="false" />
+                <line number="69" hits="4" branch="false" />
+                <line number="71" hits="1" branch="false" />
+                <line number="72" hits="1" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="13" hits="2" branch="false" />
-            <line number="15" hits="0" branch="false" />
-            <line number="17" hits="3" branch="false" />
-            <line number="18" hits="3" branch="false" />
-            <line number="19" hits="3" branch="false" />
-            <line number="20" hits="3" branch="false" />
-            <line number="24" hits="3" branch="false" />
-            <line number="25" hits="7" branch="false" />
-            <line number="26" hits="2" branch="false" />
-            <line number="27" hits="1" branch="false" />
-            <line number="28" hits="2" branch="false" />
-            <line number="29" hits="1" branch="false" />
-            <line number="30" hits="2" branch="false" />
-            <line number="31" hits="1" branch="false" />
-            <line number="32" hits="2" branch="false" />
-            <line number="33" hits="3" branch="false" />
-            <line number="42" hits="10" branch="false" />
-            <line number="45" hits="2" branch="false" />
-            <line number="48" hits="1" branch="false" />
-            <line number="49" hits="2" branch="false" />
-            <line number="51" hits="2" branch="false" />
-            <line number="52" hits="0" branch="false" />
-            <line number="53" hits="0" branch="false" />
-            <line number="55" hits="1" branch="false" />
-            <line number="56" hits="1" branch="false" />
-            <line number="57" hits="7" branch="false" />
-            <line number="58" hits="1" branch="false" />
-            <line number="59" hits="1" branch="false" />
-            <line number="60" hits="2" branch="false" />
+            <line number="12" hits="1" branch="false" />
+            <line number="14" hits="0" branch="false" />
+            <line number="15" hits="2" branch="false" />
+            <line number="16" hits="1" branch="false" />
+            <line number="17" hits="2" branch="false" />
+            <line number="18" hits="2" branch="false" />
+            <line number="19" hits="2" branch="false" />
+            <line number="20" hits="1" branch="false" />
+            <line number="22" hits="0" branch="false" />
+            <line number="29" hits="3" branch="false" />
+            <line number="30" hits="3" branch="false" />
+            <line number="32" hits="11" branch="false" />
+            <line number="33" hits="5" branch="false" />
+            <line number="34" hits="10" branch="false" />
+            <line number="36" hits="0" branch="false" />
+            <line number="38" hits="0" branch="false" />
+            <line number="39" hits="3" branch="false" />
+            <line number="40" hits="0" branch="false" />
+            <line number="41" hits="5" branch="false" />
+            <line number="42" hits="3" branch="false" />
+            <line number="43" hits="3" branch="false" />
+            <line number="44" hits="9" branch="false" />
+            <line number="45" hits="16" branch="false" />
+            <line number="47" hits="5" branch="false" />
+            <line number="48" hits="5" branch="false" />
+            <line number="49" hits="3" branch="false" />
+            <line number="50" hits="5" branch="false" />
+            <line number="52" hits="2" branch="false" />
+            <line number="53" hits="1" branch="false" />
+            <line number="55" hits="4" branch="false" />
+            <line number="56" hits="5" branch="false" />
+            <line number="57" hits="1" branch="false" />
+            <line number="58" hits="2" branch="false" />
+            <line number="59" hits="4" branch="false" />
+            <line number="60" hits="5" branch="false" />
             <line number="61" hits="5" branch="false" />
-            <line number="62" hits="2" branch="false" />
-            <line number="63" hits="2" branch="false" />
-            <line number="64" hits="1" branch="false" />
-            <line number="66" hits="1" branch="false" />
+            <line number="62" hits="1" branch="false" />
+            <line number="63" hits="10" branch="false" />
+            <line number="64" hits="3" branch="false" />
+            <line number="65" hits="2" branch="false" />
+            <line number="66" hits="7" branch="false" />
             <line number="67" hits="1" branch="false" />
+            <line number="68" hits="3" branch="false" />
+            <line number="69" hits="4" branch="false" />
+            <line number="71" hits="1" branch="false" />
+            <line number="72" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.DI.ContainerInjector" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/ContainerInjector.cs" line-rate="0" branch-rate="1" complexity="8">
+        <class name="Sources.Scripts.DI.ContainerInjector" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/DI/ContainerInjector.cs" line-rate="0" branch-rate="1" complexity="16">
           <methods>
+            <method name="InjectDependenciesAsync" signature="()" line-rate="0" branch-rate="1" complexity="8">
+              <lines>
+                <line number="20" hits="0" branch="false" />
+                <line number="21" hits="0" branch="false" />
+                <line number="22" hits="0" branch="false" />
+                <line number="23" hits="0" branch="false" />
+                <line number="24" hits="0" branch="false" />
+                <line number="25" hits="0" branch="false" />
+                <line number="27" hits="0" branch="false" />
+                <line number="28" hits="0" branch="false" />
+                <line number="29" hits="0" branch="false" />
+                <line number="34" hits="0" branch="false" />
+                <line number="36" hits="0" branch="false" />
+                <line number="43" hits="0" branch="false" />
+                <line number="47" hits="0" branch="false" />
+                <line number="48" hits="0" branch="false" />
+                <line number="50" hits="0" branch="false" />
+                <line number="54" hits="0" branch="false" />
+                <line number="55" hits="0" branch="false" />
+                <line number="57" hits="0" branch="false" />
+                <line number="91" hits="0" branch="false" />
+                <line number="92" hits="0" branch="false" />
+                <line number="98" hits="0" branch="false" />
+                <line number="99" hits="0" branch="false" />
+              </lines>
+            </method>
             <method name="InjectDependenciesAsync" signature="()" line-rate="0" branch-rate="1" complexity="8">
               <lines>
                 <line number="13" hits="0" branch="false" />
@@ -529,11 +751,21 @@
                 <line number="20" hits="0" branch="false" />
                 <line number="21" hits="0" branch="false" />
                 <line number="22" hits="0" branch="false" />
+                <line number="23" hits="0" branch="false" />
+                <line number="24" hits="0" branch="false" />
+                <line number="25" hits="0" branch="false" />
                 <line number="27" hits="0" branch="false" />
+                <line number="28" hits="0" branch="false" />
+                <line number="29" hits="0" branch="false" />
+                <line number="34" hits="0" branch="false" />
                 <line number="36" hits="0" branch="false" />
+                <line number="43" hits="0" branch="false" />
                 <line number="47" hits="0" branch="false" />
                 <line number="48" hits="0" branch="false" />
                 <line number="50" hits="0" branch="false" />
+                <line number="54" hits="0" branch="false" />
+                <line number="55" hits="0" branch="false" />
+                <line number="57" hits="0" branch="false" />
                 <line number="91" hits="0" branch="false" />
                 <line number="92" hits="0" branch="false" />
               </lines>
@@ -548,37 +780,124 @@
             <line number="20" hits="0" branch="false" />
             <line number="21" hits="0" branch="false" />
             <line number="22" hits="0" branch="false" />
+            <line number="23" hits="0" branch="false" />
+            <line number="24" hits="0" branch="false" />
+            <line number="25" hits="0" branch="false" />
             <line number="27" hits="0" branch="false" />
+            <line number="28" hits="0" branch="false" />
+            <line number="29" hits="0" branch="false" />
+            <line number="34" hits="0" branch="false" />
             <line number="36" hits="0" branch="false" />
+            <line number="43" hits="0" branch="false" />
             <line number="47" hits="0" branch="false" />
             <line number="48" hits="0" branch="false" />
             <line number="50" hits="0" branch="false" />
+            <line number="54" hits="0" branch="false" />
+            <line number="55" hits="0" branch="false" />
+            <line number="57" hits="0" branch="false" />
             <line number="91" hits="0" branch="false" />
             <line number="92" hits="0" branch="false" />
+            <line number="98" hits="0" branch="false" />
+            <line number="99" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.Factory.ServiceFactory" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Factory/ServiceFactory.cs" line-rate="1" branch-rate="1" complexity="6">
+        <class name="Sources.Scripts.Factory.CloudServiceFactory" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Factory/CloudServiceFactory.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
-            <method name="CreateServiceAsync" signature="()" line-rate="1" branch-rate="1" complexity="4">
+            <method name="CreateServiceAsync" signature="(System.Type)" line-rate="0" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="9" hits="3" branch="false" />
-                <line number="10" hits="4" branch="false" />
-                <line number="12" hits="2" branch="false" />
-                <line number="13" hits="2" branch="false" />
+                <line number="10" hits="0" branch="false" />
+                <line number="11" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="GetService[T]" signature="()" line-rate="1" branch-rate="1" complexity="2">
-              <lines />
-            </method>
-            <method name="GetService" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
-              <lines />
+            <method name="CreateServiceAsync[T]" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="0" branch="false" />
+                <line number="16" hits="0" branch="false" />
+              </lines>
             </method>
           </methods>
           <lines>
-            <line number="9" hits="3" branch="false" />
-            <line number="10" hits="4" branch="false" />
-            <line number="12" hits="2" branch="false" />
-            <line number="13" hits="2" branch="false" />
+            <line number="10" hits="0" branch="false" />
+            <line number="11" hits="0" branch="false" />
+            <line number="15" hits="0" branch="false" />
+            <line number="16" hits="0" branch="false" />
+          </lines>
+        </class>
+        <class name="Sources.Scripts.Factory.ServiceFactory" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Factory/ServiceFactory.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="CreateServiceAsync" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines />
+            </method>
+          </methods>
+          <lines />
+        </class>
+        <class name="Sources.Scripts.Factory.ServiceFactoryManager" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Factory/ServiceFactoryManager.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="CurrentFactory" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="9" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="CurrentFactory" signature="(Sources.Scripts.Core.Config.Enum.ServiceFactoryEnum)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="9" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="I" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="10" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetFactory" signature="(Sources.Scripts.Core.Config.Enum.ServiceFactoryEnum)" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="17" hits="0" branch="false" />
+                <line number="18" hits="0" branch="false" />
+                <line number="20" hits="0" branch="false" />
+                <line number="22" hits="0" branch="false" />
+                <line number="23" hits="0" branch="false" />
+                <line number="24" hits="0" branch="false" />
+                <line number="26" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="ServiceFactoryManager" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="0" branch="false" />
+                <line number="13" hits="0" branch="false" />
+                <line number="14" hits="0" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="0" branch="false" />
+            <line number="10" hits="0" branch="false" />
+            <line number="12" hits="0" branch="false" />
+            <line number="13" hits="0" branch="false" />
+            <line number="14" hits="0" branch="false" />
+            <line number="17" hits="0" branch="false" />
+            <line number="18" hits="0" branch="false" />
+            <line number="20" hits="0" branch="false" />
+            <line number="22" hits="0" branch="false" />
+            <line number="23" hits="0" branch="false" />
+            <line number="24" hits="0" branch="false" />
+            <line number="26" hits="0" branch="false" />
+          </lines>
+        </class>
+        <class name="Sources.Scripts.Factory.StandardServiceFactory" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Factory/StandardServiceFactory.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="CreateServiceAsync" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="9" hits="2" branch="false" />
+                <line number="10" hits="3" branch="false" />
+                <line number="12" hits="1" branch="false" />
+                <line number="13" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="2" branch="false" />
+            <line number="10" hits="3" branch="false" />
+            <line number="12" hits="1" branch="false" />
+            <line number="13" hits="1" branch="false" />
           </lines>
         </class>
         <class name="Sources.Scripts.Systems.MoveSystem" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Systems/MoveSystem.cs" line-rate="0" branch-rate="1" complexity="1">
@@ -669,8 +988,26 @@
             <line number="21" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.TestDB.CloudDB" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/TestDB/CloudDB.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="Sources.Scripts.TestDB.CloudDB" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/TestDB/CloudDB.cs" line-rate="0" branch-rate="1" complexity="3">
           <methods>
+            <method name="I" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="9" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="ShowInfo" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="0" branch="false" />
+                <line number="17" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="CloudDB" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="0" branch="false" />
+                <line number="12" hits="0" branch="false" />
+                <line number="13" hits="0" branch="false" />
+              </lines>
+            </method>
             <method name="ShowInfo" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
                 <line number="8" hits="0" branch="false" />
@@ -683,6 +1020,11 @@
             <line number="8" hits="0" branch="false" />
             <line number="9" hits="0" branch="false" />
             <line number="10" hits="0" branch="false" />
+            <line number="11" hits="0" branch="false" />
+            <line number="12" hits="0" branch="false" />
+            <line number="13" hits="0" branch="false" />
+            <line number="16" hits="0" branch="false" />
+            <line number="17" hits="0" branch="false" />
           </lines>
         </class>
         <class name="Sources.Scripts.TestDB.DBController" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/TestDB/DBController.cs" line-rate="0" branch-rate="1" complexity="2">
@@ -711,8 +1053,26 @@
             <line number="19" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.TestDB.LocalDB" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/TestDB/LocalDB.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="Sources.Scripts.TestDB.LocalDB" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/TestDB/LocalDB.cs" line-rate="0" branch-rate="1" complexity="3">
           <methods>
+            <method name="I" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="8" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="ShowInfo" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="0" branch="false" />
+                <line number="16" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="LocalDB" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="0" branch="false" />
+                <line number="11" hits="0" branch="false" />
+                <line number="12" hits="0" branch="false" />
+              </lines>
+            </method>
             <method name="ShowInfo" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
                 <line number="8" hits="0" branch="false" />
@@ -725,6 +1085,40 @@
             <line number="8" hits="0" branch="false" />
             <line number="9" hits="0" branch="false" />
             <line number="10" hits="0" branch="false" />
+            <line number="11" hits="0" branch="false" />
+            <line number="12" hits="0" branch="false" />
+            <line number="15" hits="0" branch="false" />
+            <line number="16" hits="0" branch="false" />
+          </lines>
+        </class>
+        <class name="Sources.Scripts.TestDB.PrefsDB" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/TestDB/PrefsDB.cs" line-rate="0" branch-rate="1" complexity="2">
+          <methods>
+            <method name="I" signature="()" line-rate="0" branch-rate="1" complexity="NaN">
+              <lines>
+                <line number="6" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="ShowInfo" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="0" branch="false" />
+                <line number="14" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="PrefsDB" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="0" branch="false" />
+                <line number="9" hits="0" branch="false" />
+                <line number="10" hits="0" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="0" branch="false" />
+            <line number="8" hits="0" branch="false" />
+            <line number="9" hits="0" branch="false" />
+            <line number="10" hits="0" branch="false" />
+            <line number="13" hits="0" branch="false" />
+            <line number="14" hits="0" branch="false" />
           </lines>
         </class>
         <class name="Sources.Scripts.TestViews.ModernView" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/TestViews/ModernView.cs" line-rate="0" branch-rate="1" complexity="1">
@@ -763,46 +1157,46 @@
           <methods>
             <method name="DebugConfig" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="5" hits="2" branch="false" />
-                <line number="6" hits="2" branch="false" />
+                <line number="5" hits="1" branch="false" />
+                <line number="6" hits="1" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="5" hits="2" branch="false" />
-            <line number="6" hits="2" branch="false" />
+            <line number="5" hits="1" branch="false" />
+            <line number="6" hits="1" branch="false" />
           </lines>
         </class>
         <class name="Sources.Scripts.Utils.Helper" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Utils/Helper.cs" line-rate="1" branch-rate="1" complexity="NaN">
           <methods>
             <method name="TypeNameCutter" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="9" hits="8" branch="false" />
-                <line number="10" hits="8" branch="false" />
-                <line number="11" hits="8" branch="false" />
+                <line number="9" hits="26" branch="false" />
+                <line number="10" hits="26" branch="false" />
+                <line number="11" hits="26" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="9" hits="8" branch="false" />
-            <line number="10" hits="8" branch="false" />
-            <line number="11" hits="8" branch="false" />
+            <line number="9" hits="26" branch="false" />
+            <line number="10" hits="26" branch="false" />
+            <line number="11" hits="26" branch="false" />
           </lines>
         </class>
         <class name="Sources.Scripts.Utils.JLog" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Utils/JLog.cs" line-rate="0.464285714285714" branch-rate="1" complexity="2">
           <methods>
             <method name="Msg" signature="(System.Object, System.String, System.String)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="19" hits="5" branch="false" />
+                <line number="19" hits="16" branch="false" />
               </lines>
             </method>
             <method name="ShowMsg" signature="(System.Object, System.String, System.String)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="22" hits="5" branch="false" />
-                <line number="23" hits="5" branch="false" />
-                <line number="25" hits="5" branch="false" />
-                <line number="26" hits="5" branch="false" />
-                <line number="27" hits="5" branch="false" />
+                <line number="22" hits="16" branch="false" />
+                <line number="23" hits="16" branch="false" />
+                <line number="25" hits="16" branch="false" />
+                <line number="26" hits="16" branch="false" />
+                <line number="27" hits="16" branch="false" />
               </lines>
             </method>
             <method name="Builder" signature="()" line-rate="0" branch-rate="1" complexity="1">
@@ -822,19 +1216,19 @@
             </method>
             <method name="ShowMsgNumLine" signature="(System.String, System.String)" line-rate="0.6" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="68" hits="5" branch="false" />
-                <line number="69" hits="10" branch="false" />
+                <line number="68" hits="16" branch="false" />
+                <line number="69" hits="32" branch="false" />
                 <line number="71" hits="0" branch="false" />
                 <line number="72" hits="0" branch="false" />
-                <line number="73" hits="5" branch="false" />
+                <line number="73" hits="16" branch="false" />
               </lines>
             </method>
             <method name="JLog" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="2" branch="false" />
-                <line number="14" hits="2" branch="false" />
-                <line number="15" hits="2" branch="false" />
-                <line number="16" hits="2" branch="false" />
+                <line number="13" hits="1" branch="false" />
+                <line number="14" hits="1" branch="false" />
+                <line number="15" hits="1" branch="false" />
+                <line number="16" hits="1" branch="false" />
               </lines>
             </method>
             <method name="AddLine" signature="(System.Object)" line-rate="0" branch-rate="1" complexity="NaN">
@@ -857,16 +1251,16 @@
             </method>
           </methods>
           <lines>
-            <line number="13" hits="2" branch="false" />
-            <line number="14" hits="2" branch="false" />
-            <line number="15" hits="2" branch="false" />
-            <line number="16" hits="2" branch="false" />
-            <line number="19" hits="5" branch="false" />
-            <line number="22" hits="5" branch="false" />
-            <line number="23" hits="5" branch="false" />
-            <line number="25" hits="5" branch="false" />
-            <line number="26" hits="5" branch="false" />
-            <line number="27" hits="5" branch="false" />
+            <line number="13" hits="1" branch="false" />
+            <line number="14" hits="1" branch="false" />
+            <line number="15" hits="1" branch="false" />
+            <line number="16" hits="1" branch="false" />
+            <line number="19" hits="16" branch="false" />
+            <line number="22" hits="16" branch="false" />
+            <line number="23" hits="16" branch="false" />
+            <line number="25" hits="16" branch="false" />
+            <line number="26" hits="16" branch="false" />
+            <line number="27" hits="16" branch="false" />
             <line number="32" hits="0" branch="false" />
             <line number="38" hits="0" branch="false" />
             <line number="44" hits="0" branch="false" />
@@ -880,34 +1274,37 @@
             <line number="62" hits="0" branch="false" />
             <line number="64" hits="0" branch="false" />
             <line number="65" hits="0" branch="false" />
-            <line number="68" hits="5" branch="false" />
-            <line number="69" hits="10" branch="false" />
+            <line number="68" hits="16" branch="false" />
+            <line number="69" hits="32" branch="false" />
             <line number="71" hits="0" branch="false" />
             <line number="72" hits="0" branch="false" />
-            <line number="73" hits="5" branch="false" />
+            <line number="73" hits="16" branch="false" />
           </lines>
         </class>
-        <class name="Sources.Scripts.Utils.ReflectionUtils" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Utils/ReflectionUtils.cs" line-rate="1" branch-rate="1" complexity="NaN">
+        <class name="Sources.Scripts.Utils.ReflectionUtils" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Sources/Scripts/Utils/ReflectionUtils.cs" line-rate="0.8" branch-rate="1" complexity="NaN">
           <methods>
-            <method name="HandInject[T]" signature="(T, System.Object)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="HandInject[T]" signature="(T, System.Object)" line-rate="0.75" branch-rate="1" complexity="NaN">
               <lines>
                 <line number="24" hits="3" branch="false" />
                 <line number="29" hits="3" branch="false" />
+                <line number="31" hits="0" branch="false" />
                 <line number="32" hits="3" branch="false" />
+                <line number="34" hits="0" branch="false" />
                 <line number="35" hits="27" branch="false" />
                 <line number="36" hits="9" branch="false" />
                 <line number="37" hits="12" branch="false" />
+                <line number="38" hits="0" branch="false" />
                 <line number="39" hits="6" branch="false" />
                 <line number="40" hits="6" branch="false" />
+                <line number="41" hits="0" branch="false" />
                 <line number="42" hits="10" branch="false" />
                 <line number="44" hits="2" branch="false" />
+                <line number="46" hits="0" branch="false" />
                 <line number="47" hits="2" branch="false" />
                 <line number="49" hits="2" branch="false" />
                 <line number="50" hits="2" branch="false" />
                 <line number="52" hits="2" branch="false" />
                 <line number="53" hits="2" branch="false" />
-                <line number="55" hits="3" branch="false" />
-                <line number="56" hits="3" branch="false" />
               </lines>
             </method>
             <method name="ReflectionUtils" signature="(Sources.Scripts.DI.Container)" line-rate="1" branch-rate="1" complexity="NaN">
@@ -926,296 +1323,368 @@
             <line number="18" hits="1" branch="false" />
             <line number="24" hits="3" branch="false" />
             <line number="29" hits="3" branch="false" />
+            <line number="31" hits="0" branch="false" />
             <line number="32" hits="3" branch="false" />
+            <line number="34" hits="0" branch="false" />
             <line number="35" hits="27" branch="false" />
             <line number="36" hits="9" branch="false" />
             <line number="37" hits="12" branch="false" />
+            <line number="38" hits="0" branch="false" />
             <line number="39" hits="6" branch="false" />
             <line number="40" hits="6" branch="false" />
+            <line number="41" hits="0" branch="false" />
             <line number="42" hits="10" branch="false" />
             <line number="44" hits="2" branch="false" />
+            <line number="46" hits="0" branch="false" />
             <line number="47" hits="2" branch="false" />
             <line number="49" hits="2" branch="false" />
             <line number="50" hits="2" branch="false" />
             <line number="52" hits="2" branch="false" />
             <line number="53" hits="2" branch="false" />
             <line number="55" hits="3" branch="false" />
-            <line number="56" hits="3" branch="false" />
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Tests" line-rate="0.79746835443038" branch-rate="1" complexity="30">
+    <package name="Tests" line-rate="0.866666666666667" branch-rate="1" complexity="42">
       <classes>
-        <class name="Tests.DITests.ContainerBinderTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/DITests/ContainerBinderTests.cs" line-rate="0.666666666666667" branch-rate="1" complexity="11">
+        <class name="Tests.ContainerTests.ContainerBinderTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/ContainerTests/BinderTests.cs" line-rate="1" branch-rate="1" complexity="9">
           <methods>
-            <method name="SetUp" signature="()" line-rate="1" branch-rate="1" complexity="1">
+            <method name="BindOverloads_WithNullArgument_1Arg_ThrowException" signature="()" line-rate="1" branch-rate="1" complexity="3">
               <lines>
-                <line number="18" hits="4" branch="false" />
-                <line number="19" hits="4" branch="false" />
-              </lines>
-            </method>
-            <method name="BindOverloads_WithNullArgument_ThrowException" signature="()" line-rate="0.857142857142857" branch-rate="1" complexity="3">
-              <lines>
+                <line number="17" hits="1" branch="false" />
+                <line number="18" hits="1" branch="false" />
+                <line number="19" hits="1" branch="false" />
+                <line number="21" hits="1" branch="false" />
+                <line number="22" hits="1" branch="false" />
                 <line number="23" hits="1" branch="false" />
-                <line number="24" hits="1" branch="false" />
-                <line number="25" hits="1" branch="false" />
-                <line number="28" hits="1" branch="false" />
-                <line number="29" hits="1" branch="false" />
-                <line number="30" hits="0" branch="false" />
-                <line number="31" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="BindOverloads_WithNullArguments_ThrowException" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
+            <method name="BindOverloads_WithNullArguments_2Arg_ThrowException" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
               <lines>
-                <line number="38" hits="3" branch="false" />
-                <line number="39" hits="6" branch="false" />
-                <line number="40" hits="3" branch="false" />
+                <line number="30" hits="3" branch="false" />
+                <line number="31" hits="6" branch="false" />
+                <line number="32" hits="3" branch="false" />
+              </lines>
+            </method>
+            <method name="BindOverloads_WithCorrectArgument_1Arg_DoesNotThrowException" signature="()" line-rate="1" branch-rate="1" complexity="3">
+              <lines>
+                <line number="36" hits="1" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="40" hits="1" branch="false" />
+                <line number="41" hits="1" branch="false" />
+                <line number="42" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="BindOverloads_WithCorrectArguments_2Arg_DoesNotThrowException" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="46" hits="1" branch="false" />
+                <line number="47" hits="2" branch="false" />
+                <line number="48" hits="1" branch="false" />
               </lines>
             </method>
             <method name="ContainerBinderTests" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="10" hits="1" branch="false" />
-              </lines>
-            </method>
-            <method name="SetUp" signature="()" line-rate="0.5" branch-rate="1" complexity="1">
-              <lines>
-                <line number="19" hits="4" branch="false" />
-                <line number="20" hits="0" branch="false" />
-              </lines>
-            </method>
-            <method name="TearDown" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="24" hits="1" branch="false" />
-                <line number="25" hits="1" branch="false" />
-              </lines>
-            </method>
-            <method name="Negative_BindOverloads_WithNullArgument_ThrowException" signature="()" line-rate="0.333333333333333" branch-rate="1" complexity="3">
-              <lines>
-                <line number="29" hits="1" branch="false" />
-                <line number="30" hits="0" branch="false" />
-                <line number="31" hits="1" branch="false" />
-                <line number="34" hits="0" branch="false" />
-                <line number="35" hits="0" branch="false" />
-                <line number="37" hits="0" branch="false" />
-              </lines>
-            </method>
-            <method name="Negative_BindOverloads_WithNullArguments_ThrowException" signature="(System.Type, System.Type)" line-rate="1" branch-rate="1" complexity="NaN">
-              <lines />
-            </method>
-            <method name="ContainerBinderTests" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="11" hits="0" branch="false" />
+                <line number="13" hits="1" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="10" hits="1" branch="false" />
-            <line number="11" hits="0" branch="false" />
-            <line number="18" hits="4" branch="false" />
-            <line number="19" hits="4" branch="false" />
-            <line number="20" hits="0" branch="false" />
+            <line number="13" hits="1" branch="false" />
+            <line number="17" hits="1" branch="false" />
+            <line number="18" hits="1" branch="false" />
+            <line number="19" hits="1" branch="false" />
+            <line number="21" hits="1" branch="false" />
+            <line number="22" hits="1" branch="false" />
             <line number="23" hits="1" branch="false" />
-            <line number="24" hits="1" branch="false" />
-            <line number="25" hits="1" branch="false" />
-            <line number="28" hits="1" branch="false" />
-            <line number="29" hits="1" branch="false" />
-            <line number="30" hits="0" branch="false" />
-            <line number="31" hits="1" branch="false" />
-            <line number="34" hits="0" branch="false" />
-            <line number="35" hits="0" branch="false" />
-            <line number="37" hits="0" branch="false" />
-            <line number="38" hits="3" branch="false" />
-            <line number="39" hits="6" branch="false" />
-            <line number="40" hits="3" branch="false" />
+            <line number="30" hits="3" branch="false" />
+            <line number="31" hits="6" branch="false" />
+            <line number="32" hits="3" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="37" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="41" hits="1" branch="false" />
+            <line number="42" hits="1" branch="false" />
+            <line number="46" hits="1" branch="false" />
+            <line number="47" hits="2" branch="false" />
+            <line number="48" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="Tests.DITests.ContainerFuncTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/DITests/ContainerFuncTests.cs" line-rate="0.782608695652174" branch-rate="1" complexity="8">
+        <class name="Tests.ContainerTests.ContainerCacheTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/ContainerTests/CacheTests.cs" line-rate="1" branch-rate="1" complexity="5">
           <methods>
-            <method name="BindOverloads_ExpectedReturnResults" signature="()" line-rate="0.909090909090909" branch-rate="1" complexity="1">
+            <method name="Add_WithNullArgument_1Arg_ThrowException" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="17" hits="1" branch="false" />
-                <line number="18" hits="1" branch="false" />
-                <line number="19" hits="1" branch="false" />
                 <line number="20" hits="1" branch="false" />
                 <line number="21" hits="1" branch="false" />
-                <line number="22" hits="0" branch="false" />
-                <line number="23" hits="1" branch="false" />
+                <line number="22" hits="1" branch="false" />
                 <line number="24" hits="1" branch="false" />
                 <line number="25" hits="1" branch="false" />
                 <line number="26" hits="1" branch="false" />
-                <line number="27" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="ContainerFuncTests" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="11" hits="1" branch="false" />
-                <line number="12" hits="1" branch="false" />
-                <line number="13" hits="1" branch="false" />
-              </lines>
-            </method>
-            <method name="GetService_ExpectedReturnResults" signature="()" line-rate="0.833333333333333" branch-rate="1" complexity="3">
+            <method name="Add_WithNullArgument_2Arg_ThrowException" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="31" hits="1" branch="false" />
-                <line number="32" hits="0" branch="false" />
+                <line number="32" hits="1" branch="false" />
                 <line number="33" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
                 <line number="36" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
                 <line number="39" hits="1" branch="false" />
                 <line number="40" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Add_WithCorrectArgument_1And2Arg_DoesNotThrowException" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="44" hits="1" branch="false" />
+                <line number="45" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="48" hits="1" branch="false" />
+                <line number="49" hits="1" branch="false" />
+                <line number="51" hits="1" branch="false" />
+                <line number="52" hits="1" branch="false" />
+                <line number="54" hits="1" branch="false" />
+                <line number="55" hits="1" branch="false" />
+                <line number="56" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="ContainerCacheTests" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="ContainerCacheTests" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="1" branch="false" />
+                <line number="13" hits="1" branch="false" />
+                <line number="15" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="1" branch="false" />
+            <line number="12" hits="1" branch="false" />
+            <line number="13" hits="1" branch="false" />
+            <line number="15" hits="1" branch="false" />
+            <line number="20" hits="1" branch="false" />
+            <line number="21" hits="1" branch="false" />
+            <line number="22" hits="1" branch="false" />
+            <line number="24" hits="1" branch="false" />
+            <line number="25" hits="1" branch="false" />
+            <line number="26" hits="1" branch="false" />
+            <line number="31" hits="1" branch="false" />
+            <line number="32" hits="1" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="35" hits="1" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="39" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="44" hits="1" branch="false" />
+            <line number="45" hits="1" branch="false" />
+            <line number="46" hits="1" branch="false" />
+            <line number="48" hits="1" branch="false" />
+            <line number="49" hits="1" branch="false" />
+            <line number="51" hits="1" branch="false" />
+            <line number="52" hits="1" branch="false" />
+            <line number="54" hits="1" branch="false" />
+            <line number="55" hits="1" branch="false" />
+            <line number="56" hits="1" branch="false" />
+          </lines>
+        </class>
+        <class name="Tests.ContainerTests.ContainerTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/ContainerTests/ContainerTests.cs" line-rate="0.714285714285714" branch-rate="1" complexity="24">
+          <methods>
+            <method name="SetUp" signature="()" line-rate="0.8" branch-rate="1" complexity="1">
+              <lines>
+                <line number="21" hits="4" branch="false" />
+                <line number="22" hits="4" branch="false" />
+                <line number="23" hits="0" branch="false" />
+                <line number="26" hits="4" branch="false" />
+                <line number="29" hits="4" branch="false" />
+              </lines>
+            </method>
+            <method name="BindOverloads_NullArgument_ThrowException" signature="()" line-rate="0.75" branch-rate="1" complexity="3">
+              <lines>
+                <line number="33" hits="1" branch="false" />
+                <line number="34" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
+                <line number="36" hits="0" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="39" hits="0" branch="false" />
+                <line number="40" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="BindOverloads_NotNullArgument_DoesNotThrowException" signature="()" line-rate="0.75" branch-rate="1" complexity="3">
+              <lines>
+                <line number="44" hits="1" branch="false" />
+                <line number="45" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="47" hits="0" branch="false" />
+                <line number="49" hits="1" branch="false" />
+                <line number="50" hits="1" branch="false" />
+                <line number="51" hits="0" branch="false" />
+                <line number="52" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="BindOverloads_ExpectedReturnResults" signature="()" line-rate="0.909090909090909" branch-rate="1" complexity="1">
+              <lines>
+                <line number="56" hits="1" branch="false" />
+                <line number="57" hits="1" branch="false" />
+                <line number="58" hits="1" branch="false" />
+                <line number="59" hits="1" branch="false" />
+                <line number="60" hits="1" branch="false" />
+                <line number="61" hits="0" branch="false" />
+                <line number="62" hits="1" branch="false" />
+                <line number="63" hits="1" branch="false" />
+                <line number="64" hits="1" branch="false" />
+                <line number="65" hits="1" branch="false" />
+                <line number="66" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="ContainerTests" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="1" branch="false" />
+                <line number="15" hits="1" branch="false" />
+                <line number="16" hits="1" branch="false" />
+                <line number="17" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="GetService_ExpectedReturnResults" signature="()" line-rate="0.625" branch-rate="1" complexity="3">
+              <lines>
+                <line number="70" hits="1" branch="false" />
+                <line number="71" hits="0" branch="false" />
+                <line number="72" hits="1" branch="false" />
+                <line number="73" hits="0" branch="false" />
+                <line number="75" hits="1" branch="false" />
+                <line number="76" hits="0" branch="false" />
+                <line number="78" hits="1" branch="false" />
+                <line number="79" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="SetUp" signature="()" line-rate="0.75" branch-rate="1" complexity="1">
+              <lines>
+                <line number="22" hits="4" branch="false" />
+                <line number="23" hits="0" branch="false" />
+                <line number="26" hits="4" branch="false" />
+                <line number="29" hits="4" branch="false" />
+              </lines>
+            </method>
+            <method name="BindOverloads_NullArgument_ThrowException" signature="()" line-rate="0.625" branch-rate="1" complexity="3">
+              <lines>
+                <line number="34" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
+                <line number="36" hits="0" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="39" hits="0" branch="false" />
+                <line number="40" hits="1" branch="false" />
+                <line number="41" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="BindOverloads_NotNullArgument_DoesNotThrowException" signature="()" line-rate="0.625" branch-rate="1" complexity="3">
+              <lines>
+                <line number="45" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="47" hits="0" branch="false" />
+                <line number="49" hits="1" branch="false" />
+                <line number="50" hits="1" branch="false" />
+                <line number="51" hits="0" branch="false" />
+                <line number="52" hits="1" branch="false" />
+                <line number="53" hits="0" branch="false" />
               </lines>
             </method>
             <method name="BindOverloads_ExpectedReturnResults" signature="()" line-rate="0.818181818181818" branch-rate="1" complexity="1">
               <lines>
-                <line number="16" hits="0" branch="false" />
-                <line number="17" hits="1" branch="false" />
-                <line number="18" hits="1" branch="false" />
-                <line number="19" hits="1" branch="false" />
-                <line number="20" hits="1" branch="false" />
-                <line number="21" hits="1" branch="false" />
-                <line number="22" hits="0" branch="false" />
-                <line number="23" hits="1" branch="false" />
-                <line number="24" hits="1" branch="false" />
-                <line number="25" hits="1" branch="false" />
-                <line number="26" hits="1" branch="false" />
+                <line number="57" hits="1" branch="false" />
+                <line number="58" hits="1" branch="false" />
+                <line number="59" hits="1" branch="false" />
+                <line number="60" hits="1" branch="false" />
+                <line number="61" hits="0" branch="false" />
+                <line number="62" hits="1" branch="false" />
+                <line number="63" hits="1" branch="false" />
+                <line number="64" hits="1" branch="false" />
+                <line number="65" hits="1" branch="false" />
+                <line number="66" hits="1" branch="false" />
+                <line number="67" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="GetService_ExpectedReturnResults" signature="()" line-rate="0.5" branch-rate="1" complexity="1">
+            <method name="ContainerTests" signature="()" line-rate="0.75" branch-rate="1" complexity="1">
               <lines>
-                <line number="30" hits="0" branch="false" />
-                <line number="31" hits="1" branch="false" />
-                <line number="32" hits="0" branch="false" />
-                <line number="33" hits="1" branch="false" />
-              </lines>
-            </method>
-            <method name="ContainerFuncTests" signature="()" line-rate="0.666666666666667" branch-rate="1" complexity="1">
-              <lines>
-                <line number="10" hits="0" branch="false" />
-                <line number="11" hits="1" branch="false" />
-                <line number="12" hits="1" branch="false" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="10" hits="0" branch="false" />
-            <line number="11" hits="1" branch="false" />
-            <line number="12" hits="1" branch="false" />
-            <line number="13" hits="1" branch="false" />
-            <line number="16" hits="0" branch="false" />
-            <line number="17" hits="1" branch="false" />
-            <line number="18" hits="1" branch="false" />
-            <line number="19" hits="1" branch="false" />
-            <line number="20" hits="1" branch="false" />
-            <line number="21" hits="1" branch="false" />
-            <line number="22" hits="0" branch="false" />
-            <line number="23" hits="1" branch="false" />
-            <line number="24" hits="1" branch="false" />
-            <line number="25" hits="1" branch="false" />
-            <line number="26" hits="1" branch="false" />
-            <line number="27" hits="1" branch="false" />
-            <line number="30" hits="0" branch="false" />
-            <line number="31" hits="1" branch="false" />
-            <line number="32" hits="0" branch="false" />
-            <line number="33" hits="1" branch="false" />
-            <line number="36" hits="1" branch="false" />
-            <line number="39" hits="1" branch="false" />
-            <line number="40" hits="1" branch="false" />
-          </lines>
-        </class>
-        <class name="Tests.DITests.ContainerIntegrTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/DITests/ContainerIntegrTests.cs" line-rate="0" branch-rate="1" complexity="1">
-          <methods>
-            <method name="ContainerIntegrTests" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="7" hits="0" branch="false" />
-                <line number="8" hits="0" branch="false" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="7" hits="0" branch="false" />
-            <line number="8" hits="0" branch="false" />
-          </lines>
-        </class>
-        <class name="Tests.DITests.ContainerTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/DITests/ContainerTests.cs" line-rate="1" branch-rate="1" complexity="1">
-          <methods>
-            <method name="ContainerTests" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="9" hits="1" branch="false" />
-                <line number="10" hits="1" branch="false" />
-                <line number="11" hits="1" branch="false" />
-                <line number="12" hits="1" branch="false" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="9" hits="1" branch="false" />
-            <line number="10" hits="1" branch="false" />
-            <line number="11" hits="1" branch="false" />
-            <line number="12" hits="1" branch="false" />
-          </lines>
-        </class>
-        <class name="Tests.DITests.ContainerUnitTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/DITests/ContainerUnitTests.cs" line-rate="1" branch-rate="1" complexity="4">
-          <methods>
-            <method name="SetUp" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="23" hits="2" branch="false" />
-                <line number="24" hits="2" branch="false" />
-                <line number="27" hits="2" branch="false" />
-                <line number="30" hits="2" branch="false" />
-              </lines>
-            </method>
-            <method name="BindOverloads_NullArgument_ThrowException" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="35" hits="1" branch="false" />
-                <line number="36" hits="1" branch="false" />
-                <line number="37" hits="1" branch="false" />
-                <line number="39" hits="1" branch="false" />
-                <line number="40" hits="1" branch="false" />
-                <line number="42" hits="1" branch="false" />
-              </lines>
-            </method>
-            <method name="BindOverloads_NotNullArgument_DoesNotThrowException" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="46" hits="1" branch="false" />
-                <line number="47" hits="1" branch="false" />
-                <line number="48" hits="1" branch="false" />
-                <line number="51" hits="1" branch="false" />
-                <line number="52" hits="1" branch="false" />
-                <line number="54" hits="1" branch="false" />
-              </lines>
-            </method>
-            <method name="ContainerUnitTests" signature="()" line-rate="1" branch-rate="1" complexity="1">
-              <lines>
-                <line number="13" hits="1" branch="false" />
-                <line number="14" hits="1" branch="false" />
                 <line number="15" hits="1" branch="false" />
+                <line number="16" hits="1" branch="false" />
                 <line number="17" hits="1" branch="false" />
+                <line number="18" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetService_ExpectedReturnResults" signature="()" line-rate="0.5" branch-rate="1" complexity="3">
+              <lines>
+                <line number="71" hits="0" branch="false" />
+                <line number="72" hits="1" branch="false" />
+                <line number="73" hits="0" branch="false" />
+                <line number="75" hits="1" branch="false" />
+                <line number="76" hits="0" branch="false" />
+                <line number="78" hits="1" branch="false" />
+                <line number="79" hits="1" branch="false" />
+                <line number="80" hits="0" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="13" hits="1" branch="false" />
             <line number="14" hits="1" branch="false" />
             <line number="15" hits="1" branch="false" />
+            <line number="16" hits="1" branch="false" />
             <line number="17" hits="1" branch="false" />
-            <line number="23" hits="2" branch="false" />
-            <line number="24" hits="2" branch="false" />
-            <line number="27" hits="2" branch="false" />
-            <line number="30" hits="2" branch="false" />
+            <line number="18" hits="0" branch="false" />
+            <line number="21" hits="4" branch="false" />
+            <line number="22" hits="4" branch="false" />
+            <line number="23" hits="0" branch="false" />
+            <line number="26" hits="4" branch="false" />
+            <line number="29" hits="4" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="34" hits="1" branch="false" />
             <line number="35" hits="1" branch="false" />
-            <line number="36" hits="1" branch="false" />
+            <line number="36" hits="0" branch="false" />
             <line number="37" hits="1" branch="false" />
-            <line number="39" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="39" hits="0" branch="false" />
             <line number="40" hits="1" branch="false" />
-            <line number="42" hits="1" branch="false" />
+            <line number="41" hits="0" branch="false" />
+            <line number="44" hits="1" branch="false" />
+            <line number="45" hits="1" branch="false" />
             <line number="46" hits="1" branch="false" />
-            <line number="47" hits="1" branch="false" />
-            <line number="48" hits="1" branch="false" />
-            <line number="51" hits="1" branch="false" />
+            <line number="47" hits="0" branch="false" />
+            <line number="49" hits="1" branch="false" />
+            <line number="50" hits="1" branch="false" />
+            <line number="51" hits="0" branch="false" />
             <line number="52" hits="1" branch="false" />
-            <line number="54" hits="1" branch="false" />
+            <line number="53" hits="0" branch="false" />
+            <line number="56" hits="1" branch="false" />
+            <line number="57" hits="1" branch="false" />
+            <line number="58" hits="1" branch="false" />
+            <line number="59" hits="1" branch="false" />
+            <line number="60" hits="1" branch="false" />
+            <line number="61" hits="0" branch="false" />
+            <line number="62" hits="1" branch="false" />
+            <line number="63" hits="1" branch="false" />
+            <line number="64" hits="1" branch="false" />
+            <line number="65" hits="1" branch="false" />
+            <line number="66" hits="1" branch="false" />
+            <line number="67" hits="0" branch="false" />
+            <line number="70" hits="1" branch="false" />
+            <line number="71" hits="0" branch="false" />
+            <line number="72" hits="1" branch="false" />
+            <line number="73" hits="0" branch="false" />
+            <line number="75" hits="1" branch="false" />
+            <line number="76" hits="0" branch="false" />
+            <line number="78" hits="1" branch="false" />
+            <line number="79" hits="1" branch="false" />
+            <line number="80" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="Tests.ServiceFactoryTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/ServiceFactoryTests.cs" line-rate="1" branch-rate="1" complexity="3">
+        <class name="Tests.Factory.ServiceFactoryTests" filename="E:/_UnityProjects/ECSGame/ECSGame/Assets/Tests/Factory/ServiceFactoryTests.cs" line-rate="1" branch-rate="1" complexity="3">
           <methods>
             <method name="GetService_WithNullArgument_ThrowException" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>

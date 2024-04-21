@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _appContextHolderGo: {fileID: 1952078019}
+  _gameConfig: {fileID: 11400000, guid: 0479c57b145ffe94e90a7cd1eaf1bc37, type: 2}
 --- !u!1 &466661601
 GameObject:
   m_ObjectHideFlags: 0

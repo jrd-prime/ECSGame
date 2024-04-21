@@ -3,67 +3,71 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sources.Scripts.Factory;
 using Sources.Scripts.Utils;
-using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
     public class ContainerCache
     {
-        private readonly ServiceFactory _serviceFactory;
+        private readonly IServiceFactory _serviceFactory;
         private static readonly Dictionary<Type, object> Cache = new();
+
+        private static ContainerCache _cache;
+        public static ContainerCache I => _cache ??= new ContainerCache();
+
+        private ContainerCache()
+        {
+            _serviceFactory = new StandardServiceFactory();
+        }
 
         public Dictionary<Type, object> GetCache() => Cache;
 
-        public ContainerCache()
+        private async Task<T> GetFromCache<T>() where T : class
         {
-            _serviceFactory = new ServiceFactory();
-        }
+            if (!Cache.ContainsKey(typeof(T))) throw new KeyNotFoundException();
 
+            return await Task.FromResult(Cache[typeof(T)] as T);
+        }
 
         private void AddMain(Type baseType, Type implType)
         {
+            if (baseType == null || implType == null) throw new ArgumentNullException();
             if (Cache.ContainsKey(baseType)) return;
 
             var instance = _serviceFactory.CreateServiceAsync(implType).Result;
 
-            AddToCache(baseType, instance);
+            if (instance == null) throw new NullReferenceException();
 
-            JLog.Msg(
-                $"Not in cache. Create and add: {Helper.TypeNameCutter(baseType)} > {Helper.TypeNameCutter(implType)}");
+            AddToCache(baseType, in instance);
         }
 
-        private async Task<T> GetFromCache<T>() where T : class
+        private static void AddToCache(Type type, in object instance)
         {
-            if (Cache.ContainsKey(typeof(T))) return await Task.FromResult(Cache[typeof(T)] as T);
+            if (type == null || instance == null) throw new ArgumentNullException();
 
-            throw new KeyNotFoundException($"(!) {typeof(T)} does not exists in cache! Check bindings");
+            Cache.TryAdd(type, instance);
         }
 
-        private static void AddToCache(Type type, object instance) => Cache.TryAdd(type, instance);
-
-        // Without instance
         public void Add<T>() where T : class => AddMain(typeof(T), typeof(T));
 
         public void Add<TBase, TImpl>() where TBase : class where TImpl : class
             => AddMain(typeof(TBase), typeof(TImpl));
 
-        // With instance
-        public void Add<T>(object instance) where T : class => AddToCache(typeof(T), instance);
-
-        public void Add(Type type, object instance) => AddToCache(type, instance);
+        public void Add<T>(in object instance) where T : class => AddToCache(typeof(T), in instance);
+        public void Add(Type type, in object instance) => AddToCache(type, in instance);
 
         public async Task Add(Dictionary<Type, Type> dictionary)
         {
+            if (dictionary == null) throw new ArgumentNullException();
+            if (dictionary.Count == 0) return;
+
             foreach (var bind in dictionary)
             {
-                AddToCache(bind.Key, bind.Value);
+                AddMain(bind.Key, bind.Value);
             }
 
             await Task.CompletedTask;
         }
 
-
-        // public async Task<object> Get(Type type) => await GetFromCache(type);
         public async Task<T> Get<T>() where T : class => await GetFromCache<T>();
     }
 }
