@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Sources.Scripts.Utils;
+using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
@@ -9,16 +11,15 @@ namespace Sources.Scripts.DI
     /// </summary>
     public sealed class ContainerBinder
     {
+        public async Task shooow()
+        {
+            Debug.LogWarning("SHOWOOOWOWOOWO WO");
+            await Task.CompletedTask;
+        }
+
         public Dictionary<Type, Type> GetBinds() => Binds;
 
         private static readonly Dictionary<Type, Type> Binds = new();
-
-        private static ContainerBinder _binder;
-        public static ContainerBinder I => _binder ??= new ContainerBinder();
-
-        private ContainerBinder()
-        {
-        }
 
         private static void BindMain(Type baseType, Type implType)
         {
@@ -47,6 +48,13 @@ namespace Sources.Scripts.DI
             {
                 BindMain(bind.Key, bind.Value);
             }
+        }
+
+        public void Bind<T>(Type type) where T : class
+        {
+            if (type == null) throw new ArgumentNullException();
+            Debug.LogWarning($"base {typeof(T)} <- {type}");
+            BindMain(typeof(T), type);
         }
     }
 }

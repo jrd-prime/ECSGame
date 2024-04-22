@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using Sources.Scripts.Core;
+using Sources.Scripts.Core.Config;
 using Sources.Scripts.DI;
 
 namespace Tests.ContainerTests
@@ -11,20 +12,20 @@ namespace Tests.ContainerTests
     [TestFixture]
     public class ContainerTests
     {
-        public static readonly Container Container = Container.I;
+        public static readonly MyContainer MyContainer = new MyContainer();
         public static readonly TestObject TestObjectInstance = new();
-        public static readonly Mock<IBindableConfig> BindableConfigWithRecord = new();
-        public static readonly Mock<IBindableConfig> BindableConfigWithEmptyDict = new();
+        public static readonly Mock<IBindableConfiguration> BindableConfigWithRecord = new();
+        public static readonly Mock<IBindableConfiguration> BindableConfigWithEmptyDict = new();
 
         [SetUp] // Before tests
         public void SetUp()
         {
             BindableConfigWithRecord
-                .Setup(x => x.GetBindingsList())
+                .Setup(x => x.GetBindings())
                 .Returns(new Dictionary<Type, Type> { { typeof(TestObject), typeof(TestObject) } });
             
             BindableConfigWithEmptyDict
-                .Setup(x => x.GetBindingsList())
+                .Setup(x => x.GetBindings())
                 .Returns(new Dictionary<Type, Type>());
         }
 
@@ -32,10 +33,10 @@ namespace Tests.ContainerTests
         public void BindOverloads_NullArgument_ThrowException()
         {
             Assert.ThrowsAsync<ArgumentNullException>(
-                () => Container.BindAsync<TestObject>(instance: null),
+                () => MyContainer.BindAsync<TestObject>(instance: null),
                 message: "Bind with instance");
             Assert.ThrowsAsync<ArgumentNullException>(
-                () => Container.BindAsync(null),
+                () => MyContainer.BindConfigAsync(null),
                 message: "Bind config");
         }
 
@@ -43,21 +44,21 @@ namespace Tests.ContainerTests
         public void BindOverloads_NotNullArgument_DoesNotThrowException()
         {
             Assert.DoesNotThrowAsync(
-                () => Container.BindAsync(TestObjectInstance),
+                () => MyContainer.BindAsync(TestObjectInstance),
                 message: "Bind with instance");
 
             Assert.DoesNotThrowAsync(
-                () => Container.BindAsync(BindableConfigWithRecord.Object),
+                () => MyContainer.BindAsync(BindableConfigWithRecord.Object),
                 message: "Bind config");
         }
 
         [Test]
         public void BindOverloads_ExpectedReturnResults()
         {
-            var genericOne = Container.BindAsync<TestObject>().Result.GetType();
-            var genericTwo = Container.BindAsync<TestObject, TestObject>().Result.GetType();
-            var genericPlusInstance = Container.BindAsync(TestObjectInstance).Result.GetType();
-            var bindWithConfig = Container.BindAsync(BindableConfigWithRecord.Object);
+            var genericOne = MyContainer.BindAsync<TestObject>().Result.GetType();
+            var genericTwo = MyContainer.BindAsync<TestObject, TestObject>().Result.GetType();
+            var genericPlusInstance = MyContainer.BindAsync(TestObjectInstance).Result.GetType();
+            var bindWithConfig = MyContainer.BindAsync(BindableConfigWithRecord.Object);
 
             Assert.True(genericOne == typeof(TestObject), message: "generic 1");
             Assert.True(genericTwo == typeof(TestObject), message: "generic 2");
@@ -69,10 +70,10 @@ namespace Tests.ContainerTests
         public async Task GetService_ExpectedReturnResults()
         {
             // Arrange
-            await Container.BindAsync<TestObject>();
+            await MyContainer.BindAsync<TestObject>();
 
             // Act
-            var genericOne = Container.GetServiceAsync<TestObject>().Result;
+            var genericOne = MyContainer.GetServiceAsync<TestObject>().Result;
 
             // Assert
             Assert.True(genericOne.GetType() == typeof(TestObject));

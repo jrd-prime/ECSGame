@@ -2,7 +2,7 @@
 
 namespace Sources.Scripts.Annotation
 {
-    public class JHandInject : Attribute
+    public class JManualInject : Attribute
     {
         
     }

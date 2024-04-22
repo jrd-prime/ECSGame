@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using Sources.Scripts.DI;
 
@@ -10,7 +11,7 @@ namespace Tests.ContainerTests
     [TestFixture] // Test suit
     public class ContainerBinderTests
     {
-        private static readonly ContainerBinder Binder = ContainerBinder.I;
+        private static readonly ContainerBinder Binder = new Mock<ContainerBinder>().Object;
 
         [Test]
         public void BindOverloads_WithNullArgument_1Arg_ThrowException()

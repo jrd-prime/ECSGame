@@ -1,23 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sources.Scripts.Annotation;
 using Sources.Scripts.Factory;
-using Sources.Scripts.Utils;
 
 namespace Sources.Scripts.DI
 {
     public class ContainerCache
     {
-        private readonly IServiceFactory _serviceFactory;
+       [JManualInject] private readonly IServiceFactory _serviceFactory;
         private static readonly Dictionary<Type, object> Cache = new();
-
-        private static ContainerCache _cache;
-        public static ContainerCache I => _cache ??= new ContainerCache();
-
-        private ContainerCache()
-        {
-            _serviceFactory = new StandardServiceFactory();
-        }
 
         public Dictionary<Type, object> GetCache() => Cache;
 
@@ -69,5 +61,10 @@ namespace Sources.Scripts.DI
         }
 
         public async Task<T> Get<T>() where T : class => await GetFromCache<T>();
+
+        public IServiceFactory getF()
+        {
+            return _serviceFactory;
+        }
     }
 }

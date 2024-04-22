@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using Sources.Scripts.DI;
 
@@ -8,7 +9,7 @@ namespace Tests.ContainerTests
     [TestFixture]
     public class ContainerCacheTests
     {
-        private readonly ContainerCache _cache = ContainerCache.I;
+        private readonly ContainerCache _cache = new Mock<ContainerCache>().Object;
         private static readonly TestObject TestObject = new();
         private static readonly Dictionary<Type, Type> EmptyDict = new();
 

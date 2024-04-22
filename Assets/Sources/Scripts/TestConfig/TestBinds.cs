@@ -5,14 +5,14 @@ using Sources.Scripts.DI;
 
 namespace Sources.Scripts.TestConfig
 {
-    public class TestBinds : IBindsConfig
+    public class TestBinds : IBindsConfiguration
     {
-        public async Task InitBindings(Container container)
+        public async Task InitBindings(MyContainer myContainer)
         {
             await Task.CompletedTask;
         }
 
-        public Dictionary<Type, Type> GetBindingsList()
+        public Dictionary<Type, Type> GetBindings()
         {
             return new Dictionary<Type, Type>()
             {

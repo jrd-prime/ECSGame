@@ -9,15 +9,10 @@ namespace Sources.Scripts.DI
 {
     public class ContainerInjector
     {
-        public async Task ManualInject<T>(T target, object instance) where T : class
+        public async Task<InjectResult> InjectDependenciesAsync(Assembly assembly)
         {
-            JLog.Msg($"Manual inject : {target.GetType()} <- {instance.GetType()}");
-            await Task.CompletedTask;
-        }
+            var a = new InjectResult();
 
-
-        public async Task InjectDependenciesAsync(Assembly assembly)
-        {
             JLog.Msg($"( InjectDependenciesAsync STARTED...");
 
             foreach (var type in assembly.GetTypes())
@@ -95,7 +90,8 @@ namespace Sources.Scripts.DI
             //     }
             // }
 
-            await Task.CompletedTask;
+
+            return await Task.FromResult(a);
         }
     }
 }
