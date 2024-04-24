@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Sources.Scripts.Utils;
 using UnityEngine;
 
@@ -9,14 +8,8 @@ namespace Sources.Scripts.DI
     /// <summary>
     /// Binds cache
     /// </summary>
-    public sealed class ContainerBinder
+    public class ContainerBinder
     {
-        public async Task shooow()
-        {
-            Debug.LogWarning("SHOWOOOWOWOOWO WO");
-            await Task.CompletedTask;
-        }
-
         public Dictionary<Type, Type> GetBinds() => Binds;
 
         private static readonly Dictionary<Type, Type> Binds = new();
@@ -36,7 +29,7 @@ namespace Sources.Scripts.DI
         public void Bind(Type baseType, Type implType) => BindMain(baseType, implType);
         public void Bind<T>() where T : class => BindMain(typeof(T), typeof(T));
 
-        public void Bind<TBase, TImpl>() where TBase : class where TImpl : class =>
+        public void Bind<TBase, TImpl>() where TBase : class where TImpl : TBase =>
             BindMain(typeof(TBase), typeof(TImpl));
 
         public void Bind(Dictionary<Type, Type> dictionary)

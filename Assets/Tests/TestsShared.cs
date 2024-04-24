@@ -1,9 +1,15 @@
-﻿namespace Tests
+﻿using System;
+using System.Collections.Generic;
+using Sources.Scripts.Annotation;
+using Sources.Scripts.Core.Config;
+using Sources.Scripts.DI;
+
+namespace Tests
 {
     public class TestsShared
     {
-        
     }
+
     public class TestObject
     {
     }
@@ -12,7 +18,25 @@
     {
     }
 
-    public class TestImpl
+    public class TestImpl : TestBase
     {
     }
+
+    public class TestEmptyConfig : IConfiguration
+    {
+        public Dictionary<Type, Type> GetBindings()
+        {
+            return new Dictionary<Type, Type> { };
+        }
+    }
+
+    public class TestConfigWithRecord : IConfiguration
+    {
+        public Dictionary<Type, Type> GetBindings()
+        {
+            return new Dictionary<Type, Type> { { typeof(TestBase), typeof(TestImpl) } };
+        }
+    }
+
+
 }

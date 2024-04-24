@@ -6,7 +6,7 @@ namespace Sources.Scripts.Factory
     public class ServiceFactoryManager
     {
         private static ServiceFactoryManager _serviceFactoryManager;
-        public ServiceFactoryEnum CurrentFactory { get; private set; }
+        public ServiceFactoryEnum currentFactoryEnum { get; private set; }
         public static ServiceFactoryManager I => _serviceFactoryManager ??= new ServiceFactoryManager();
 
         private ServiceFactoryManager()
@@ -15,7 +15,7 @@ namespace Sources.Scripts.Factory
 
         public IServiceFactory GetFactory(ServiceFactoryEnum serviceFactory)
         {
-            CurrentFactory = serviceFactory;
+            currentFactoryEnum = serviceFactory;
 
             return serviceFactory switch
             {
@@ -23,6 +23,11 @@ namespace Sources.Scripts.Factory
                 ServiceFactoryEnum.Cloud => new CloudServiceFactory(),
                 _ => throw new ArgumentOutOfRangeException(nameof(serviceFactory), serviceFactory, null)
             };
+        }
+
+        public IServiceFactory GetCurrentFactory()
+        {
+            return GetFactory(currentFactoryEnum);
         }
     }
 }

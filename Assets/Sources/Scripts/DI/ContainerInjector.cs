@@ -9,48 +9,84 @@ namespace Sources.Scripts.DI
 {
     public class ContainerInjector
     {
-        public async Task<InjectResult> InjectDependenciesAsync(Assembly assembly)
+        [JManualInject] private ContainerCache _cache;
+        [JManualInject] private MyContainer _container;
+
+        public async Task InjectDependenciesAsync(Assembly assembly)
         {
-            var a = new InjectResult();
-
-            JLog.Msg($"( InjectDependenciesAsync STARTED...");
-
+            Debug.LogWarning("ASS ===== ");
             foreach (var type in assembly.GetTypes())
             {
                 var fields = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
                 foreach (var field in fields)
                 {
+                    // JLog.Msg($"= = = = = =");
+                    // JLog.Msg($"type = {type}");
+                    // JLog.Msg($"field = {field}");
                     if (!Attribute.IsDefined(field, typeof(JInject))) continue;
 
+                    // JLog.Msg($"field has attr for inject");
 
-                    // var value = Cache.GetCache()[field.FieldType];
-                    // Debug.LogWarning("value =  " + value);
-                    Debug.LogWarning("fi type =  " + field.FieldType);
+                    var target = field.FieldType;
+                    // JLog.Msg($"target (field type) = {target}");
 
-                    // bool isTypeEqual = field.FieldType == value.GetType();
-                    // bool isImplementInterface = value.GetType().GetInterfaces().Contains(field.FieldType);
+                    Debug.LogWarning("count cache = " + _cache.GetCache().Count);
 
-                    // if (!isTypeEqual && !isImplementInterface) continue;
+                    var instance = _cache.GetCache()[target];
 
-                    // if (!isTypeEqual) continue;
+                    JLog.Msg($"instance from cache = {instance}");
 
-                    Debug.LogWarning($"TYPE WITH INJECT = {type}");
-
-                    // Debug.LogWarning($"Inject here: {type} -> {field.FieldType} -> {value.GetType()}");
+                    var serviceInstanceTarget = _cache.GetCache()[type];
+                    JLog.Msg($"service instance with inject field = {serviceInstanceTarget.GetType()}");
 
 
-                    // field.SetValue(Activator.CreateInstance(field.FieldType), value);
-                    //
-                    // // for logging
-                    // var val = value.GetType().ToString().Split('.').Last();
-                    // var tar = value.ToString().Split('.').Last();
-                    // JLog.Msg($"Injected. {val} to {tar}");
+                    JLog.Msg($"INJECTED?? {type} / {serviceInstanceTarget} / {instance}");
+
+                    field.SetValue(serviceInstanceTarget, instance);
+                    // await _container.BindAsync(type, serviceInstanceTarget);
                 }
             }
 
+            JLog.Msg($"( InjectDependenciesAsync STARTED...");
+
+            // foreach (var type in assembly.GetTypes())
+            // {
+            //     var fields = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
+            //
+            //     foreach (var field in fields)
+            //     {
+            //         if (!Attribute.IsDefined(field, typeof(JInject))) continue;
+            //
+            //
+            //         // var value = Cache.GetCache()[field.FieldType];
+            //         // Debug.LogWarning("value =  " + value);
+            //         Debug.LogWarning("fi type =  " + field.FieldType);
+            //
+            //         // bool isTypeEqual = field.FieldType == value.GetType();
+            //         // bool isImplementInterface = value.GetType().GetInterfaces().Contains(field.FieldType);
+            //
+            //         // if (!isTypeEqual && !isImplementInterface) continue;
+            //
+            //         // if (!isTypeEqual) continue;
+            //
+            //         Debug.LogWarning($"TYPE WITH INJECT = {type}");
+            //
+            //         // Debug.LogWarning($"Inject here: {type} -> {field.FieldType} -> {value.GetType()}");
+            //
+            //
+            //         // field.SetValue(Activator.CreateInstance(field.FieldType), value);
+            //         //
+            //         // // for logging
+            //         // var val = value.GetType().ToString().Split('.').Last();
+            //         // var tar = value.ToString().Split('.').Last();
+            //         // JLog.Msg($"Injected. {val} to {tar}");
+            //     }
+            // }
+
             JLog.Msg($"( InjectDependenciesAsync FINISHED...");
 
+            await Task.CompletedTask;
             // object target;
             // foreach (var type in assembly.GetTypes())
             // {
@@ -89,9 +125,6 @@ namespace Sources.Scripts.DI
             //         Debug.LogWarning($"(!) Injected: {fieldInfo.FieldType} to {type.Name}");
             //     }
             // }
-
-
-            return await Task.FromResult(a);
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using Sources.Scripts.Core.Config;
 using Sources.Scripts.Factory;
 using Sources.Scripts.TestConfig;
@@ -38,20 +39,22 @@ namespace Sources.Scripts.DI
         {
             // 1. Init Container. Required for: bind, cache, auto-inject
             {
-                // 1. Instance
+                // 1.1 Instance
                 _myContainer = new MyContainer();
                 _serviceFactory = ServiceFactoryManager.I.GetFactory(_gameConfig._serviceFactory);
                 _currentConfig = ConfigurationManager.I.GetConfiguration(_bindsConfiguration);
 
-                // 2. Inject new() instances in Container
+                // 1.2 Inject new() instances in Container
                 Dictionary<Type, object> instances = await ReflectionUtils.ManualInjectAsync(_myContainer);
 
-                // 3. Inject factory from config in Container Cache
+                // 1.3 Inject factory from config in Container Cache
                 // NOTE: get Container Cache instance and then inject IServiceFactory into it
                 await ReflectionUtils.ManualInjectWithInstanceAsync(instances[typeof(ContainerCache)], _serviceFactory);
 
-                // 4. Bind Container
-                await _myContainer.BindAsync(_myContainer);
+                await ReflectionUtils.ManualInjectWithInstanceAsync(instances[typeof(ContainerInjector)], _myContainer);
+
+                // 1.4 Bind Container
+                await _myContainer.BindAsync<MyContainer>(_myContainer);
                 JLog.Msg("\t(!) Container initialization complete!");
             }
 

@@ -50,23 +50,23 @@ namespace Sources.Scripts.Utils
         public static async Task ManualInjectWithInstanceAsync(object target, object instance)
         {
             if (target == null || instance == null) throw new ArgumentNullException();
+            
+            var fields = target.GetType()
+                .GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
-            await Task.Run(() =>
+            foreach (var field in fields)
             {
-                var fields = target.GetType()
-                    .GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
-                Debug.LogWarning("INJ WITH INST");
-                Debug.LogWarning($"{target} <- {instance}");
+                if (!Attribute.IsDefined(field, typeof(JManualInject))) continue;
 
-                foreach (var field in fields)
-                {
-                    if (!Attribute.IsDefined(field, typeof(JManualInject))) continue;
+                bool isTypeEqual = field.FieldType == instance.GetType();
+                bool isImplementInterface = instance.GetType().GetInterfaces().Contains(field.FieldType);
 
-                    Debug.LogWarning(field.FieldType);
+                if (!isTypeEqual && !isImplementInterface) continue;
 
-                    field.SetValue(target, instance);
-                }
-            });
+                field.SetValue(target, instance);
+            }
+
+            await Task.CompletedTask;
         }
 
         /// <summary>
@@ -95,12 +95,39 @@ namespace Sources.Scripts.Utils
                 var val = Helper.TypeNameCutter(instance.GetType());
 
                 field.SetValue(target, instance);
-                _myContainer.AddToCache(typeof(T), instance);
+                _myContainer.AddToCache(typeof(T), in instance);
 
                 JLog.Msg($"Injected. {val} to {target}");
             }
 
             return this;
+        }
+
+        public static async Task ManualInjectInFieldWithoutAttr<T>(object target, T instance) where T : class
+        {
+            await Task.Run(() =>
+            {
+                Debug.LogWarning($"TARGET = " + target.GetType());
+                FieldInfo[] fields = target.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+
+                foreach (FieldInfo field in fields)
+                {
+                    Debug.LogWarning($"{field.FieldType} <- {typeof(T)}");
+
+                    if (
+                        typeof(T).IsAssignableFrom(field.FieldType) ||
+                        field.FieldType == instance.GetType())
+                    {
+                        Debug.LogWarning($"{field.FieldType} assing with {typeof(T)}");
+                        field.SetValue(target, instance);
+                    }
+
+                    // bool isTypeEqual = field.FieldType == instance.GetType();
+                    // bool isImplementInterface = instance.GetType().GetInterfaces().Contains(field.FieldType);
+                    //
+                    // if (!isTypeEqual && !isImplementInterface) continue;
+                }
+            });
         }
     }
 }

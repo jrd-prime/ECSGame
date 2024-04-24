@@ -4,5 +4,6 @@
     {
         public int ClassesWithInject;
         public int InjectedFields;
+        public bool Result;
     }
 }

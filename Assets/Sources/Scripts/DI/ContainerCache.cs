@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Factory;
+using Sources.Scripts.Utils;
+using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
     public class ContainerCache
     {
-       [JManualInject] private readonly IServiceFactory _serviceFactory;
+        [JManualInject] private readonly IServiceFactory _serviceFactory;
+        
         private static readonly Dictionary<Type, object> Cache = new();
 
         public Dictionary<Type, object> GetCache() => Cache;
@@ -41,7 +44,7 @@ namespace Sources.Scripts.DI
 
         public void Add<T>() where T : class => AddMain(typeof(T), typeof(T));
 
-        public void Add<TBase, TImpl>() where TBase : class where TImpl : class
+        public void Add<TBase, TImpl>() where TBase : class where TImpl : TBase
             => AddMain(typeof(TBase), typeof(TImpl));
 
         public void Add<T>(in object instance) where T : class => AddToCache(typeof(T), in instance);
@@ -65,6 +68,12 @@ namespace Sources.Scripts.DI
         public IServiceFactory getF()
         {
             return _serviceFactory;
+        }
+
+        public void Clear()
+        {
+            Cache.Clear();
+            JLog.Msg("(!) Cache cleared!");
         }
     }
 }
