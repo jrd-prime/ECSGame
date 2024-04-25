@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Sources.Scripts.Core;
 using Sources.Scripts.Core.Config;
 using Sources.Scripts.DI;
+using Sources.Scripts.DI.Interface;
 
 namespace Sources.Scripts.TestConfig
 {
@@ -12,7 +13,7 @@ namespace Sources.Scripts.TestConfig
     /// </summary>
     public interface IBindsConfiguration: IBindableConfiguration
     {
-        public async Task InitBindings(MyContainer myContainer)
+        public async Task InitBindings(IMyContainer container)
         {
             await Task.CompletedTask;
         }

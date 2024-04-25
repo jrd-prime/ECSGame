@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Sources.Scripts.Core.Config;
+using Sources.Scripts.DI.Interface;
 using Sources.Scripts.Factory;
 using Sources.Scripts.TestConfig;
-using Sources.Scripts.TestDB;
 using Sources.Scripts.Utils;
 using UnityEngine;
 
@@ -17,17 +16,10 @@ namespace Sources.Scripts.DI
     /// </summary>
     public sealed class AppContext : MonoBehaviour
     {
-        [SerializeField] private IBindsConfiguration _bindsConfiguration;
         [SerializeField] private GameConfigScriptable _gameConfig;
-
-        private MyContainer _myContainer;
+        private IContainerProvider _containerProvider;
 
         public static AppContext I { get; private set; }
-
-        // Config
-        private IConfiguration _currentConfig;
-        private IServiceFactory _serviceFactory;
-        private IDataBase _dataBase;
 
         private void Awake()
         {
@@ -37,40 +29,45 @@ namespace Sources.Scripts.DI
 
         public async Task InitializeAsync()
         {
-            // 1. Init Container. Required for: bind, cache, auto-inject
+            // 0. Init & set configs
+            Type serviceFactoryType = ServiceFactoryManager.I.GetFactoryType(_gameConfig._serviceFactory);
+            IConfiguration bindsConfiguration = new TestBinds();
+            IConfiguration containerConfig = new DefaultContainerConfig
             {
-                // 1.1 Instance
-                _myContainer = new MyContainer();
-                _serviceFactory = ServiceFactoryManager.I.GetFactory(_gameConfig._serviceFactory);
-                _currentConfig = ConfigurationManager.I.GetConfiguration(_bindsConfiguration);
+                Impl = new Dictionary<Type, Type>
+                {
+                    { typeof(IMyContainer), typeof(MyContainer) },
+                    { typeof(IContainerBinder), typeof(ContainerBinder) },
+                    { typeof(IContainerCache), typeof(ContainerCache) },
+                    { typeof(IContainerInjector), typeof(ContainerInjector) },
+                    { typeof(IServiceFactory), serviceFactoryType }
+                }
+            };
 
-                // 1.2 Inject new() instances in Container
-                Dictionary<Type, object> instances = await ReflectionUtils.ManualInjectAsync(_myContainer);
+            ConfigurationManager.I.SetConfig<IContainerConfig>(ref containerConfig);
+            ConfigurationManager.I.SetConfig<IBindsConfiguration>(ref bindsConfiguration);
 
-                // 1.3 Inject factory from config in Container Cache
-                // NOTE: get Container Cache instance and then inject IServiceFactory into it
-                await ReflectionUtils.ManualInjectWithInstanceAsync(instances[typeof(ContainerCache)], _serviceFactory);
 
-                await ReflectionUtils.ManualInjectWithInstanceAsync(instances[typeof(ContainerInjector)], _myContainer);
+            // 1. Init & bind Container.
+            _containerProvider = new DefaultContainerProvider();
+            var container = _containerProvider.GetContainer();
+            await container.BindAsync<IMyContainer>(container);
+            JLog.Msg("\t(!) Container initialization complete!");
 
-                // 1.4 Bind Container
-                await _myContainer.BindAsync<MyContainer>(_myContainer);
-                JLog.Msg("\t(!) Container initialization complete!");
-            }
 
             // 2. Bind(+cache) all services from configs
-            await _myContainer.BindConfigAsync(_currentConfig);
+            var bindsConfig = ConfigurationManager.I.GetConfiguration<IBindsConfiguration>();
+            await container.BindConfigAsync(bindsConfig);
             JLog.Msg("\t(!) Bind services from config complete!");
 
             // 3. Inject services from cache to assembly by attr: [JInject]
-            await _myContainer.InjectServicesAsync(Assembly.GetExecutingAssembly());
+            await container.InjectServicesAsync(Assembly.GetExecutingAssembly());
             JLog.Msg("\t(!) Dependency injection complete!");
         }
 
         private void OnValidate()
         {
-            if (_gameConfig == null)
-                throw new Exception($"Game config not set to {gameObject.name}!");
+            if (_gameConfig == null) throw new Exception($"Game config not set to {gameObject.name}!");
         }
     }
 }

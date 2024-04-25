@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Sources.Scripts.DI;
+using Sources.Scripts.DI.Interface;
 
 namespace Tests.Container
 {
@@ -24,11 +25,11 @@ namespace Tests.Container
         public void Get_StateVerification()
         {
             // Arrange
-            IMyContainer containerMock =
+            IMyContainer containerFullMock =
                 Mock.Of<IMyContainer>(x => x.GetServiceAsync<TestObject>().Result == _testObject);
 
             // Act
-            var actual = containerMock.GetServiceAsync<TestObject>();
+            var actual = containerFullMock.GetServiceAsync<TestObject>();
 
             // Assert
             Assert.IsInstanceOf(typeof(TestObject), actual.Result);

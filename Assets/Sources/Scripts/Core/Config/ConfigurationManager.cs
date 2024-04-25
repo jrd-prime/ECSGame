@@ -1,5 +1,6 @@
-﻿
-using Sources.Scripts.TestConfig;
+﻿using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Sources.Scripts.Core.Config
 {
@@ -8,15 +9,26 @@ namespace Sources.Scripts.Core.Config
         private static ConfigurationManager _configurationManager;
         public static ConfigurationManager I => _configurationManager ??= new ConfigurationManager();
 
+        private static Dictionary<Type, object> _cache;
+
         private ConfigurationManager()
         {
+            _cache = new Dictionary<Type, object>();
         }
 
-        public IConfiguration GetConfiguration(IConfiguration configuration)
+        public void SetConfig<T>(ref IConfiguration config) where T :class, IConfiguration
         {
-            // TODO collect configurations and return dict for bind
+            if (config == null) throw new ArgumentNullException($"Config is null!");
+       
+            _cache.TryAdd(typeof(T), config);
+        }
 
-            return new TestBinds();
+        [CanBeNull]
+        public T GetConfiguration<T>() where T : class, IConfiguration
+        {
+            if (!_cache.ContainsKey(typeof(T))) return null;
+
+            return _cache[typeof(T)] as T;
         }
     }
 }

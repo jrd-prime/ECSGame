@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sources.Scripts.DI.Interface;
 using Sources.Scripts.Utils;
-using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
+    
+
     /// <summary>
     /// Binds cache
     /// </summary>
-    public class ContainerBinder
+    public class ContainerBinder : IContainerBinder
     {
         public Dictionary<Type, Type> GetBinds() => Binds;
 
@@ -21,8 +23,8 @@ namespace Sources.Scripts.DI
             JLog.Msg($"Bind: {Helper.TypeNameCutter(baseType)} <- {Helper.TypeNameCutter(implType)}");
 
             if (Binds.ContainsKey(baseType)) return;
-            if (!Binds.TryAdd(baseType, implType))
-                throw new Exception($"{baseType} not in Binds and failed to add");
+            
+            Binds.TryAdd(baseType, implType);
         }
 
         public void Bind(Type type) => BindMain(type, type);
@@ -46,7 +48,6 @@ namespace Sources.Scripts.DI
         public void Bind<T>(Type type) where T : class
         {
             if (type == null) throw new ArgumentNullException();
-            Debug.LogWarning($"base {typeof(T)} <- {type}");
             BindMain(typeof(T), type);
         }
     }

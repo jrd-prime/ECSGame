@@ -6,5 +6,6 @@ namespace Sources.Scripts.Core.Config
 {
     public interface IBindableConfiguration : IConfiguration
     {
+        public Dictionary<Type, Type> GetBindings();
     }
 }

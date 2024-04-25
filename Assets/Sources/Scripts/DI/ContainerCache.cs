@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using Sources.Scripts.Annotation;
+using Sources.Scripts.DI.Interface;
 using Sources.Scripts.Factory;
 using Sources.Scripts.Utils;
 using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
-    public class ContainerCache
+    public class ContainerCache : IContainerCache, IFieldsInjectable
     {
         [JManualInject] private readonly IServiceFactory _serviceFactory;
-        
+
         private static readonly Dictionary<Type, object> Cache = new();
 
+        public bool IsFieldsInjected() => _serviceFactory != null;
         public Dictionary<Type, object> GetCache() => Cache;
 
         private async Task<T> GetFromCache<T>() where T : class
@@ -28,6 +31,8 @@ namespace Sources.Scripts.DI
             if (baseType == null || implType == null) throw new ArgumentNullException();
             if (Cache.ContainsKey(baseType)) return;
 
+            Assert.IsNotNull(_serviceFactory, $"{GetType()} (!) ServiceFactory NOT injected!");
+
             var instance = _serviceFactory.CreateServiceAsync(implType).Result;
 
             if (instance == null) throw new NullReferenceException();
@@ -35,11 +40,11 @@ namespace Sources.Scripts.DI
             AddToCache(baseType, in instance);
         }
 
-        private static void AddToCache(Type type, in object instance)
+        private void AddToCache(Type type, in object instance)
         {
             if (type == null || instance == null) throw new ArgumentNullException();
 
-            Cache.TryAdd(type, instance);
+            if (Cache.TryAdd(type, instance)) JLog.Msg($"Added to cache -> {type} <- {instance}");
         }
 
         public void Add<T>() where T : class => AddMain(typeof(T), typeof(T));
@@ -65,15 +70,10 @@ namespace Sources.Scripts.DI
 
         public async Task<T> Get<T>() where T : class => await GetFromCache<T>();
 
-        public IServiceFactory getF()
-        {
-            return _serviceFactory;
-        }
-
         public void Clear()
         {
             Cache.Clear();
-            JLog.Msg("(!) Cache cleared!");
+            JLog.Msg("(!!!) Cache cleared!".ToUpper());
         }
     }
 }

@@ -22,6 +22,17 @@ namespace Tests
     {
     }
 
+    public class TestObject1
+    {
+    }
+
+    public class TestBase1
+    {
+    }
+
+    public class TestImpl1 : TestBase1
+    {
+    }
     public class TestEmptyConfig : IConfiguration
     {
         public Dictionary<Type, Type> GetBindings()

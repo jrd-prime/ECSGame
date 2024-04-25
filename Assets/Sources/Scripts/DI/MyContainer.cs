@@ -4,28 +4,18 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Core.Config;
+using Sources.Scripts.DI.Interface;
 using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
-    public class MyContainer : IMyContainer
+    public class MyContainer : IMyContainer, IFieldsInjectable
     {
-        [JManualInject] private readonly ContainerBinder _binder;
-        [JManualInject] private readonly ContainerCache _cache;
-        [JManualInject] private readonly ContainerInjector _injector;
+        [JManualInject] private readonly IContainerBinder _binder;
+        [JManualInject] private readonly IContainerCache _cache;
+        [JManualInject] private readonly IContainerInjector _injector;
 
         public async Task<T> GetServiceAsync<T>() where T : class => await _cache.Get<T>() as T;
-
-        // public async Task BindAsync(Type type, object instance)
-        // {
-        //     if (type == null || instance == null) throw new ArgumentNullException();
-        //
-        //     Debug.LogWarning("bi " + _binder.GetBinds().Count);
-        //     _binder.Bind(type, instance.GetType());
-        //     Debug.LogWarning("bi " + _binder.GetBinds().Count);
-        //     _cache.Add(type, in instance);
-        //     await Task.CompletedTask;
-        // }
 
         public async Task<T> BindAsync<T>() where T : class
         {
@@ -45,7 +35,7 @@ namespace Sources.Scripts.DI
         {
             if (instanceImpl == null) throw new ArgumentNullException();
 
-            _binder.Bind<T>();
+            _binder.Bind<T>(instanceImpl.GetType());
             _cache.Add<T>(in instanceImpl);
             return await GetServiceAsync<T>();
         }
@@ -61,7 +51,7 @@ namespace Sources.Scripts.DI
             return await GetServiceAsync<TBase>();
         }
 
-        public async Task BindConfigAsync(IConfiguration configuration)
+        public async Task BindConfigAsync(IBindableConfiguration configuration)
         {
             if (configuration == null) throw new ArgumentNullException();
 
@@ -82,5 +72,7 @@ namespace Sources.Scripts.DI
             if (assembly == null) throw new ArgumentNullException();
             await _injector.InjectDependenciesAsync(assembly);
         }
+
+        public bool IsFieldsInjected() => _binder != null && _cache != null && _injector != null;
     }
 }

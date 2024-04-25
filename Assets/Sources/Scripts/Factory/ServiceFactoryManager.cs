@@ -13,21 +13,21 @@ namespace Sources.Scripts.Factory
         {
         }
 
-        public IServiceFactory GetFactory(ServiceFactoryEnum serviceFactory)
+        public Type GetFactoryType(ServiceFactoryEnum serviceFactory)
         {
             currentFactoryEnum = serviceFactory;
 
             return serviceFactory switch
             {
-                ServiceFactoryEnum.Standard => new StandardServiceFactory(),
-                ServiceFactoryEnum.Cloud => new CloudServiceFactory(),
+                ServiceFactoryEnum.Standard =>  typeof(StandardServiceFactory),
+                ServiceFactoryEnum.Cloud => typeof(CloudServiceFactory),
                 _ => throw new ArgumentOutOfRangeException(nameof(serviceFactory), serviceFactory, null)
             };
         }
 
-        public IServiceFactory GetCurrentFactory()
+        public Type GetCurrentFactory()
         {
-            return GetFactory(currentFactoryEnum);
+            return GetFactoryType(currentFactoryEnum);
         }
     }
 }

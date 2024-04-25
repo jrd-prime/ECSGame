@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.DI;
+using Sources.Scripts.DI.Interface;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -12,9 +13,9 @@ namespace Sources.Scripts.Utils
 {
     public class ReflectionUtils
     {
-        private MyContainer _myContainer;
+        private readonly IMyContainer _myContainer;
 
-        public ReflectionUtils(MyContainer myContainer)
+        public ReflectionUtils(IMyContainer myContainer)
         {
             _myContainer = myContainer;
         }
