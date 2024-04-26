@@ -9,11 +9,11 @@ using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
-    public class MyContainer : IMyContainer, IFieldsInjectable
+    public class MyContainer : IMyContainer
     {
-        [JManualInject] private readonly IContainerBinder _binder;
-        [JManualInject] private readonly IContainerCache _cache;
-        [JManualInject] private readonly IContainerInjector _injector;
+        [JManualInject] private readonly IBinder _binder;
+        [JManualInject] private readonly ICache _cache;
+        [JManualInject] private readonly IInjector _injector;
 
         public async Task<T> GetServiceAsync<T>() where T : class => await _cache.Get<T>() as T;
 

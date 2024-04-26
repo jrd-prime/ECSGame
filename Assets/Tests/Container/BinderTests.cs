@@ -11,12 +11,12 @@ namespace Tests.Container
     [TestFixture] // Test suit
     public class ContainerBinderTests
     {
-        private ContainerBinder _binder;
+        private Binder _binder;
 
         [SetUp]
         public void SetUp()
         {
-            _binder = new ContainerBinder();
+            _binder = new Binder();
         }
 
         [Test]

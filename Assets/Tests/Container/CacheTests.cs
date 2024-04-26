@@ -10,14 +10,14 @@ namespace Tests.Container
     [TestFixture]
     public class ContainerCacheTests
     {
-        private ContainerCache _cache;
+        private Cache _cache;
         private object _testObject;
         private Dictionary<Type, Type> _emptyDict;
 
         [SetUp]
         public void SetUp()
         {
-            _cache = new Mock<ContainerCache>().Object;
+            _cache = new Mock<Cache>().Object;
             _testObject = new TestObject();
             _emptyDict = new Dictionary<Type, Type>();
         }

@@ -5,7 +5,7 @@ using AppContext = Sources.Scripts.DI.AppContext;
 
 namespace Sources.Scripts.Core.Loading
 {
-    public sealed class AppStart : MonoBehaviour
+    public class AppStart : MonoBehaviour
     {
         [SerializeField] private GameObject _appContextHolderGo;
 

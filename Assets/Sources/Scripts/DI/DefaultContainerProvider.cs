@@ -1,78 +1,111 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Reflection;
+using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Core.Config;
 using Sources.Scripts.DI.Interface;
 using Sources.Scripts.Factory;
 using UnityEngine;
+using Exception = System.Exception;
 
 namespace Sources.Scripts.DI
 {
     public class DefaultContainerProvider : IContainerProvider
     {
-        private const string ImplErrMsg = "The container configuration does not contain a specific " +
-                                          "interface implementation type";
+        private IMyContainer _container;
+        private IBinder _binder;
+        private ICache _cache;
+        private IInjector _injector;
+        private IServiceFactory _serviceFactory;
 
-        private const string ConfigNullErrMsg = "The configuration is null!";
+        private readonly IContainerConfig _config = ConfigManager.I.GetConfiguration<IContainerConfig>();
+        private readonly IMyContainerFactory _factory = new DefaultContainerFactory();
+        private readonly Dictionary<Type, object> _tempCache = new();
 
-        public IMyContainer GetContainer()
+        public async UniTask<IMyContainer> GetContainer() => await InitializeContainer();
+
+        private async UniTask<IMyContainer> InitializeContainer()
         {
-            IContainerConfig config = ConfigurationManager.I.GetConfiguration<IContainerConfig>();
+            await CheckConfigForCriticalImplementations();
+            await CreateInstances();
+            await SetTemporaryCache(new List<object>() { _container, _binder, _cache, _injector, _serviceFactory });
+            await InjectDependencies();
 
-            CheckConfig(ref config);
-
-            var container = Activator.CreateInstance(config.Impl[typeof(IMyContainer)]);
-            var binder = Activator.CreateInstance(config.Impl[typeof(IContainerBinder)]);
-            var cache = Activator.CreateInstance(config.Impl[typeof(IContainerCache)]);
-            var injector = Activator.CreateInstance(config.Impl[typeof(IContainerInjector)]);
-            var serviceFactory = Activator.CreateInstance(config.Impl[typeof(IServiceFactory)]);
-
-            ManualInject(container, binder);
-            ManualInject(container, cache);
-            ManualInject(container, injector);
-            ManualInject(cache, serviceFactory);
-            ManualInject(injector, container);
-            ManualInject(injector, cache);
-
-
-            Debug.LogWarning((container as IFieldsInjectable)?.IsFieldsInjected());
-            Debug.LogWarning((cache as IFieldsInjectable)?.IsFieldsInjected());
-            Debug.LogWarning((injector as IFieldsInjectable)?.IsFieldsInjected());
-
-            return container as IMyContainer;
+            return await UniTask.FromResult(_container);
         }
 
-        private static void ManualInject(object target, object obj)
+        private async UniTask InjectDependencies()
+        {
+            await UniTask
+                .WhenAll(
+                    InjectFor(_container),
+                    InjectFor(_cache),
+                    InjectFor(_injector)
+                );
+        }
+
+        private async UniTask CreateInstances()
+        {
+            _container = _factory.GetInstance<IMyContainer>(_config.Impl[typeof(IMyContainer)]);
+            _binder = _factory.GetInstance<IBinder>(_config.Impl[typeof(IBinder)]);
+            _cache = _factory.GetInstance<ICache>(_config.Impl[typeof(ICache)]);
+            _injector = _factory.GetInstance<IInjector>(_config.Impl[typeof(IInjector)]);
+            _serviceFactory = _factory.GetInstance<IServiceFactory>(_config.Impl[typeof(IServiceFactory)]);
+            await UniTask.CompletedTask;
+        }
+
+        private async UniTask SetTemporaryCache(List<object> objects)
+        {
+            if (objects.Count == 0) throw new Exception(Messages.TempCacheNotSetErrMsg);
+
+            foreach (var obj in objects) _tempCache.TryAdd(obj.GetType(), obj);
+            await UniTask.CompletedTask;
+        }
+
+        private async UniTask InjectFor<TTarget>(TTarget target) where TTarget : class, IFieldsInjectable
         {
             var fields = target.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
             foreach (var field in fields)
             {
-                bool hasAttr = Attribute.IsDefined(field, typeof(JManualInject));
-                bool isImplInterface = obj.GetType().GetInterfaces().Contains(field.FieldType);
+                if (!Attribute.IsDefined(field, typeof(JManualInject))) continue;
 
-                if (hasAttr && isImplInterface) field.SetValue(target, obj);
+                Type implType = _config.Impl[field.FieldType];
+
+                if (implType == _tempCache[implType].GetType())
+                    field.SetValue(target, _tempCache[implType]);
             }
+
+            Debug.LogWarning("delay");
+            await UniTask.Delay(2000);
+
+            // Check after inject
+            Assert.True(target.IsFieldsInjected());
         }
 
-        private static void CheckConfig(ref IContainerConfig config)
+        private async UniTask CheckConfigForCriticalImplementations()
         {
-            if (config == null) throw new ArgumentNullException(ConfigNullErrMsg);
+            if (_config == null) throw new ArgumentNullException(Messages.ConfigNullErrMsg);
 
             Assert.True(
-                config.Impl.ContainsKey(typeof(IMyContainer)),
-                $"{ImplErrMsg} {typeof(IMyContainer)}");
+                _config.Impl.ContainsKey(typeof(IMyContainer)),
+                $"{Messages.ContainerImplErrMsg} {typeof(IMyContainer)}");
             Assert.True(
-                config.Impl.ContainsKey(typeof(IContainerBinder)),
-                $"{ImplErrMsg} {typeof(IContainerBinder)}");
+                _config.Impl.ContainsKey(typeof(IBinder)),
+                $"{Messages.ContainerImplErrMsg} {typeof(IBinder)}");
             Assert.True(
-                config.Impl.ContainsKey(typeof(IContainerCache)),
-                $"{ImplErrMsg} {typeof(IContainerCache)}");
+                _config.Impl.ContainsKey(typeof(ICache)),
+                $"{Messages.ContainerImplErrMsg} {typeof(ICache)}");
             Assert.True(
-                config.Impl.ContainsKey(typeof(IContainerInjector)),
-                $"{ImplErrMsg} {typeof(IContainerInjector)}");
+                _config.Impl.ContainsKey(typeof(IInjector)),
+                $"{Messages.ContainerImplErrMsg} {typeof(IInjector)}");
+            Assert.True(
+                _config.Impl.ContainsKey(typeof(IServiceFactory)),
+                $"{Messages.ContainerImplErrMsg} {typeof(IServiceFactory)}");
+
+            await UniTask.CompletedTask;
         }
     }
 }

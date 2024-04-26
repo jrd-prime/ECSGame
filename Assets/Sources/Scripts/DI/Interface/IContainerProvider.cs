@@ -1,7 +1,9 @@
-﻿namespace Sources.Scripts.DI.Interface
+﻿using Cysharp.Threading.Tasks;
+
+namespace Sources.Scripts.DI.Interface
 {
     public interface IContainerProvider
     {
-        public IMyContainer GetContainer();
+        public UniTask<IMyContainer> GetContainer();
     }
 }

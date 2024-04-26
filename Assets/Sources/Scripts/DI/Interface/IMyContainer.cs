@@ -5,7 +5,7 @@ using Sources.Scripts.Core.Config;
 
 namespace Sources.Scripts.DI.Interface
 {
-    public interface IMyContainer
+    public interface IMyContainer: IFieldsInjectable
     {
         public void AddToCache(Type type, in object instance);
         public Task InjectServicesAsync(Assembly assembly);
