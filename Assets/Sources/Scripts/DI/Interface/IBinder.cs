@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sources.Scripts.Core.Config;
 
 namespace Sources.Scripts.DI.Interface
 {
     public interface IBinder
     {
         Dictionary<Type, Type> GetBinds();
-        void Bind(Type type);
-        void Bind(Type baseType, Type implType);
-        void Bind<T>() where T : class;
-        void Bind<TBase, TImpl>() where TBase : class where TImpl : TBase;
-        void Bind(Dictionary<Type, Type> dictionary);
-        void Bind<T>(Type type) where T : class;
+        void Bind(Type baseType, Type implType, Action<Type, Type> callback);
+        void BindConfig(in IBindableConfiguration config, Action callback);
     }
 }

@@ -96,7 +96,7 @@ namespace Sources.Scripts.Utils
                 var val = Helper.TypeNameCutter(instance.GetType());
 
                 field.SetValue(target, instance);
-                _myContainer.AddToCache(typeof(T), in instance);
+                // _myContainer.AddToCache(typeof(T), in instance);
 
                 JLog.Msg($"Injected. {val} to {target}");
             }

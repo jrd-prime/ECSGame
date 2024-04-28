@@ -1,7 +1,7 @@
 ﻿using System;
 using Sources.Scripts.Core.Config.Enum;
 
-namespace Sources.Scripts.Factory
+namespace Sources.Scripts.DI.Factory
 {
     public class ServiceFactoryManager
     {
@@ -19,8 +19,7 @@ namespace Sources.Scripts.Factory
 
             return serviceFactory switch
             {
-                ServiceFactoryEnum.Standard =>  typeof(StandardServiceFactory),
-                ServiceFactoryEnum.Cloud => typeof(CloudServiceFactory),
+                ServiceFactoryEnum.Standard =>  typeof(DefaultServiceFactory),
                 _ => throw new ArgumentOutOfRangeException(nameof(serviceFactory), serviceFactory, null)
             };
         }

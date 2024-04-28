@@ -1,78 +1,110 @@
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Core.Config;
 using Sources.Scripts.DI.Interface;
-using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
-    public class MyContainer : IMyContainer
+    public class MyContainer : IMyContainer, IDisposable
     {
         [JManualInject] private readonly IBinder _binder;
         [JManualInject] private readonly ICache _cache;
         [JManualInject] private readonly IInjector _injector;
 
-        public async Task<T> GetServiceAsync<T>() where T : class => await _cache.Get<T>() as T;
+        private object _tempImplInstance;
+        private IBindableConfiguration _tempConfig;
 
-        public async Task<T> BindAsync<T>() where T : class
+        private Action<Type, Type> _bindComplete;
+        private Action _bindConfigComplete;
+
+        public MyContainer()
         {
-            _binder.Bind<T>();
-            _cache.Add<T>();
-            return await GetServiceAsync<T>();
+            _bindComplete += OnBindFinished;
+            _bindConfigComplete += OnBindConfigFinished;
         }
 
-        public async Task<TBase> BindAsync<TBase, TImpl>() where TBase : class where TImpl : TBase
+        #region Callbacks
+
+        private void OnBindFinished(Type baseType, Type implType)
         {
-            _binder.Bind<TBase, TImpl>();
-            _cache.Add<TBase, TImpl>();
-            return await GetServiceAsync<TBase>();
+            _cache.Add(baseType, implType, in _tempImplInstance);
+            _tempImplInstance = null;
         }
 
-        public async Task<T> BindAsync<T>(object instanceImpl) where T : class
+        private void OnBindConfigFinished()
         {
-            if (instanceImpl == null) throw new ArgumentNullException();
-
-            _binder.Bind<T>(instanceImpl.GetType());
-            _cache.Add<T>(in instanceImpl);
-            return await GetServiceAsync<T>();
+            _cache.Add(_tempConfig);
+            _tempConfig = null;
         }
 
-        public async Task<TBase> BindAsync<TBase, TImpl>(TImpl instanceImpl) where TBase : class where TImpl : TBase
+        #endregion
+
+        #region Get
+
+        public T GetService<T>() where T : class => _cache.Get<T>();
+
+        #endregion
+
+        #region Bind
+
+        private void BindMain(Type baseType, Type implType)
         {
-            if (instanceImpl == null) throw new ArgumentNullException();
+            if (baseType == null || implType == null) throw new ArgumentNullException();
 
-            object instance = instanceImpl;
-
-            _binder.Bind<TBase>(instanceImpl.GetType());
-            _cache.Add<TBase>(in instance);
-            return await GetServiceAsync<TBase>();
+            _binder.Bind(baseType, implType, _bindComplete);
         }
 
-        public async Task BindConfigAsync(IBindableConfiguration configuration)
+        public void BindConfig(in IBindableConfiguration configuration)
         {
-            if (configuration == null) throw new ArgumentNullException();
+            _tempConfig = configuration ?? throw new ArgumentNullException();
+            if (_tempConfig.GetBindings().Count != 0)
+                _binder.BindConfig(in _tempConfig, _bindConfigComplete);
 
-            Dictionary<Type, Type> bindingsList = configuration.GetBindings();
-
-            _binder.Bind(bindingsList);
-            await _cache.Add(bindingsList);
+            _tempConfig = null;
         }
 
-        public void AddToCache(Type type, in object instance)
+        public void Bind<T>() where T : class => BindMain(typeof(T), typeof(T));
+
+        public void Bind<TBase, TImpl>() where TBase : class where TImpl : TBase
+            => BindMain(typeof(TBase), typeof(TImpl));
+
+        public void Bind<T>(in object implInstance) where T : class
         {
-            if (type == null || instance == null) throw new ArgumentNullException();
-            _cache.Add(type, in instance);
+            _tempImplInstance = implInstance ?? throw new ArgumentNullException();
+            BindMain(typeof(T), implInstance.GetType());
         }
 
+        public void Bind<TBase, TImpl>(in TImpl implInstance) where TBase : class where TImpl : TBase
+        {
+            _tempImplInstance = implInstance ?? throw new ArgumentNullException();
+            BindMain(typeof(TBase), typeof(TImpl));
+        }
+
+        #endregion
+
+        #region Inject
+
+        //TODO remove direct call
         public async Task InjectServicesAsync(Assembly assembly)
         {
             if (assembly == null) throw new ArgumentNullException();
             await _injector.InjectDependenciesAsync(assembly);
         }
 
+        #endregion
+
+        #region Service
+
         public bool IsFieldsInjected() => _binder != null && _cache != null && _injector != null;
+
+        public void Dispose()
+        {
+            _bindComplete -= OnBindFinished;
+            _bindConfigComplete -= OnBindConfigFinished;
+        }
+
+        #endregion
     }
 }

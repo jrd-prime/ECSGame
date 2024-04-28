@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using Sources.Scripts.Core.Config;
 
 namespace Sources.Scripts.DI.Interface
 {
-    public interface ICache: IFieldsInjectable
+    public interface ICache : IFieldsInjectable
     {
-        Task<T> Get<T>() where T : class;
-        Dictionary<Type, object> GetCache();
-        void Add<T>() where T : class;
-        void Add<TBase, TImpl>() where TBase : class where TImpl : TBase;
-        void Add<T>(in object instance) where T : class;
-        void Add(Type type, in object instance);
-        Task Add(Dictionary<Type, Type> dictionary);
-        void Clear();
+        public T Get<T>() where T : class;
+        public Dictionary<Type, object> GetCache();
+        public void Add(in IBindableConfiguration tempConfig);
+        public void Add(Type baseType, Type implType = null, in object implInstance = null);
+        public void Clear();
     }
-
-   
 }

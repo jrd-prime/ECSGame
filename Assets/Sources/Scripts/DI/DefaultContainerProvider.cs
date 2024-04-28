@@ -6,9 +6,9 @@ using NUnit.Framework;
 using Sources.Scripts.Annotation;
 using Sources.Scripts.Core.Config;
 using Sources.Scripts.DI.Interface;
-using Sources.Scripts.Factory;
 using UnityEngine;
 using Exception = System.Exception;
+using Random = System.Random;
 
 namespace Sources.Scripts.DI
 {
@@ -38,12 +38,9 @@ namespace Sources.Scripts.DI
 
         private async UniTask InjectDependencies()
         {
-            await UniTask
-                .WhenAll(
-                    InjectFor(_container),
-                    InjectFor(_cache),
-                    InjectFor(_injector)
-                );
+            await InjectFor(_container);
+            await InjectFor(_cache);
+            await InjectFor(_injector);
         }
 
         private async UniTask CreateInstances()
@@ -78,8 +75,10 @@ namespace Sources.Scripts.DI
                     field.SetValue(target, _tempCache[implType]);
             }
 
-            Debug.LogWarning("delay");
-            await UniTask.Delay(2000);
+            var r = new Random();
+            var t = r.Next(2000, 5000);
+            Debug.LogWarning($"FakeDelay for {target.GetType()}. Sec: {t}");
+            await UniTask.Delay(t);
 
             // Check after inject
             Assert.True(target.IsFieldsInjected());

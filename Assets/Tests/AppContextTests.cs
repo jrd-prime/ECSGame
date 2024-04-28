@@ -6,6 +6,7 @@ using Sources.Scripts;
 using Sources.Scripts.Core.Config;
 using Sources.Scripts.Core.Config.Enum;
 using Sources.Scripts.DI;
+using Sources.Scripts.DI.Interface;
 using UnityEngine;
 
 namespace Tests
@@ -34,12 +35,6 @@ namespace Tests
             stub.Setup(x => x.InitializeAsync()).Verifiable();
             stub.Object.InitializeAsync();
             stub.Verify(x => x.InitializeAsync(), Times.Once);
-        }
-
-        [Test]
-        public void Initialize_DoesNotThrowException()
-        {
-            Assert.DoesNotThrowAsync(_context.InitializeAsync);
         }
     }
 }

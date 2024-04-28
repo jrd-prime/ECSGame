@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sources.Scripts.Core.Config;
 using Sources.Scripts.DI.Interface;
 using Sources.Scripts.Utils;
 
 namespace Sources.Scripts.DI
 {
-    
-
     /// <summary>
     /// Binds cache
     /// </summary>
@@ -16,39 +15,30 @@ namespace Sources.Scripts.DI
 
         private static readonly Dictionary<Type, Type> Binds = new();
 
-        private static void BindMain(Type baseType, Type implType)
+        private static bool BindMain(Type baseType, Type implType)
+        {
+            JLog.Msg($"Bind: {Helper.TypeNameCutter(baseType)} <- {Helper.TypeNameCutter(implType)}");
+            Binds.TryAdd(baseType, implType);
+            return Binds.ContainsKey(baseType);
+        }
+
+        public void Bind(Type baseType, Type implType, Action<Type, Type> callback = null)
         {
             if (baseType == null || implType == null) throw new ArgumentNullException();
 
-            JLog.Msg($"Bind: {Helper.TypeNameCutter(baseType)} <- {Helper.TypeNameCutter(implType)}");
-
-            if (Binds.ContainsKey(baseType)) return;
-            
-            Binds.TryAdd(baseType, implType);
+            if (BindMain(baseType, implType)) callback?.Invoke(baseType, implType);
         }
 
-        public void Bind(Type type) => BindMain(type, type);
-        public void Bind(Type baseType, Type implType) => BindMain(baseType, implType);
-        public void Bind<T>() where T : class => BindMain(typeof(T), typeof(T));
-
-        public void Bind<TBase, TImpl>() where TBase : class where TImpl : TBase =>
-            BindMain(typeof(TBase), typeof(TImpl));
-
-        public void Bind(Dictionary<Type, Type> dictionary)
+        public void BindConfig(in IBindableConfiguration config, Action callback = null)
         {
-            if (dictionary == null) throw new ArgumentNullException();
-            if (dictionary.Count == 0) return;
+            if (config == null) throw new ArgumentNullException();
 
-            foreach (var bind in dictionary)
+            foreach (var binding in config.GetBindings())
             {
-                BindMain(bind.Key, bind.Value);
+                BindMain(binding.Key, binding.Value);
             }
-        }
 
-        public void Bind<T>(Type type) where T : class
-        {
-            if (type == null) throw new ArgumentNullException();
-            BindMain(typeof(T), type);
+            callback?.Invoke();
         }
     }
 }

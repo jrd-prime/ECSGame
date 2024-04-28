@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using NUnit.Framework;
 using Sources.Scripts.Annotation;
+using Sources.Scripts.Core.Config;
 using Sources.Scripts.DI.Interface;
-using Sources.Scripts.Factory;
 using Sources.Scripts.Utils;
-using UnityEngine;
 
 namespace Sources.Scripts.DI
 {
-    public class Cache : ICache, IFieldsInjectable
+    public class Cache : ICache
     {
         [JManualInject] private readonly IServiceFactory _serviceFactory;
 
@@ -19,56 +16,46 @@ namespace Sources.Scripts.DI
         public bool IsFieldsInjected() => _serviceFactory != null;
         public Dictionary<Type, object> GetCache() => CacheDict;
 
-        private async Task<T> GetFromCache<T>() where T : class
+        public void Add(in IBindableConfiguration tempConfig)
         {
-            if (!CacheDict.ContainsKey(typeof(T))) throw new KeyNotFoundException();
+            if (tempConfig == null) throw new ArgumentNullException();
 
-            return await Task.FromResult(CacheDict[typeof(T)] as T);
+            var binds = tempConfig.GetBindings();
+
+            if (binds.Count == 0) return;
+
+            foreach (var bind in binds)
+            {
+                AddMain(bind.Key, bind.Value);
+            }
         }
 
-        private void AddMain(Type baseType, Type implType)
+        public void Add(Type baseType, Type implType, in object implInstance = null)
         {
             if (baseType == null || implType == null) throw new ArgumentNullException();
             if (CacheDict.ContainsKey(baseType)) return;
 
-            Assert.IsNotNull(_serviceFactory, $"{GetType()} (!) ServiceFactory NOT injected!");
+            object instance = implInstance ?? _serviceFactory.CreateService(implType);
 
-            var instance = _serviceFactory.CreateServiceAsync(implType).Result;
-
-            if (instance == null) throw new NullReferenceException();
-
-            AddToCache(baseType, in instance);
+            AddMain(baseType, in instance);
         }
 
-        private void AddToCache(Type type, in object instance)
+        private void AddMain(Type type, in object instance)
         {
             if (type == null || instance == null) throw new ArgumentNullException();
 
             if (CacheDict.TryAdd(type, instance)) JLog.Msg($"Added to cache -> {type} <- {instance}");
         }
 
-        public void Add<T>() where T : class => AddMain(typeof(T), typeof(T));
-
-        public void Add<TBase, TImpl>() where TBase : class where TImpl : TBase
-            => AddMain(typeof(TBase), typeof(TImpl));
-
-        public void Add<T>(in object instance) where T : class => AddToCache(typeof(T), in instance);
-        public void Add(Type type, in object instance) => AddToCache(type, in instance);
-
-        public async Task Add(Dictionary<Type, Type> dictionary)
+        //TODO BindAndGet ? bad idea?
+        public T Get<T>() where T : class
         {
-            if (dictionary == null) throw new ArgumentNullException();
-            if (dictionary.Count == 0) return;
+            if (!CacheDict.ContainsKey(typeof(T)))
+                throw new KeyNotFoundException(
+                    $"{typeof(T)} >>> The service is not in cache! First, bind the service!");
 
-            foreach (var bind in dictionary)
-            {
-                AddMain(bind.Key, bind.Value);
-            }
-
-            await Task.CompletedTask;
+            return CacheDict[typeof(T)] as T;
         }
-
-        public async Task<T> Get<T>() where T : class => await GetFromCache<T>();
 
         public void Clear()
         {
