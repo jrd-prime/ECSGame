@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sources.Scripts.Annotation;
-using Sources.Scripts.Core.Config;
-using Sources.Scripts.DI;
+using ECSGame.Scripts.Core.Config;
 
 namespace Tests
 {

@@ -1,8 +1,7 @@
 ﻿using System.Reflection;
+using ECSGame.Scripts.Core.DI;
 using Moq;
 using NUnit.Framework;
-using Sources.Scripts.DI;
-using Sources.Scripts.DI.Interface;
 
 namespace Tests.Container
 {

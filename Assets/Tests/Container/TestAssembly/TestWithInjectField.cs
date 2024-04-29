@@ -1,6 +1,5 @@
-﻿using Sources.Scripts.Annotation;
-using Sources.Scripts.DI;
-using Sources.Scripts.DI.Interface;
+﻿using ECSGame.Scripts.Core.Annotation;
+using ECSGame.Scripts.Core.DI.Interface;
 
 namespace Tests.Container.TestAssembly
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ECSGame.Scripts.Core.DI;
 using Moq;
 using NUnit.Framework;
-using Sources.Scripts.DI;
 
 namespace Tests.Container
 {
