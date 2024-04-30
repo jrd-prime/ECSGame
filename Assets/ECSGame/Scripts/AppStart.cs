@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using ECSGame.Scripts.Core.AssetLoader;
-using ECSGame.Scripts.Core.Config;
 using ECSGame.Scripts.Core.DI;
 using ECSGame.Scripts.State.Game;
 using ECSGame.Scripts.State.Loading;
@@ -35,9 +33,9 @@ namespace ECSGame.Scripts
             loading.Enqueue(_context.ConfigManager);
             loading.Enqueue(_context.ContainerProvider);
             loading.Enqueue(new InitializeDI());
+            loading.Enqueue(new InitializeEnvironment(_assetLoader));
 
-            _loadingScreenProvider.LoadAndDestroy(loading).Forget();
-            await _assetLoader.Load<MainEnvironment>("MainEnvironment");
+            await _loadingScreenProvider.LoadAndDestroy(loading);
 
             JLog.Msg($"(Services initialization FINISHED...");
 

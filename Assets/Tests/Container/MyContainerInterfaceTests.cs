@@ -11,7 +11,6 @@ namespace Tests.Container
         private TestObject _testObject;
         private TestImpl _testImpl;
         private Assembly _assemblyMock;
-        private InjectResult _stubInjectResult;
 
         [SetUp]
         public void SetUp()

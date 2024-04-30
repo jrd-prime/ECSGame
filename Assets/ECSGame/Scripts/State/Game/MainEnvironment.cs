@@ -1,4 +1,5 @@
-﻿using ECSGame.Scripts.State.Loading;
+﻿using Cysharp.Threading.Tasks;
+using ECSGame.Scripts.State.Loading;
 using UnityEngine;
 
 namespace ECSGame.Scripts.State.Game

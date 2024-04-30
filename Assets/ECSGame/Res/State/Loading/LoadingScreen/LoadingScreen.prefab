@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2359988688623616319}
   - component: {fileID: 605269895112169830}
+  - component: {fileID: 6833011453739904622}
   m_Layer: 0
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -45,6 +46,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e977e59757c46199d26dfd76041fbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6833011453739904622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4357026108210887013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 44bf3209c251c1648bfdf417e97fd03a, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 4743de09bef9e5e439ef7a49a2fdc75b,
+    type: 3}
+  m_SortingOrder: 100
 --- !u!1 &7316545584673411764
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,7 +72,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8026144445309117235}
-  - component: {fileID: 7711506227217290536}
   m_Layer: 0
   m_Name: Loading
   m_TagString: Untagged
@@ -77,20 +94,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2359988688623616319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7711506227217290536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7316545584673411764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 44bf3209c251c1648bfdf417e97fd03a, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 4743de09bef9e5e439ef7a49a2fdc75b,
-    type: 3}
-  m_SortingOrder: 100
