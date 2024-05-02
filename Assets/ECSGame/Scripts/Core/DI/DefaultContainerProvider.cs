@@ -4,8 +4,9 @@ using System.Reflection;
 using Cysharp.Threading.Tasks;
 using ECSGame.Scripts.Core.Annotation;
 using ECSGame.Scripts.Core.DI.Interface;
-using NUnit.Framework;
+
 using UnityEngine;
+using UnityEngine.Assertions;
 using Exception = System.Exception;
 using Random = System.Random;
 
@@ -42,8 +43,7 @@ namespace ECSGame.Scripts.Core.DI
             await SetTemporaryCache(new List<object> { _container, _binder, _cache, _injector, _serviceFactory });
             await InjectDependencies();
         }
-
-
+        
         private async UniTask InjectDependencies()
         {
             await InjectFor(_container);
@@ -89,26 +89,26 @@ namespace ECSGame.Scripts.Core.DI
             await UniTask.Delay(t);
 
             // Check after inject
-            Assert.True(target.IsFieldsInjected());
+            Assert.IsTrue(target.IsFieldsInjected());
         }
 
         private async UniTask CheckConfigForCriticalImplementations()
         {
             if (_config == null) throw new ArgumentNullException(Messages.ConfigNullErrMsg);
 
-            Assert.True(
+            Assert.IsTrue(
                 _config.Impl.ContainsKey(typeof(IMyContainer)),
                 $"{Messages.ContainerImplErrMsg} {typeof(IMyContainer)}");
-            Assert.True(
+            Assert.IsTrue(
                 _config.Impl.ContainsKey(typeof(IBinder)),
                 $"{Messages.ContainerImplErrMsg} {typeof(IBinder)}");
-            Assert.True(
+            Assert.IsTrue(
                 _config.Impl.ContainsKey(typeof(ICache)),
                 $"{Messages.ContainerImplErrMsg} {typeof(ICache)}");
-            Assert.True(
+            Assert.IsTrue(
                 _config.Impl.ContainsKey(typeof(IInjector)),
                 $"{Messages.ContainerImplErrMsg} {typeof(IInjector)}");
-            Assert.True(
+            Assert.IsTrue(
                 _config.Impl.ContainsKey(typeof(IServiceFactory)),
                 $"{Messages.ContainerImplErrMsg} {typeof(IServiceFactory)}");
 

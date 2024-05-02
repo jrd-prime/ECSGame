@@ -1,0 +1,19 @@
+.full-screen-container {
+    background-color: rgb(204, 204, 204);
+    -unity-font: resource('Fonts/Roboto-Medium');
+    -unity-font-style: normal;
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.head-main {
+    font-size: 20px;
+}

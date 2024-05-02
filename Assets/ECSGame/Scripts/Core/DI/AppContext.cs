@@ -33,11 +33,11 @@ namespace ECSGame.Scripts.Core.DI
             ContainerProvider = new DefaultContainerProvider();
             Container = ContainerProvider.GetContainer();
         }
-#if !UNITY_INCLUDE_TESTS
-        private void OnValidate()
-        {
-            if (_gameConfig == null) throw new Exception($"Game config not set to {gameObject.name}!");
-        }
-#endif
+// #if !UNITY_INCLUDE_TESTS 
+//         private void OnValidate()
+//         {
+//             if (_gameConfig == null) throw new Exception($"Game config not set to {gameObject.name}!");
+//         }
+// #endif
     }
 }

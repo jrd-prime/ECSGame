@@ -1,5 +1,18 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="loading-screen-root" style="flex-grow: 1; background-color: rgb(0, 0, 0); top: 0; position: absolute; width: 100%; height: 100%;">
-        <ui:Button text="btn" parse-escape-sequences="true" display-tooltip-when-elided="true" name="btn" style="height: 90%; width: 90%;" />
+    <Style src="project://database/Assets/ECSGame/Res/UI/UIMainTheme.uss?fileID=7433441132597879392&amp;guid=2060fce8456b4a44bbd01579c4cd7a17&amp;type=3#UIMainTheme" />
+    <Style src="project://database/Assets/ECSGame/Res/UI/FullScreenTemplateSettings.uss?fileID=7433441132597879392&amp;guid=594fecc2cc586984ea097d14fb0351d8&amp;type=3#FullScreenTemplateSettings" />
+    <ui:VisualElement name="loading-screen-root" class="full-screen-container">
+        <ui:VisualElement name="head-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 20%; align-items: center; justify-content: center; align-self: center; width: 100%;">
+            <ui:Label tabindex="-1" text="ECS GAME" parse-escape-sequences="true" display-tooltip-when-elided="true" name="head-text-label" class="head-main" />
+        </ui:VisualElement>
+        <ui:VisualElement name="img-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 50%; align-items: center; justify-content: center; align-self: center; width: 100%;">
+            <ui:VisualElement name="img-cont" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Other/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=c1d77148ec28b654cacbd6ba28d19c68&amp;type=3#check&quot;); width: 22px; height: 22px; align-self: auto; justify-content: flex-start; align-items: auto; position: absolute;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="progress-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 10%; align-items: center; justify-content: center; align-self: center; width: 100%;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="progress-text-label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="footer-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 20%; align-items: center; justify-content: center; align-self: center; width: 100%;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="foot-text-label" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
