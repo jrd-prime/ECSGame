@@ -8,8 +8,14 @@
         <ui:VisualElement name="img-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 50%; align-items: center; justify-content: center; align-self: center; width: 100%;">
             <ui:VisualElement name="img-cont" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Other/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=c1d77148ec28b654cacbd6ba28d19c68&amp;type=3#check&quot;); width: 22px; height: 22px; align-self: auto; justify-content: flex-start; align-items: auto; position: absolute;" />
         </ui:VisualElement>
-        <ui:VisualElement name="progress-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 10%; align-items: center; justify-content: center; align-self: center; width: 100%;">
-            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="progress-text-label" />
+        <ui:VisualElement name="progress-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 10%; align-items: center; justify-content: center; align-self: center; width: 80%;">
+            <ui:VisualElement name="pb-bar" style="flex-grow: 0; background-color: rgb(138, 201, 74); border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; width: 241px; height: 12px; position: absolute; top: 0; right: 0; overflow: hidden;" />
+            <ui:VisualElement name="custom-pb" class="pb-custom-main" style="width: 604px; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
+                <ui:VisualElement name="pb-cont" style="flex-grow: 1; width: 600px; height: auto; position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
+                    <ui:VisualElement name="pb-bar-val" style="width: 111px; height: 111px; background-color: rgb(108, 21, 21);" />
+                </ui:VisualElement>
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="footer-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 20%; align-items: center; justify-content: center; align-self: center; width: 100%;">
             <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="foot-text-label" />

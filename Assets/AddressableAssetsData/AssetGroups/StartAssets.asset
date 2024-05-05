@@ -29,11 +29,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - JPreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1c8acf561a044084c83e0cbbea23d63c
-    m_Address: LoaderScene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c850ee8c3b14cc8459e7e186857cf567
     m_Address: GameScene
     m_ReadOnly: 0

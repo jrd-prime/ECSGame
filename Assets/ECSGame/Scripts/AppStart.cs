@@ -6,10 +6,13 @@ using ECSGame.Scripts.State.Loading;
 using ECSGame.Scripts.Utils;
 using UnityEngine;
 using System;
-using Cysharp.Threading.Tasks;
+using System.Linq;
+using System.Reflection;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Profiling;
 using UnityEngine.SceneManagement;
 using AppContext = ECSGame.Scripts.Core.DI.AppContext;
+using Scene = ECSGame.Scripts.Core.Config.Const.Scene;
 
 namespace ECSGame.Scripts
 {
@@ -18,45 +21,29 @@ namespace ECSGame.Scripts
         [SerializeField] private GameObject _appContextHolderGo;
 
         private AppContext _context;
-        private IAssetLoader _assetLoader;
-        private LoadingScreenProvider _loadingScreenProvider;
+        public Loader Loader { get; private set; }
 
-        private async void Awake()
+        private void Awake()
         {
             _context = _appContextHolderGo.GetComponent<AppContext>();
-            _loadingScreenProvider = new LoadingScreenProvider();
-            _assetLoader = new LocalAssetLoader();
+            Loader = new Loader();
         }
 
         private async void Start()
         {
-            var s = "GameScene";
+            await _context.Init(Loader);
 
-            var b = Addressables.LoadSceneAsync(s, LoadSceneMode.Additive);
-            await b.Task;
+            await _context.LoadingScreenProvider.LoadAndDestroy(Loader);
 
-            var se = SceneManager.GetActiveScene();
+            var gameSceneInstance = Addressables.LoadSceneAsync(Scene.Game, LoadSceneMode.Additive);
+            await gameSceneInstance.Task;
 
+            var tempActiveScene = SceneManager.GetActiveScene();
 
-            _context.Init();
-
-            var loading = new Queue<ILoadable>();
-            loading.Enqueue(_context.ConfigManager);
-            loading.Enqueue(_context.ContainerProvider);
-            loading.Enqueue(new InitializeDI());
-            loading.Enqueue(new InitializeEnvironment(_assetLoader));
-
-            await _loadingScreenProvider.LoadAndDestroy(loading);
-            SceneManager.SetActiveScene(b.Result.Scene);
-
-            SceneManager.UnloadSceneAsync(se);
-
-            // if (a.isDone)
-            // {
-            //     SceneManager.UnloadScene("LoaderScene");
-            // }
+            SceneManager.SetActiveScene(gameSceneInstance.Result.Scene);
 
 
+            SceneManager.UnloadSceneAsync(tempActiveScene);
             JLog.Msg($"(Services initialization FINISHED...");
             Debug.LogWarning("START THE GAME");
         }

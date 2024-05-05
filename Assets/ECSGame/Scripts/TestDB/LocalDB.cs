@@ -1,3 +1,7 @@
+using System;
+using Cysharp.Threading.Tasks;
+using ECSGame.Scripts.State.Loading;
+
 namespace ECSGame.Scripts.TestDB
 {
     public class LocalDB : IDataBase
@@ -12,6 +16,12 @@ namespace ECSGame.Scripts.TestDB
         public void ShowInfo()
         {
             throw new System.NotImplementedException();
+        }
+
+        public string Description { get; }
+        public UniTask Load(Action<ILoadable> action)
+        {
+            throw new NotImplementedException();
         }
     }
 }

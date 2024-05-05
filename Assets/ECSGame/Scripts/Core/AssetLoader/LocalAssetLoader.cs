@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Cysharp.Threading.Tasks;
+using ECSGame.Scripts.State.Loading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
@@ -17,6 +18,8 @@ namespace ECSGame.Scripts.Core.AssetLoader
         {
             var handle = Addressables.InstantiateAsync(assetName, parent);
             CachedObj = await handle.Task;
+            
+            
             if (CachedObj.TryGetComponent(out T component) == false)
                 throw new NullReferenceException($"Object of type {typeof(T)} is null on " +
                                                  "attempt to load it from addressables");
@@ -31,6 +34,12 @@ namespace ECSGame.Scripts.Core.AssetLoader
             CachedObj.SetActive(false);
             Addressables.ReleaseInstance(CachedObj);
             CachedObj = null;
+        }
+
+        public UniTask Load(Action<ILoadable> action)
+        {
+            action.Invoke(this);
+            return UniTask.CompletedTask;
         }
     }
 }

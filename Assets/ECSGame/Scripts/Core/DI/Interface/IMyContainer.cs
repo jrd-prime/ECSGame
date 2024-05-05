@@ -1,10 +1,11 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 using ECSGame.Scripts.Core.Config;
+using ECSGame.Scripts.State.Loading;
 
 namespace ECSGame.Scripts.Core.DI.Interface
 {
-    public interface IMyContainer: IFieldsInjectable
+    public interface IMyContainer: IFieldsInjectable, ILoadable
 
     {
     public Task InjectServicesAsync(Assembly assembly);

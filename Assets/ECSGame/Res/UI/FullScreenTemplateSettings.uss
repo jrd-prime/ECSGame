@@ -17,3 +17,30 @@
 .head-main {
     font-size: 20px;
 }
+
+.pb-custom-main {
+    -unity-text-align: middle-center;
+    height: 16px;
+    font-size: 11px;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    background-color: rgb(210, 210, 210);
+    padding-top: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    border-left-color: rgb(105, 105, 105);
+    border-right-color: rgb(105, 105, 105);
+    border-top-color: rgb(105, 105, 105);
+    border-bottom-color: rgb(105, 105, 105);
+}

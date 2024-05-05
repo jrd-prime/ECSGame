@@ -1,12 +1,5 @@
-﻿using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-using ECSGame.Scripts.Core.Config;
-using ECSGame.Scripts.Core.Config.Enum;
-using ECSGame.Scripts.Core.DI;
-using ECSGame.Scripts.Core.DI.Interface;
-using Moq;
+﻿using ECSGame.Scripts.Core.DI;
 using NUnit.Framework;
-using UnityEngine;
 
 namespace Tests
 {

@@ -1,19 +1,17 @@
-﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using ECSGame.Scripts.Core.AssetLoader;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
-using UnityEngine.UIElements.Experimental;
 
 namespace ECSGame.Scripts.State.Loading
 {
     public class LoadingScreenProvider : LocalAssetLoader
     {
-        public async UniTask LoadAndDestroy(Queue<ILoadable> loadable)
+        public async UniTask LoadAndDestroy(Loader loader)
         {
-            var loadingScreen = await Load<LoadingScreen>("LoadingScreen");
-            await loadingScreen.Load(loadable);
+            var loadingScreen = await Load<LoadingScreenView>("LoadingScreen");
+
+            loadingScreen._steps = loader.LoadingQueue.Count;
+
+            await loadingScreen.Load(loader);
             Unload();
         }
     }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using Cysharp.Threading.Tasks;
 using ECSGame.Scripts.Core.Annotation;
+using ECSGame.Scripts.Core.Config;
 using ECSGame.Scripts.Core.DI.Interface;
-
+using ECSGame.Scripts.State.Loading;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Exception = System.Exception;
@@ -12,7 +13,7 @@ using Random = System.Random;
 
 namespace ECSGame.Scripts.Core.DI
 {
-    public class DefaultContainerProvider : IContainerProvider
+    public class DefaultContainerInitializer : IContainerInitializer
     {
         private IMyContainer _container;
         private IBinder _binder;
@@ -22,15 +23,21 @@ namespace ECSGame.Scripts.Core.DI
 
         private IContainerConfig _config;
         private IMyContainerFactory _factory;
+        private bool isContainerInit;
 
         private readonly AppContext _context = AppContext.Instance;
         private readonly Dictionary<Type, object> _tempCache = new();
 
-        public IMyContainer GetContainer() => _container;
-
-        public async UniTask Load()
+        public IMyContainer GetContainer()
         {
-            _config = _context.ConfigManager.GetConfiguration<IContainerConfig>()
+            return !isContainerInit ? null : _container;
+        }
+
+
+        public async UniTask Load(Action<ILoadable> action)
+        {
+            action.Invoke(this);
+            _config = ConfigManager.Instance.GetConfiguration<IContainerConfig>()
                       ?? throw new NullReferenceException();
 
             var factoryImplType = _config.Impl[typeof(IMyContainerFactory)]
@@ -42,8 +49,12 @@ namespace ECSGame.Scripts.Core.DI
             await CreateInstances();
             await SetTemporaryCache(new List<object> { _container, _binder, _cache, _injector, _serviceFactory });
             await InjectDependencies();
+
+            await InitializeDI.Init(_container);
+
+            isContainerInit = true;
         }
-        
+
         private async UniTask InjectDependencies()
         {
             await InjectFor(_container);
@@ -83,13 +94,10 @@ namespace ECSGame.Scripts.Core.DI
                     field.SetValue(target, _tempCache[implType]);
             }
 
-            var r = new Random();
-            var t = r.Next(500, 1000);
-            Debug.LogWarning($"FakeDelay for {target.GetType()}. Sec: {t}");
-            await UniTask.Delay(t);
-
             // Check after inject
             Assert.IsTrue(target.IsFieldsInjected());
+
+            await UniTask.CompletedTask;
         }
 
         private async UniTask CheckConfigForCriticalImplementations()

@@ -1,9 +1,11 @@
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using ECSGame.Scripts.Core.Annotation;
 using ECSGame.Scripts.Core.Config;
 using ECSGame.Scripts.Core.DI.Interface;
+using ECSGame.Scripts.State.Loading;
 
 namespace ECSGame.Scripts.Core.DI
 {
@@ -106,5 +108,12 @@ namespace ECSGame.Scripts.Core.DI
         }
 
         #endregion
+
+        public string Description => "Container";
+
+        public UniTask Load(Action<ILoadable> action)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

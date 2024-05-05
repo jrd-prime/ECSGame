@@ -27,8 +27,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/AppStart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/AssetLoader/IAssetLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/AssetLoader/LocalAssetLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/Config/ConfigManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/Config/Providers/AssetLoaderProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/Config/Providers/ContainerProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/DI/AppContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/DI/DefaultContainerInit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/DI/MyContainer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/Core/DataBase/DataBaseProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/State/Loading/ILoadable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ECSGame/Scripts/TestViews/IViews.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -144,6 +149,8 @@
       <workItem from="1714550902523" duration="2501000" />
       <workItem from="1714630122900" duration="7462000" />
       <workItem from="1714650132392" duration="4226000" />
+      <workItem from="1714727168707" duration="15040000" />
+      <workItem from="1714800067326" duration="20581000" />
     </task>
     <servers />
   </component>
