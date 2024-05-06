@@ -19,6 +19,12 @@ namespace ECSGame.Scripts.Core
                     $"Impl Type not set or Instance is null! Check init with SetImpl() in config / {this}")
                 : (T)CachedInstance;
 
+        public virtual object GetImplInstance(Type type) =>
+            ImplType == null || CachedInstance == null
+                ? throw new Exception(
+                    $"Impl Type not set or Instance is null! Check init with SetImpl() in config / {this}")
+                : CachedInstance;
+
         public virtual Type GetImplType(Enum gameConfig)
         {
             if (gameConfig == null)

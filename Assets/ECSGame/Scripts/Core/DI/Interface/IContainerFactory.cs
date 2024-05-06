@@ -3,7 +3,7 @@ using ECSGame.Scripts.State.Loading;
 
 namespace ECSGame.Scripts.Core.DI.Interface
 {
-    public interface IMyContainerFactory : ILoadable
+    public interface IContainerFactory : ILoadable
     {
         string ILoadable.Description => "Container Factory";
 

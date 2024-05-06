@@ -22,7 +22,7 @@ namespace ECSGame.Scripts.Core.DI
         private IServiceFactory _serviceFactory;
 
         private IContainerConfig _config;
-        private IMyContainerFactory _factory;
+        private IContainerFactory _factory;
         private bool isContainerInit;
 
         private readonly AppContext _context = AppContext.Instance;
@@ -40,10 +40,10 @@ namespace ECSGame.Scripts.Core.DI
             _config = ConfigManager.Instance.GetConfiguration<IContainerConfig>()
                       ?? throw new NullReferenceException();
 
-            var factoryImplType = _config.Impl[typeof(IMyContainerFactory)]
+            var factoryImplType = _config.Impl[typeof(IContainerFactory)]
                                   ?? throw new KeyNotFoundException();
 
-            _factory = Activator.CreateInstance(factoryImplType) as IMyContainerFactory;
+            _factory = Activator.CreateInstance(factoryImplType) as IContainerFactory;
 
             await CheckConfigForCriticalImplementations();
             await CreateInstances();

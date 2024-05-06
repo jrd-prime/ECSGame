@@ -25,57 +25,48 @@ namespace ECSGame.Scripts.Core.DI
         public static AppContext Instance { get; private set; }
         public IMyContainer Container { get; private set; }
         public IDataBase DataBase { get; private set; }
-
-        public Providers Provider { get; private set; }
-        private ConfigManager _configManager;
-        private Loader _loader;
+        public ConfigManager ConfigManager { get; private set; }
+        private ProvidersFactory _providersFactory;
 
         private AppContext()
         {
         }
 
-        private void Awake()
+        private async void Awake()
         {
             Instance = this;
-            Provider = Providers.Init();
-            _configManager = ConfigManager.Instance;
-            _configManager.Init(_config);
+
+            ConfigManager = await ConfigManager.Instance.Init(_config);
+
+            // Init providers based on configuration
+            _providersFactory = new ProvidersFactory(_config);
+
+            LoadingScreenProvider = new LoadingScreenProvider();
 
             DontDestroyOnLoad(this);
         }
 
         public async UniTask Init(Loader loader)
         {
-            _loader = loader;
+            if (loader == null) throw new ArgumentNullException();
+            if (_providersFactory == null) throw new NullReferenceException("Providers factory is null!");
 
-            var containerInit = Provider
-                .Get<ContainerProvider>()
-                .GetImplInstance<IContainerInitializer>();
-            Container = containerInit.GetContainer();
-            var serviceFactory = Provider
-                .Get<ServiceFactoryProvider>()
-                .GetImplInstance<IServiceFactory>();
-            var containerFactory = Provider
-                .Get<ContainerFactoryProvider>()
-                .GetImplInstance<IMyContainerFactory>();
-            DataBase = Provider
-                .Get<DataBaseProvider>()
-                .GetImplInstance<IDataBase>();
-            AssetLoader = Provider
-                .Get<AssetLoaderProvider>()
-                .GetImplInstance<IAssetLoader>();
+            IContainerInitializer containerInitializer = _providersFactory.GetProvidedInstance<IContainerInitializer>();
+            IContainerFactory containerFactory = _providersFactory.GetProvidedInstance<IContainerFactory>();
+            IServiceFactory serviceFactory = _providersFactory.GetProvidedInstance<IServiceFactory>();
 
-            LoadingScreenProvider = new LoadingScreenProvider();
+            Container = containerInitializer!.GetContainer();
+            DataBase = _providersFactory.GetProvidedInstance<IDataBase>();
+            AssetLoader = _providersFactory.GetProvidedInstance<IAssetLoader>();
+
 
             // Loading queue
-            loader.AddToLoadingQueue(_configManager, 2000);
-            loader.AddToLoadingQueue(containerInit, 2000);
-            loader.AddToLoadingQueue(containerFactory, 2000);
-            loader.AddToLoadingQueue(serviceFactory, 2000);
-
-
-            loader.AddToLoadingQueue(DataBase, 2000);
-            loader.AddToLoadingQueue(AssetLoader, 2000);
+            loader.AddToQueue(ConfigManager);
+            loader.AddToQueue(containerInitializer, 2000);
+            loader.AddToQueue(containerFactory, 2000);
+            loader.AddToQueue(serviceFactory, 2000);
+            loader.AddToQueue(DataBase, 2000);
+            loader.AddToQueue(AssetLoader, 2000);
 
             await UniTask.CompletedTask;
         }

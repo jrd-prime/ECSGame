@@ -41,8 +41,7 @@ namespace ECSGame.Scripts
             var tempActiveScene = SceneManager.GetActiveScene();
 
             SceneManager.SetActiveScene(gameSceneInstance.Result.Scene);
-
-
+            
             SceneManager.UnloadSceneAsync(tempActiveScene);
             JLog.Msg($"(Services initialization FINISHED...");
             Debug.LogWarning("START THE GAME");

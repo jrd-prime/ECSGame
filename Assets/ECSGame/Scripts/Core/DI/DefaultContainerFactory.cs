@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ECSGame.Scripts.Core.DI
 {
-    public class DefaultContainerFactory : IMyContainerFactory
+    public class DefaultContainerFactory : IContainerFactory
     {
         public T GetInstance<T>(Type type) where T : class => CreateInstance(type) as T;
         private object CreateInstance(Type type) => Activator.CreateInstance(type);

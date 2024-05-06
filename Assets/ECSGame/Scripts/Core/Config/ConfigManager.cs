@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using ECSGame.Scripts.Core.Config.Providers;
 using ECSGame.Scripts.Core.DataBase;
@@ -31,7 +32,7 @@ namespace ECSGame.Scripts.Core.Config
 
         private static Type _databaseType;
         private static Type _serviceFactoryType;
-        private static bool isInit;
+        private static bool _isInit;
 
 
         private ConfigManager()
@@ -39,28 +40,18 @@ namespace ECSGame.Scripts.Core.Config
         }
 
 
-        public void Init(GameConfigScriptable gameConfig)
+        public async UniTask<ConfigManager> Init(GameConfigScriptable gameConfig)
         {
-            if (isInit) return;
-            
+            if (_isInit) return await UniTask.FromResult(Instance);
+
             _context = AppContext.Instance;
+
             GameConfig = gameConfig;
 
 
-            SetConfigToProviders();
-
-
             _cache = new Dictionary<Type, object>();
-            isInit = true;
-        }
-
-        private void SetConfigToProviders()
-        {
-            _context.Provider.Get<ContainerProvider>().SetImpl(GameConfig._containerInit);
-            _context.Provider.Get<ContainerFactoryProvider>().SetImpl(GameConfig._containerFactory);
-            _context.Provider.Get<ServiceFactoryProvider>().SetImpl(GameConfig._serviceFactory);
-            _context.Provider.Get<DataBaseProvider>().SetImpl(GameConfig._dataBase);
-            _context.Provider.Get<AssetLoaderProvider>().SetImpl(GameConfig._assetLoader);
+            _isInit = true;
+            return await UniTask.FromResult(Instance);
         }
 
         public void SetConfig<T>(ref IConfiguration config) where T : class, IConfiguration
@@ -80,13 +71,13 @@ namespace ECSGame.Scripts.Core.Config
 
         public async UniTask Load(Action<ILoadable> action)
         {
-            if (!isInit) throw new Exception("ConfigManager not init. Before load -> Init();");
+            if (!_isInit) throw new Exception("ConfigManager not init. Before load -> Init();");
 
             action.Invoke(this);
 
 
             var serviceFactoryType =
-                new ServiceFactoryProvider().GetImplType(GameConfig._serviceFactory);
+                new ServiceFactoryProvider().GetImplType(GameConfig._containerServiceFactory);
             var containerFactoryType = new ContainerFactoryProvider().GetImplType(GameConfig._containerFactory);
             // var assetLoaderType =
             //     AssetLoaderProvider.Instance.GetProviderType(GameConfig._assetLoader);
@@ -104,7 +95,7 @@ namespace ECSGame.Scripts.Core.Config
                     { typeof(IInjector), typeof(Injector) },
                     { typeof(IServiceFactory), serviceFactoryType },
                     { typeof(IDataBase), _databaseType },
-                    { typeof(IMyContainerFactory), containerFactoryType }
+                    { typeof(IContainerFactory), containerFactoryType }
                 }
             };
 

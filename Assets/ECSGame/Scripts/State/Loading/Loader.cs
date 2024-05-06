@@ -19,7 +19,7 @@ namespace ECSGame.Scripts.State.Loading
             LoadingQueue = new Queue<ILoadable>();
         }
 
-        public void AddToLoadingQueue(ILoadable operation, int bonusDelay = 0, [CallerFilePath] string pas = "")
+        public void AddToQueue(ILoadable operation, int bonusDelay = 0, [CallerFilePath] string pas = "")
         {
             Debug.LogWarning($"Loader add: {operation.GetType()} {bonusDelay}");
             
