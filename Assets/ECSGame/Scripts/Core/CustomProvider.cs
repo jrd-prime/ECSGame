@@ -40,7 +40,6 @@ namespace ECSGame.Scripts.Core
 
         public void SetImpl(Enum selector)
         {
-            Debug.LogWarning($"set impl {selector}");
             if (selector == null) throw new NullReferenceException($"Enum is null! / {this}");
             var dict = GetDictWithImpl();
 

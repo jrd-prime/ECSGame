@@ -8,17 +8,16 @@
         <ui:VisualElement name="img-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 50%; align-items: center; justify-content: center; align-self: center; width: 100%;">
             <ui:VisualElement name="img-cont" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Other/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=c1d77148ec28b654cacbd6ba28d19c68&amp;type=3#check&quot;); width: 22px; height: 22px; align-self: auto; justify-content: flex-start; align-items: auto; position: absolute;" />
         </ui:VisualElement>
-        <ui:VisualElement name="progress-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 10%; align-items: center; justify-content: center; align-self: center; width: 80%;">
-            <ui:VisualElement name="pb-bar" style="flex-grow: 0; background-color: rgb(138, 201, 74); border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; width: 241px; height: 12px; position: absolute; top: 0; right: 0; overflow: hidden;" />
-            <ui:VisualElement name="custom-pb" class="pb-custom-main" style="width: 604px; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
-                <ui:VisualElement name="pb-cont" style="flex-grow: 1; width: 600px; height: auto; position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
-                    <ui:VisualElement name="pb-bar-val" style="width: 111px; height: 111px; background-color: rgb(108, 21, 21);" />
+        <ui:VisualElement name="progress-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: auto; align-items: center; justify-content: center; align-self: center; width: 800px;">
+            <ui:VisualElement name="pb-bar-holder" style="flex-grow: 1; width: 600px; height: 30px; align-items: center; justify-content: center; align-self: center;">
+                <ui:VisualElement name="pb-bar-cont" style="flex-grow: 1; width: 600px; height: 16px; margin-top: 8px; margin-bottom: 8px; border-left-color: rgb(75, 75, 75); border-right-color: rgb(75, 75, 75); border-top-color: rgb(75, 75, 75); border-bottom-color: rgb(75, 75, 75); border-top-width: 3px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 2px; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; margin-right: 0; margin-left: 0; position: absolute; left: 0; align-items: center; justify-content: center; align-self: center; overflow: hidden; background-color: rgb(199, 199, 199);">
+                    <ui:VisualElement name="pb-bar" style="flex-grow: 0; background-color: rgb(129, 188, 69); width: 246px; height: 12px; position: absolute; top: 0; right: auto; overflow: hidden; left: -1px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;" />
                 </ui:VisualElement>
-                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="33%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="pb-bar-label" style="position: absolute; width: 400px; height: 12px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 10px; top: 10px;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="footer-cont-root" style="flex-grow: 1; -unity-text-align: middle-center; height: 20%; align-items: center; justify-content: center; align-self: center; width: 100%;">
-            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="foot-text-label" />
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="foot-text-label" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; position: absolute; top: 0; -unity-font-style: normal; font-size: 12px; -unity-font: resource(&apos;Fonts/Roboto-Medium&apos;); color: rgb(72, 72, 72);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

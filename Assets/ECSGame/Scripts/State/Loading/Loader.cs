@@ -21,8 +21,6 @@ namespace ECSGame.Scripts.State.Loading
 
         public void AddToQueue(ILoadable operation, int bonusDelay = 0, [CallerFilePath] string pas = "")
         {
-            Debug.LogWarning($"Loader add: {operation.GetType()} {bonusDelay}");
-            
             Assert.IsNotNull(operation, $"Operation is null! {pas}");
             
             LoadingQueue.Enqueue(operation);

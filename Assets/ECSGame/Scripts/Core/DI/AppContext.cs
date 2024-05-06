@@ -27,6 +27,8 @@ namespace ECSGame.Scripts.Core.DI
         public IDataBase DataBase { get; private set; }
         public ConfigManager ConfigManager { get; private set; }
         private ProvidersFactory _providersFactory;
+        
+       
 
         private AppContext()
         {
@@ -61,7 +63,7 @@ namespace ECSGame.Scripts.Core.DI
 
 
             // Loading queue
-            loader.AddToQueue(ConfigManager);
+            loader.AddToQueue(ConfigManager, 1000);
             loader.AddToQueue(containerInitializer, 2000);
             loader.AddToQueue(containerFactory, 2000);
             loader.AddToQueue(serviceFactory, 2000);

@@ -102,7 +102,7 @@ namespace ECSGame.Scripts.Core.Config
             SetConfig<IContainerConfig>(ref containerConfig);
             SetConfig<IBindsConfiguration>(ref bindsConfiguration);
 
-            await UniTask.Delay(3000);
+            await UniTask.CompletedTask;
         }
 
         public Type GetImplType<T>() where T : class

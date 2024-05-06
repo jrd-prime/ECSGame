@@ -17,7 +17,7 @@ namespace ECSGame.Scripts.Core.DI
 
         public async Task InjectDependenciesAsync(Assembly assembly)
         {
-            JLog.Msg($"( InjectDependenciesAsync STARTED...");
+            // JLog.Msg($"( InjectDependenciesAsync STARTED...");
             
             foreach (var type in assembly.GetTypes())                        
             {
@@ -25,33 +25,33 @@ namespace ECSGame.Scripts.Core.DI
 
                 foreach (var field in fields)
                 {
-                    JLog.Msg($"= = = = = =");
+                    // JLog.Msg($"= = = = = =");
                     if (!Attribute.IsDefined(field, typeof(JInject))) continue;
 
-                    JLog.Msg($"type = {type}");
-                    JLog.Msg($"field = {field}");
-                    JLog.Msg($"field has attr for inject");
+                    // JLog.Msg($"type = {type}");
+                    // JLog.Msg($"field = {field}");
+                    // JLog.Msg($"field has attr for inject");
 
                     var target = field.FieldType;
-                    JLog.Msg($"target (field type) = {target}");
+                    // JLog.Msg($"target (field type) = {target}");
 
-                    Debug.LogWarning("count cache = " + _cache.GetCache().Count);
+                    // Debug.LogWarning("count cache = " + _cache.GetCache().Count);
 
                     var instance = _cache.GetCache()[target];
 
-                    JLog.Msg($"instance from cache = {instance}");
+                    // JLog.Msg($"instance from cache = {instance}");
 
                     var serviceInstanceTarget = _cache.GetCache()[type];
-                    JLog.Msg($"service instance with inject field = {serviceInstanceTarget.GetType()}");
+                    // JLog.Msg($"service instance with inject field = {serviceInstanceTarget.GetType()}");
 
 
-                    JLog.Msg($"INJECTED?? {type} / {serviceInstanceTarget} / {instance}");
+                    // JLog.Msg($"INJECTED?? {type} / {serviceInstanceTarget} / {instance}");
 
                     field.SetValue(serviceInstanceTarget, instance);
                 }
             }
             
-            JLog.Msg($"( InjectDependenciesAsync FINISHED...");
+            // JLog.Msg($"( InjectDependenciesAsync FINISHED...");
 
             await Task.CompletedTask;
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -13,8 +14,11 @@ namespace ECSGame.Scripts.State.Loading
         private VisualElement _pb;
         private float _pbFullVal;
         public int _steps;
-        private int maxbar = 600;
+        private const float BarLenght = 600f;
+        private float _time = -1;
         private int _tempStep;
+        private Label _pbLabel;
+
 
         private void Awake()
         {
@@ -22,49 +26,59 @@ namespace ECSGame.Scripts.State.Loading
             var root = gameObject.GetComponent<UIDocument>().rootVisualElement;
             _text = root.Q<Label>("foot-text-label");
             _pb = root.Q<VisualElement>("pb-bar");
-            _pbFullVal = _pb.style.width.value.value;
+            _pbLabel = root.Q<Label>("pb-bar-label");
 
+
+            _text.text = "";
             _pb.style.width = 0;
+            _pbLabel.text = "0 %";
         }
 
-        private void Start()
+        private IEnumerator UpdateProgressBar()
         {
-            _pb.style.width = 70;
+            var timeInSec = _time / 1000;
+            var pxPerSec = BarLenght / timeInSec;
+            const float onePercentOfBar = BarLenght / 100;
+
+            while (timeInSec > 0)
+            {
+                var dt = Time.deltaTime;
+                var oldVal = _pb.style.width.value.value;
+                var newVal = oldVal + (dt * pxPerSec);
+
+                if (_pb.style.width.value.value < BarLenght)
+                {
+                    _pbLabel.text = Mathf.Round(newVal / onePercentOfBar) + " %";
+                    _pb.style.width = _pb.style.width.value.value + (dt * pxPerSec);
+                }
+
+                timeInSec -= dt;
+                yield return null;
+            }
         }
+
 
         private void OnLoadingOperation(ILoadable obj)
         {
-            _text.text = obj.Description;
-
-            //TODO remove or rework
-            {
-                if (_tempStep == 0)
-                {
-                    _pb.style.width = 0;
-                    _tempStep += 1;
-                }
-                else if (_tempStep == _steps)
-                {
-                    _pb.style.width = maxbar;
-                    _tempStep = 0;
-                }
-                else
-                {
-                    _pb.style.width = maxbar / _steps * _tempStep;
-                    _tempStep += 1;
-                }
-            }
+            var prefix = "Loading: ";
+            var postfix = "...";
+            _text.text = prefix + obj.Description + postfix;
         }
 
 
         public async UniTask Load(Loader loader)
         {
+            StartCoroutine(UpdateProgressBar());
+
             foreach (var operation in loader.LoadingQueue)
             {
-                await operation.Load(_onLoadingOperation);
-                Debug.LogWarning($"start bonus delay {loader.LoadingQueueDelay[operation]}");
-                await UniTask.Delay(loader.LoadingQueueDelay[operation]);
+                var fakeDelay = UniTask.Delay(loader.LoadingQueueDelay[operation]);
+                await UniTask.WhenAll(
+                    operation.Load(_onLoadingOperation),
+                    fakeDelay);
             }
         }
+
+        public void SetTime(int timeSum) => _time = timeSum;
     }
 }

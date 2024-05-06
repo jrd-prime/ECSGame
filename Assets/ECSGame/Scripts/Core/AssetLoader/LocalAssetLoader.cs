@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using Cysharp.Threading.Tasks;
 using ECSGame.Scripts.State.Loading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
-using UnityEngine.UIElements.Experimental;
-using Debug = UnityEngine.Debug;
 
 namespace ECSGame.Scripts.Core.AssetLoader
 {

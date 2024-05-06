@@ -8,6 +8,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using System.Reflection;
+using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Profiling;
 using UnityEngine.SceneManagement;
@@ -35,16 +36,18 @@ namespace ECSGame.Scripts
 
             await _context.LoadingScreenProvider.LoadAndDestroy(Loader);
 
-            var gameSceneInstance = Addressables.LoadSceneAsync(Scene.Game, LoadSceneMode.Additive);
-            await gameSceneInstance.Task;
+            var gameScene = Addressables.LoadSceneAsync(Scene.Game, LoadSceneMode.Additive);
+            await gameScene.Task;
 
             var tempActiveScene = SceneManager.GetActiveScene();
 
-            SceneManager.SetActiveScene(gameSceneInstance.Result.Scene);
-            
+            SceneManager.SetActiveScene(gameScene.Result.Scene);
+
             SceneManager.UnloadSceneAsync(tempActiveScene);
             JLog.Msg($"(Services initialization FINISHED...");
             Debug.LogWarning("START THE GAME");
+
+            await UniTask.Delay(3000);
         }
 
 #if UNITY_EDITOR
