@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using ECSGame.Scripts.Core.DI;
 using Moq;
 using NUnit.Framework;
 

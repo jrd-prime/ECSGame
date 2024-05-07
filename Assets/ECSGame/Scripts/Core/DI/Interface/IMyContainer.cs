@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
-using ECSGame.Scripts.Core.Config;
+using ECSGame.Scripts.Core.Config.Interface;
 using ECSGame.Scripts.State.Loading;
 
 namespace ECSGame.Scripts.Core.DI.Interface

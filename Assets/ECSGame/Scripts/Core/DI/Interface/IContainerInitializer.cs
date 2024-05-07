@@ -1,5 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using ECSGame.Scripts.State.Loading;
+﻿using ECSGame.Scripts.State.Loading;
 
 namespace ECSGame.Scripts.Core.DI.Interface
 {

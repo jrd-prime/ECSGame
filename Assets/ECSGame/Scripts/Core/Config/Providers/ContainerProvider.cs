@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ECSGame.Scripts.Core.DI;
+using ECSGame.Scripts.Core.DI.Initializer;
 
 namespace ECSGame.Scripts.Core.Config.Providers
 {

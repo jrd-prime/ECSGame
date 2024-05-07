@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using ECSGame.Scripts.Core.AssetLoader;
 using ECSGame.Scripts.Core.DataBase;
+using ECSGame.Scripts.Core.DI.Factory;
 using ECSGame.Scripts.Core.DI.Interface;
 using ECSGame.Scripts.State.Loading;
-using ECSGame.Scripts.TestDB;
+using UnityEngine;
 
 namespace ECSGame.Scripts.Core.Config.Providers
 {
@@ -14,6 +15,8 @@ namespace ECSGame.Scripts.Core.Config.Providers
     /// </summary>
     public class ProvidersFactory
     {
+        public readonly Dictionary<Type, Type> ProvidersBinds = new();
+
         private readonly Dictionary<Type, ProviderConfig> _configs = new();
         private readonly Dictionary<Type, CustomProvider> _cache = new();
         private readonly Dictionary<Type, object> _providedInstances = new();
@@ -32,7 +35,6 @@ namespace ECSGame.Scripts.Core.Config.Providers
             // Container
             BindConfigToProvider<ContainerProvider, IContainerInitializer>(config._containerInitializer);
             BindConfigToProvider<ContainerFactoryProvider, IContainerFactory>(config._containerFactory);
-            BindConfigToProvider<ServiceFactoryProvider, IServiceFactory>(config._containerServiceFactory);
             // DataBase
             BindConfigToProvider<DataBaseProvider, IDataBase>(config._dataBase);
             // Asset Loader
@@ -68,6 +70,7 @@ namespace ECSGame.Scripts.Core.Config.Providers
                 provider.SetImpl(configEnum);
                 var serviceInstance = provider.GetImplInstance(instanceType);
                 _providedInstances.Add(instanceType, serviceInstance);
+                ProvidersBinds.TryAdd(instanceType, serviceInstance.GetType());
             }
         }
 

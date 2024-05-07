@@ -45,6 +45,7 @@ namespace ECSGame.Scripts.State.Loading
                 var dt = Time.deltaTime;
                 var oldVal = _pb.style.width.value.value;
                 var newVal = oldVal + (dt * pxPerSec);
+                timeInSec -= dt;
 
                 if (_pb.style.width.value.value < BarLenght)
                 {
@@ -52,19 +53,14 @@ namespace ECSGame.Scripts.State.Loading
                     _pb.style.width = _pb.style.width.value.value + (dt * pxPerSec);
                 }
 
-                timeInSec -= dt;
                 yield return null;
             }
         }
 
-
         private void OnLoadingOperation(ILoadable obj)
         {
-            var prefix = "Loading: ";
-            var postfix = "...";
-            _text.text = prefix + obj.Description + postfix;
+            _text.text = $"{++_tempStep}/{_steps}: {obj.Description}..";
         }
-
 
         public async UniTask Load(Loader loader)
         {

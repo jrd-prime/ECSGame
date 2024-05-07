@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ECSGame.Scripts.Core.DI;
+using ECSGame.Scripts.Core.DI.CoreParts.Binder;
 using Moq;
 using NUnit.Framework;
 
@@ -11,12 +12,12 @@ namespace Tests.Container
     [TestFixture] // Test suit
     public class ContainerBinderTests
     {
-        private Binder _binder;
+        private DefaultBinder _defaultBinder;
 
         [SetUp]
         public void SetUp()
         {
-            _binder = new Binder();
+            _defaultBinder = new DefaultBinder();
         }
 
         // [Test]

@@ -1,4 +1,4 @@
-﻿using ECSGame.Scripts.Core.DI;
+﻿using ECSGame.Scripts;
 using NUnit.Framework;
 
 namespace Tests
